@@ -1,0 +1,10 @@
+.classpath
+.project
+.settings/
+target/
+
+#Config files
+config.service.ts
+config.json
+*.properties
+
