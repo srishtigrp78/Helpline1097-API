@@ -124,7 +124,7 @@ public class BenInformationCounsellingFeedbackReferralImpl implements BenInforma
 		{
 			// subCatFilePath = getFilePath(obj.getSubCategoryID());
 			// resultSet.add(new SubCategoryDetails(obj.getCoSubCategoryID(), "", subCatFilePath));
-			resultSet.add(getFilePath(obj.getSubCategoryID()));
+			resultSet.add(getFilePath(obj.getCoSubCategoryID()));
 		}
 		// return new Gson().toJson(resultSet);
 		return resultSet.toString();
@@ -153,11 +153,20 @@ public class BenInformationCounsellingFeedbackReferralImpl implements BenInforma
 				// request.getJSONObject(idx).getInt("stateID"),
 				// request.getJSONObject(idx).getInt("districtID"),
 				// request.getJSONObject(idx).getInt("districtBranchMappingID"));
-				Set<Objects[]> dirMaps = directoryMappingRepository.findAciveInstituteDirectories(
-						directories[idx].getInstituteDirectoryID(), directories[idx].getInstituteSubDirectoryID(),
-						institutes[idx].getStateID(), institutes[idx].getDistrictID(),
-						institutes[idx].getDistrictBranchMappingID());
+				Set<Objects[]> dirMaps = null;
 
+				if (institutes[idx].getDistrictBranchMappingID() != null)
+				{
+					dirMaps = directoryMappingRepository.findAciveInstituteDirectories(
+							directories[idx].getInstituteDirectoryID(), directories[idx].getInstituteSubDirectoryID(),
+							institutes[idx].getStateID(), institutes[idx].getDistrictID(),
+							institutes[idx].getDistrictBranchMappingID());
+				} else
+				{
+					dirMaps = directoryMappingRepository.findAciveInstituteDirectories(
+							directories[idx].getInstituteDirectoryID(), directories[idx].getInstituteSubDirectoryID(),
+							institutes[idx].getStateID(), institutes[idx].getDistrictID());
+				}
 				DirectoryMapping maps = new DirectoryMapping();
 				for (Object[] objects : dirMaps)
 				{
@@ -167,9 +176,10 @@ public class BenInformationCounsellingFeedbackReferralImpl implements BenInforma
 								(String) objects[3], (String) objects[4], (String) objects[5], (String) objects[6]);
 						resultSet.add(maps);
 						reqArray[idx].setInstituteDirMapID((Long) objects[0]);
+						benCalServiceCatSubcatMappingRepo.save(reqArray[idx]);
 					}
 				}
-				benCalServiceCatSubcatMappingRepo.save(Arrays.asList(reqArray));
+//				benCalServiceCatSubcatMappingRepo.save(Arrays.asList(reqArray));
 			}
 		} catch (Exception e)
 		{
