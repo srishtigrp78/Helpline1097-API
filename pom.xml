@@ -130,7 +130,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>helpline1097APIV1</finalName>
+		<finalName>1097api-v1.0</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
