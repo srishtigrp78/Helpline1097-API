@@ -75,6 +75,7 @@ public class BeneficiaryCall {
 	@Expose
 	private String createdBy;
 	@Column(name = "CreatedDate", insertable = false, updatable = false)
+	@Expose
 	private Timestamp createdDate;
 	@Column(name = "ModifiedBy")
 	private String modifiedBy;
