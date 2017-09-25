@@ -1,7 +1,6 @@
 package com.iemr.helpline1097.service.co.beneficiary;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -66,22 +65,39 @@ public class BenInformationCounsellingFeedbackReferralImpl implements BenInforma
 
 	private InputMapper inputMapper;
 
+	// @Override
+	// @Transactional
+	// public String saveBenCallServiceCatSubCat(Iterable<BenCallServicesMappingHistory> benCallServicesMappingHistory)
+	// {
+	// Iterable<BenCallServicesMappingHistory> dataInserted = benCalServiceCatSubcatMappingRepo
+	// .save(benCallServicesMappingHistory);
+	// List<SubCategoryDetails> resultSet = new ArrayList<SubCategoryDetails>();
+	// String subCatFilePath = "";
+	// for (BenCallServicesMappingHistory obj : dataInserted)
+	// {
+	// // subCatFilePath = getFilePath(obj.getSubCategoryID());
+	// // resultSet.add(new SubCategoryDetails(obj.getSubCategoryID(),
+	// // obj.getSubCategoryDetails().getSubCategoryName(), subCatFilePath));
+	// resultSet.add(getFilePath(obj.getSubCategoryID()));
+	// }
+	// // return new Gson().toJson(resultSet);
+	// return resultSet.toString();
+	// }
+
 	@Override
 	@Transactional
 	public String saveBenCallServiceCatSubCat(Iterable<BenCallServicesMappingHistory> benCallServicesMappingHistory)
 	{
-		Iterable<BenCallServicesMappingHistory> dataInserted = benCalServiceCatSubcatMappingRepo
-				.save(benCallServicesMappingHistory);
 		List<SubCategoryDetails> resultSet = new ArrayList<SubCategoryDetails>();
-		String subCatFilePath = "";
-		for (BenCallServicesMappingHistory obj : dataInserted)
+		for (BenCallServicesMappingHistory obj : benCallServicesMappingHistory)
 		{
-			// subCatFilePath = getFilePath(obj.getSubCategoryID());
-			// resultSet.add(new SubCategoryDetails(obj.getSubCategoryID(),
-			// obj.getSubCategoryDetails().getSubCategoryName(), subCatFilePath));
-			resultSet.add(getFilePath(obj.getSubCategoryID()));
+			SubCategoryDetails subCatFile = getFilePath(obj.getSubCategoryID());
+			if (subCatFile != null)
+			{
+				benCalServiceCatSubcatMappingRepo.save(obj);
+				resultSet.add(subCatFile);
+			}
 		}
-		// return new Gson().toJson(resultSet);
 		return resultSet.toString();
 	}
 
@@ -112,21 +128,39 @@ public class BenInformationCounsellingFeedbackReferralImpl implements BenInforma
 		return details;
 	}
 
+	// @Override
+	// @Transactional
+	// public String saveBenCallServiceCOCatSubCat(Iterable<BenCallServicesMappingHistory>
+	// benCallServicesMappingHistory)
+	// {
+	// Iterable<BenCallServicesMappingHistory> dataInserted = benCalServiceCatSubcatMappingRepo
+	// .save(benCallServicesMappingHistory);
+	// List<SubCategoryDetails> resultSet = new ArrayList<SubCategoryDetails>();
+	// String subCatFilePath = "";
+	// for (BenCallServicesMappingHistory obj : dataInserted)
+	// {
+	// // subCatFilePath = getFilePath(obj.getSubCategoryID());
+	// // resultSet.add(new SubCategoryDetails(obj.getCoSubCategoryID(), "", subCatFilePath));
+	// resultSet.add(getFilePath(obj.getCoSubCategoryID()));
+	// }
+	// // return new Gson().toJson(resultSet);
+	// return resultSet.toString();
+	// }
+
 	@Override
 	@Transactional
 	public String saveBenCallServiceCOCatSubCat(Iterable<BenCallServicesMappingHistory> benCallServicesMappingHistory)
 	{
-		Iterable<BenCallServicesMappingHistory> dataInserted = benCalServiceCatSubcatMappingRepo
-				.save(benCallServicesMappingHistory);
 		List<SubCategoryDetails> resultSet = new ArrayList<SubCategoryDetails>();
-		String subCatFilePath = "";
-		for (BenCallServicesMappingHistory obj : dataInserted)
+		for (BenCallServicesMappingHistory obj : benCallServicesMappingHistory)
 		{
-			// subCatFilePath = getFilePath(obj.getSubCategoryID());
-			// resultSet.add(new SubCategoryDetails(obj.getCoSubCategoryID(), "", subCatFilePath));
-			resultSet.add(getFilePath(obj.getCoSubCategoryID()));
+			SubCategoryDetails subCatFile = getFilePath(obj.getCoSubCategoryID());
+			if (subCatFile != null)
+			{
+				benCalServiceCatSubcatMappingRepo.save(obj);
+				resultSet.add(subCatFile);
+			}
 		}
-		// return new Gson().toJson(resultSet);
 		return resultSet.toString();
 	}
 
@@ -179,7 +213,7 @@ public class BenInformationCounsellingFeedbackReferralImpl implements BenInforma
 						benCalServiceCatSubcatMappingRepo.save(reqArray[idx]);
 					}
 				}
-//				benCalServiceCatSubcatMappingRepo.save(Arrays.asList(reqArray));
+				// benCalServiceCatSubcatMappingRepo.save(Arrays.asList(reqArray));
 			}
 		} catch (Exception e)
 		{

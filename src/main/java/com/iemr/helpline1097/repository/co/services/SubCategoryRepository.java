@@ -21,7 +21,7 @@ public interface SubCategoryRepository extends CrudRepository<SubCategoryDetails
 			+ "where categoryID = :categoryId and deleted = false")
 	public ArrayList<Objects[]> findBy(@Param("categoryId") Integer categoryId);
 
-	@Query("select subCatFilePath, subCategoryName, subCategoryDesc from SubCategoryDetails scd "
-			+ "where subCategoryID = :subCategoryID and deleted = false")
+	@Query("select subCatFilePath, subCategoryName, subCategoryDesc from SubCategoryDetails "
+			+ "where subCategoryID = :subCategoryID and subCatFilePath is not null and deleted = false")
 	public Set<Objects[]> findFilePathBySubCategoryId(@Param("subCategoryID") Integer subCategoryID);
 }
