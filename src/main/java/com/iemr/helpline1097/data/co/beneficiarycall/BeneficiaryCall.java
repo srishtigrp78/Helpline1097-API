@@ -22,7 +22,8 @@ import com.iemr.utils.mapper.OutputMapper;
 
 @Entity
 @Table(name = "t_bencall")
-public class BeneficiaryCall {
+public class BeneficiaryCall
+{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "BenCallID")
@@ -98,103 +99,128 @@ public class BeneficiaryCall {
 	@Transient
 	private Long counsellingServices;
 
-	public Long getBenCallID() {
+	public Long getBenCallID()
+	{
 		return benCallID;
 	}
 
-	public List<BenCallServicesMappingHistory> getBenCallServicesMappingHistories() {
+	public List<BenCallServicesMappingHistory> getBenCallServicesMappingHistories()
+	{
 		return benCallServicesMappingHistories;
 	}
 
-	public Long getBeneficiaryRegID() {
+	public Long getBeneficiaryRegID()
+	{
 		return beneficiaryRegID;
 	}
 
-	public Integer getCalledServiceID() {
+	public Integer getCalledServiceID()
+	{
 		return calledServiceID;
 	}
 
-	public Boolean getIs1097() {
+	public Boolean getIs1097()
+	{
 		return is1097;
 	}
 
-	public Timestamp getCallTime() {
+	public Timestamp getCallTime()
+	{
 		return callTime;
 	}
 
-	public String getRemarks() {
+	public String getRemarks()
+	{
 		return remarks;
 	}
 
-	public String getServicesProvided() {
+	public String getServicesProvided()
+	{
 		return servicesProvided;
 	}
 
-	public String getCallClosureType() {
+	public String getCallClosureType()
+	{
 		return callClosureType;
 	}
 
-	public Integer getDispositionStatusID() {
+	public Integer getDispositionStatusID()
+	{
 		return dispositionStatusID;
 	}
 
-	public Integer getCallReceivedUserID() {
+	public Integer getCallReceivedUserID()
+	{
 		return callReceivedUserID;
 	}
 
-	public Long getInformationServices() {
+	public Long getInformationServices()
+	{
 		return informationServices;
 	}
 
-	public Long getFeedbackServices() {
+	public Long getFeedbackServices()
+	{
 		return feedbackServices;
 	}
 
-	public Long getReferralServices() {
+	public Long getReferralServices()
+	{
 		return referralServices;
 	}
 
-	public Integer getCallEndUserID() {
+	public Integer getCallEndUserID()
+	{
 		return callEndUserID;
 	}
 
-	public String getCategory() {
+	public String getCategory()
+	{
 		return category;
 	}
 
-	public String getSubCategory() {
+	public String getSubCategory()
+	{
 		return subCategory;
 	}
 
-	public Boolean getDeleted() {
+	public Boolean getDeleted()
+	{
 		return deleted;
 	}
 
-	public String getCreatedBy() {
+	public String getCreatedBy()
+	{
 		return createdBy;
 	}
 
-	public Timestamp getCreatedDate() {
+	public Timestamp getCreatedDate()
+	{
 		return createdDate;
 	}
 
-	public String getModifiedBy() {
+	public String getModifiedBy()
+	{
 		return modifiedBy;
 	}
 
-	public Timestamp getLastModDate() {
+	public Timestamp getLastModDate()
+	{
 		return lastModDate;
 	}
 
-	public BeneficiaryCall() {
+	public BeneficiaryCall()
+	{
 
 	}
 
 	public BeneficiaryCall(Long benCallID, String benCallServicesMappingHistories, Integer calledServiceID,
-			Boolean is1097, Timestamp callTime, String remarks, String callClosureType, Integer dispositionStatusID) {
+			Boolean is1097, Timestamp callTime, String remarks, String callClosureType, Integer dispositionStatusID)
+	{
 		this.benCallID = benCallID;
-		Type listType = new TypeToken<List<String>>() {
-		}.getType();
+		Type listType = new TypeToken<List<String>>()
+			{
+			}.getType();
 		this.benCallServicesMappingHistories = new Gson().fromJson(benCallServicesMappingHistories, listType);
 		this.calledServiceID = calledServiceID;
 		this.is1097 = is1097;
@@ -205,18 +231,20 @@ public class BeneficiaryCall {
 	}
 
 	public BeneficiaryCall(Long benCallID, Timestamp callTime, String remarks, Long informationServices,
-			Long feedbackServices, Long referralServices, Timestamp createdDate, Long counsellingServices) {
+			Long feedbackServices, Long referralServices, Timestamp createdDate, Long counsellingServices)
+	{
 		this.benCallID = benCallID;
 		this.callTime = callTime;
 		this.remarks = remarks;
-		this.informationServices = informationServices;
-		this.feedbackServices = feedbackServices;
-		this.referralServices = referralServices;
-		this.counsellingServices = counsellingServices;
+		this.informationServices = new Long((informationServices > 0) ? 1 : 0);
+		this.feedbackServices = new Long((feedbackServices > 0) ? 1 : 0);
+		this.referralServices = new Long((referralServices > 0) ? 1 : 0);
+		this.counsellingServices = new Long((counsellingServices > 0) ? 1 : 0);
 		this.createdDate = createdDate;
 	}
 
-	public BeneficiaryCall(Long beneficiaryRegID, Boolean is1097, String createdBy) {
+	public BeneficiaryCall(Long beneficiaryRegID, Boolean is1097, String createdBy)
+	{
 		this.beneficiaryRegID = beneficiaryRegID;
 		this.is1097 = is1097;
 		this.createdBy = createdBy;
@@ -226,7 +254,8 @@ public class BeneficiaryCall {
 	private OutputMapper outputMapper = new OutputMapper();
 
 	@Override
-	public String toString() {
+	public String toString()
+	{
 		return outputMapper.gson().toJson(this);
 	}
 }
