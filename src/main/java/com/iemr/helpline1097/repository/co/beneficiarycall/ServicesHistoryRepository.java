@@ -73,7 +73,7 @@ public interface ServicesHistoryRepository extends CrudRepository<BenCallService
 	@Query("select " + "b.benCall97ServiceMapID, b.beneficiaryRegID, b.benCallID, "
 			+ "b.subServiceID, b.subServices, b.coCategoryID, b.coCategoryDetails, b.coSubCategoryID, "
 			+ "b.coSubCategoryDetails, b.createdBy, b.createdDate " + "from BenCallServicesMappingHistory b "
-			+ "join b.subServices sm " + "join b.categoryDetails c " + "join b.subCategoryDetails s "
+			+ "join b.subServices sm " + "join b.coCategoryDetails c " + "join b.coSubCategoryDetails s "
 			+ "where b.beneficiaryRegID = :beneficiaryRegID "
 			+ " order by b.benCall97ServiceMapID desc")
 	public List<Objects[]> findCounsellingsForBeneficiary(@Param("beneficiaryRegID") Long beneficiaryRegID,
