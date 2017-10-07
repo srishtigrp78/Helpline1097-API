@@ -113,7 +113,7 @@ public class BenInformationCounsellingFeedbackReferralImpl implements BenInforma
 				String subCatName = (String) objects[1];
 				String subCatDesc = (String) objects[2];
 				String fileUIDAsURI = null;
-				if (fileUID != null)
+				if (fileUID != null && fileUID.trim().length() > 0)
 				{
 					String dmsPath = configProperties.getPropertyByName("km-base-path");
 					String dmsProtocol = configProperties.getPropertyByName("km-base-protocol");
