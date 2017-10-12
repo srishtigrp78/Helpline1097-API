@@ -15,6 +15,6 @@ public interface FeedbackService {
 	public FeedbackDetails createFeedback(FeedbackDetails feedbackDetails);
 
 //	public String saveFeedbackFromCustomer(Iterable<FeedbackDetails> feedbackDetails);
-	public String saveFeedbackFromCustomer(String feedbackDetails);
+	public String saveFeedbackFromCustomer(String feedbackDetails) throws Exception;
 
 }

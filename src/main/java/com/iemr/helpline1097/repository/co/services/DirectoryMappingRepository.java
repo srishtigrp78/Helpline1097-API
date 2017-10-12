@@ -24,23 +24,34 @@ public interface DirectoryMappingRepository extends CrudRepository<DirectoryMapp
 	// false")
 
 	@Query("select m.instituteDirMapID, i.institutionID, i.institutionName, i.address, i.contactNo1, i.contactNo2, "
-			+ "i.contactNo3 from DirectoryMapping m JOIN m.institutionDetails i " + " where m.deleted = false and "
+			+ "i.contactNo3 from DirectoryMapping m JOIN m.institutionDetails i where m.deleted = false and "
 			+ "m.instituteDirectoryID = :instituteDirectoryID and "
 			+ "m.instituteSubDirectoryID = :instituteSubDirectoryID and "
-			+ "i.stateID = :stateID and i.districtID = :districtID and "
+			+ "i.stateID = :stateID and i.districtID = :districtID and i.blockID = :blockID and "
 			+ "i.districtBranchMappingID = :districtBranchMappingID and i.deleted = false")
 
-	public Set<Objects[]> findAciveInstituteDirectories(@Param("instituteDirectoryID") int instituteDirectoryID,
-			@Param("instituteSubDirectoryID") int instituteSubDirectoryID, @Param("stateID") int stateID,
-			@Param("districtID") int districtID, @Param("districtBranchMappingID") int districtBranchMappingID);
+	public Set<Objects[]> findAciveInstituteDirectories(@Param("instituteDirectoryID") Integer instituteDirectoryID,
+			@Param("instituteSubDirectoryID") Integer instituteSubDirectoryID, @Param("stateID") Integer stateID,
+			@Param("districtID") Integer districtID, @Param("blockID") Integer blockID,
+			@Param("districtBranchMappingID") Integer districtBranchMappingID);
 
 	@Query("select m.instituteDirMapID, i.institutionID, i.institutionName, i.address, i.contactNo1, i.contactNo2, "
-			+ "i.contactNo3 from DirectoryMapping m JOIN m.institutionDetails i " + " where m.deleted = false and "
+			+ "i.contactNo3 from DirectoryMapping m JOIN m.institutionDetails i where m.deleted = false and "
+			+ "m.instituteDirectoryID = :instituteDirectoryID and "
+			+ "m.instituteSubDirectoryID = :instituteSubDirectoryID and "
+			+ "i.stateID = :stateID and i.districtID = :districtID and i.blockID = :blockID and i.deleted = false")
+
+	public Set<Objects[]> findAciveInstituteDirectories(@Param("instituteDirectoryID") Integer instituteDirectoryID,
+			@Param("instituteSubDirectoryID") Integer instituteSubDirectoryID, @Param("stateID") Integer stateID,
+			@Param("districtID") Integer districtID, @Param("blockID") Integer blockID);
+
+	@Query("select m.instituteDirMapID, i.institutionID, i.institutionName, i.address, i.contactNo1, i.contactNo2, "
+			+ "i.contactNo3 from DirectoryMapping m JOIN m.institutionDetails i where m.deleted = false and "
 			+ "m.instituteDirectoryID = :instituteDirectoryID and "
 			+ "m.instituteSubDirectoryID = :instituteSubDirectoryID and "
 			+ "i.stateID = :stateID and i.districtID = :districtID and i.deleted = false")
 
-	public Set<Objects[]> findAciveInstituteDirectories(@Param("instituteDirectoryID") int instituteDirectoryID,
-			@Param("instituteSubDirectoryID") int instituteSubDirectoryID, @Param("stateID") int stateID,
-			@Param("districtID") int districtID);
+	public Set<Objects[]> findAciveInstituteDirectories(@Param("instituteDirectoryID") Integer instituteDirectoryID,
+			@Param("instituteSubDirectoryID") Integer instituteSubDirectoryID, @Param("stateID") Integer stateID,
+			@Param("districtID") Integer districtID);
 }

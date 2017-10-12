@@ -85,11 +85,12 @@ public class BeneficiaryController
 			method = RequestMethod.POST,
 			produces = MediaType.APPLICATION_JSON,
 			consumes = MediaType.APPLICATION_JSON)
-	public String addBeneficiaryOccupation(@ApiParam(
-			value = "{\n\"occupationType\":\"string-Mandatory\","
-					+ "\n\"createdBy\":\"user name as string - Mandatorty\","
-					+ "\n\"key\":\"user key as string - Mandatory\"}",
-			required = true) @RequestBody String request)
+	public String addBeneficiaryOccupation(
+			@ApiParam(
+					value = "{\n\"occupationType\":\"string-Mandatory\","
+							+ "\n\"createdBy\":\"user name as string - Mandatorty\","
+							+ "\n\"key\":\"user key as string - Mandatory\"}",
+					required = true) @RequestBody String request)
 	{
 		OutputResponse response = new OutputResponse();
 		try
@@ -311,6 +312,7 @@ public class BeneficiaryController
 	public String saveBenCalReferralMapping(@RequestBody String referralRequest)
 	{
 		OutputResponse response = new OutputResponse();
+		logger.debug("saveBenCalReferralMapping request is " + referralRequest);
 		try
 		{
 
@@ -318,9 +320,10 @@ public class BeneficiaryController
 					benInformationCounsellingFeedbackReferralImpl.saveBenCalReferralMapping(referralRequest));
 		} catch (Exception e)
 		{
-			logger.error("", e);
+			logger.error("saveBenCalReferralMapping failed with exception " + e.getMessage(), e);
 			response.setError(e);
 		}
+		logger.debug("saveBenCalReferralMapping response is " + response);
 		return response.toString();
 	}
 

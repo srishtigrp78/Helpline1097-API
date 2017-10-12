@@ -174,22 +174,17 @@ public class BenInformationCounsellingFeedbackReferralImpl implements BenInforma
 					BenCallServicesMappingHistory[].class);
 			InstitutionDetails[] institutes = inputMapper.gson().fromJson(referralRequest, InstitutionDetails[].class);
 			DirectoryMapping[] directories = inputMapper.gson().fromJson(referralRequest, DirectoryMapping[].class);
-			// ArrayList<BenCallServicesMappingHistory> requestMapping = new
-			// ArrayList<BenCallServicesMappingHistory>(Arrays.asList(reqArray));
-			// JSONArray request = new JSONArray(referralRequest);
-			// for (int idx = 0; idx < request.length(); idx++) {
 			for (int idx = 0; idx < institutes.length; idx++)
 			{
-				// Set<Objects[]> dirMaps =
-				// directoryMappingRepository.findAciveInstituteDirectories(
-				// request.getJSONObject(idx).getInt("instituteDirectoryID"),
-				// request.getJSONObject(idx).getInt("instituteSubDirectoryID"),
-				// request.getJSONObject(idx).getInt("stateID"),
-				// request.getJSONObject(idx).getInt("districtID"),
-				// request.getJSONObject(idx).getInt("districtBranchMappingID"));
 				Set<Objects[]> dirMaps = null;
 
 				if (institutes[idx].getDistrictBranchMappingID() != null)
+				{
+					dirMaps = directoryMappingRepository.findAciveInstituteDirectories(
+							directories[idx].getInstituteDirectoryID(), directories[idx].getInstituteSubDirectoryID(),
+							institutes[idx].getStateID(), institutes[idx].getDistrictID(), institutes[idx].getBlockID(),
+							institutes[idx].getDistrictBranchMappingID());
+				} else if (institutes[idx].getBlockID() != null)
 				{
 					dirMaps = directoryMappingRepository.findAciveInstituteDirectories(
 							directories[idx].getInstituteDirectoryID(), directories[idx].getInstituteSubDirectoryID(),
@@ -213,7 +208,6 @@ public class BenInformationCounsellingFeedbackReferralImpl implements BenInforma
 						benCalServiceCatSubcatMappingRepo.save(reqArray[idx]);
 					}
 				}
-				// benCalServiceCatSubcatMappingRepo.save(Arrays.asList(reqArray));
 			}
 		} catch (Exception e)
 		{

@@ -50,6 +50,14 @@ public class InstitutionDetails
 	// @OneToOne(fetch=FetchType.LAZY)
 	// @JoinColumn(name="DistrictID", insertable=false, updatable=false)
 	// private Districts m_district;
+	@Column(name = "BlockID")
+	@Expose
+	private Integer blockID;
+	// @OneToOne(fetch=FetchType.LAZY)
+	// @JoinColumn(name="DistrictBranchMappingID", insertable=false,
+	// updatable=false)
+	// @JsonIgnore
+	// private DistrictBranchMapping m_districtbranchmapping;
 	@Column(name = "DistrictBranchMappingID")
 	@Expose
 	private Integer districtBranchMappingID;
@@ -206,5 +214,10 @@ public class InstitutionDetails
 	public String toString()
 	{
 		return outputMapper.gson().toJson(this);
+	}
+
+	public Integer getBlockID()
+	{
+		return this.blockID;
 	}
 }

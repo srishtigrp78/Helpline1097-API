@@ -69,7 +69,7 @@ public class DirectoryMapping
 	{
 	}
 
-	public DirectoryMapping(long instituteDirMapID, int institutionID, String institutionName, String address,
+	public DirectoryMapping(Long instituteDirMapID, Integer institutionID, String institutionName, String address,
 			String contactNo1, String contactNo2, String contactNo3)
 	{
 		this.instituteDirMapID = instituteDirMapID;

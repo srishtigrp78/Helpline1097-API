@@ -177,10 +177,11 @@ public class FeedbackServiceImpl implements FeedbackService {
 	// }
 	/***
 	 * Neeraj code End.....
+	 * @throws Exception 
 	 * 
 	 */
 	@Override
-	public String saveFeedbackFromCustomer(String feedbackDetails) {
+	public String saveFeedbackFromCustomer(String feedbackDetails) throws Exception {
 		Map<String, Long> resMap = new HashMap<String, Long>();
 		OutputResponse response = createFeedback(feedbackDetails);
 		resMap.put("feedBackId", (long) 0);
@@ -202,6 +203,8 @@ public class FeedbackServiceImpl implements FeedbackService {
 					resMap.put("feedBackId", m.getFeedbackID());
 				}
 			}
+		} else {
+			throw new Exception(response.getErrorMessage());
 		}
 		return new Gson().toJson(resMap);
 	}
