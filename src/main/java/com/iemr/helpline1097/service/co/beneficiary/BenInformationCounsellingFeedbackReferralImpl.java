@@ -189,7 +189,7 @@ public class BenInformationCounsellingFeedbackReferralImpl implements BenInforma
 					dirMaps = directoryMappingRepository.findAciveInstituteDirectories(
 							directories[idx].getInstituteDirectoryID(), directories[idx].getInstituteSubDirectoryID(),
 							institutes[idx].getStateID(), institutes[idx].getDistrictID(),
-							institutes[idx].getDistrictBranchMappingID());
+							institutes[idx].getBlockID());
 				} else
 				{
 					dirMaps = directoryMappingRepository.findAciveInstituteDirectories(
