@@ -12,7 +12,8 @@ import org.springframework.stereotype.Repository;
 import com.iemr.helpline1097.data.co.services.SubCategoryDetails;
 
 @Repository
-public interface SubCategoryRepository extends CrudRepository<SubCategoryDetails, Integer> {
+public interface SubCategoryRepository extends CrudRepository<SubCategoryDetails, Integer>
+{
 	@Query("select subCategoryID, subCategoryName from SubCategoryDetails "
 			+ "where categoryID = :categoryId and deleted = false")
 	public ArrayList<Objects[]> findByCategoryID(@Param("categoryId") Integer categoryId);
@@ -22,6 +23,6 @@ public interface SubCategoryRepository extends CrudRepository<SubCategoryDetails
 	public ArrayList<Objects[]> findBy(@Param("categoryId") Integer categoryId);
 
 	@Query("select subCatFilePath, subCategoryName, subCategoryDesc from SubCategoryDetails "
-			+ "where subCategoryID = :subCategoryID and subCatFilePath is not null and deleted = false")
+			+ "where subCategoryID = :subCategoryID and deleted = false")
 	public Set<Objects[]> findFilePathBySubCategoryId(@Param("subCategoryID") Integer subCategoryID);
 }
