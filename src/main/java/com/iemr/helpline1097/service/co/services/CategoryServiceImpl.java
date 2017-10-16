@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.iemr.helpline1097.data.co.services.CategoryDetails;
 import com.iemr.helpline1097.repository.co.services.CategoryRepository;
+import com.iemr.utils.exception.IEMRException;
 import com.iemr.utils.mapper.InputMapper;
 
 @Service
@@ -30,7 +31,7 @@ public class CategoryServiceImpl implements CategoryService {
 	private InputMapper inputMapper = new InputMapper();
 
 	@Override
-	public List<CategoryDetails> getAllCategories(String request) {
+	public List<CategoryDetails> getAllCategories(String request) throws IEMRException {
 		CategoryDetails categoryDetails = inputMapper.gson().fromJson(request, CategoryDetails.class);
 		List<CategoryDetails> categoryList = new ArrayList<CategoryDetails>();
 		ArrayList<Objects[]> lists = categoryRepository.getAllCategories(categoryDetails.getSubServiceID());

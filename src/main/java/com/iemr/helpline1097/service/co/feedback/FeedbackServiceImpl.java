@@ -18,6 +18,7 @@ import com.iemr.helpline1097.data.co.feedback.FeedbackRequestDetails;
 import com.iemr.helpline1097.repository.co.beneficiary.BenCalServiceCatSubcatMappingRepo;
 import com.iemr.helpline1097.repository.co.feedback.FeedbackRepository;
 import com.iemr.utils.config.ConfigProperties;
+import com.iemr.utils.exception.IEMRException;
 import com.iemr.utils.http.HttpUtils;
 import com.iemr.utils.mapper.InputMapper;
 import com.iemr.utils.response.OutputResponse;
@@ -209,7 +210,7 @@ public class FeedbackServiceImpl implements FeedbackService {
 		return new Gson().toJson(resMap);
 	}
 
-	private OutputResponse createFeedback(String feedbackDetails) {
+	private OutputResponse createFeedback(String feedbackDetails) throws IEMRException {
 		HttpUtils utils = new HttpUtils();
 		String responseStr = utils.post(
 				properties.getPropertyByName("common-url") + "/" + properties.getPropertyByName("create-feedback"),

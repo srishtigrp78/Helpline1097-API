@@ -15,13 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.google.gson.JsonSyntaxException;
 import com.iemr.helpline1097.controller.co.services.CommonController;
 import com.iemr.helpline1097.data.co.beneficiarycall.BenCallServicesMappingHistory;
 import com.iemr.helpline1097.data.co.beneficiarycall.BeneficiaryCall;
 import com.iemr.helpline1097.service.co.beneficiarycall.BeneficiaryCallService;
 import com.iemr.helpline1097.service.co.beneficiarycall.ServicesHistoryService;
-import com.iemr.utils.http.HttpUtils;
 import com.iemr.utils.mapper.InputMapper;
 import com.iemr.utils.response.OutputResponse;
 
@@ -119,7 +117,7 @@ public class Service1097HistoryController {
 			BeneficiaryCall call = inputMapper.gson().fromJson(request, BeneficiaryCall.class);
 			List<BeneficiaryCall> callHistoryList = beneficiaryCallService.getCallSummaryByCallID(call.getBenCallID());
 			response.setResponse(callHistoryList.toString());
-		} catch (JsonSyntaxException e) {
+		} catch (Exception e) {
 			logger.error("", e);
 			response.setError(e);
 		}

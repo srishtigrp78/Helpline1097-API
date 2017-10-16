@@ -20,7 +20,8 @@ import com.iemr.utils.response.OutputResponse;
 
 @RequestMapping(value = "/iEMR")
 @RestController
-public class FeedbackResponseController {
+public class FeedbackResponseController
+{
 	InputMapper inputMapper = new InputMapper();
 	Logger logger = LoggerFactory.getLogger(CommonController.class);
 
@@ -29,13 +30,16 @@ public class FeedbackResponseController {
 
 	@CrossOrigin()
 	@RequestMapping(value = "/put/feedbackResponse", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON)
-	public String feedbackCreate(@RequestBody String request) {
-		FeedbackResponse t_feedbackResponse = inputMapper.gson().fromJson(request, FeedbackResponse.class);
+	public String feedbackCreate(@RequestBody String request)
+	{
 		OutputResponse response = new OutputResponse();
-		try {
+		try
+		{
+			FeedbackResponse t_feedbackResponse = inputMapper.gson().fromJson(request, FeedbackResponse.class);
 			FeedbackResponse savedDetails = feedbackResponseServiceImpl.createFeedbackResponse(t_feedbackResponse);
 			response.setResponse(savedDetails.toString());
-		} catch (Exception e) {
+		} catch (Exception e)
+		{
 			logger.error("", e);
 			response.setError(e);
 		}
@@ -43,13 +47,19 @@ public class FeedbackResponseController {
 	}
 
 	@CrossOrigin()
-	@RequestMapping(value = "/get/feedbackResponse/{feedbackResponseID}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON)
-	public String getFeedback(@PathVariable("feedbackResponseID") int feedbackResponseID) {
+	@RequestMapping(
+			value = "/get/feedbackResponse/{feedbackResponseID}",
+			method = RequestMethod.GET,
+			produces = MediaType.APPLICATION_JSON)
+	public String getFeedback(@PathVariable("feedbackResponseID") int feedbackResponseID)
+	{
 		OutputResponse response = new OutputResponse();
-		try {
+		try
+		{
 			FeedbackResponse savedDetails = feedbackResponseServiceImpl.getFeedbackResponse(feedbackResponseID);
 			response.setResponse(savedDetails.toString());
-		} catch (Exception e) {
+		} catch (Exception e)
+		{
 			logger.error("", e);
 			response.setError(e);
 		}
