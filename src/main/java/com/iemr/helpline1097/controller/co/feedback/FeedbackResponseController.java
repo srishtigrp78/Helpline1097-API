@@ -29,6 +29,7 @@ public class FeedbackResponseController
 	private FeedbackResponseServiceImpl feedbackResponseServiceImpl;
 
 	@CrossOrigin()
+	@Deprecated
 	@RequestMapping(value = "/put/feedbackResponse", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON)
 	public String feedbackCreate(@RequestBody String request)
 	{
@@ -51,6 +52,7 @@ public class FeedbackResponseController
 			value = "/get/feedbackResponse/{feedbackResponseID}",
 			method = RequestMethod.GET,
 			produces = MediaType.APPLICATION_JSON)
+	@Deprecated
 	public String getFeedback(@PathVariable("feedbackResponseID") int feedbackResponseID)
 	{
 		OutputResponse response = new OutputResponse();
