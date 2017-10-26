@@ -199,7 +199,7 @@ public class BenInformationCounsellingFeedbackReferralImpl implements BenInforma
 				DirectoryMapping maps = new DirectoryMapping();
 				for (Object[] objects : dirMaps)
 				{
-					if (objects != null && objects.length == 2)
+					if (objects != null && objects.length >= 2)
 					{
 						maps = new DirectoryMapping((Long) objects[0], (InstitutionDetails) objects[1]);
 						resultSet.add(maps);
