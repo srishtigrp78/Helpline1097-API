@@ -23,9 +23,8 @@ public interface DirectoryMappingRepository extends CrudRepository<DirectoryMapp
 	// + "i.districtBranchMappingID = :districtBranchMappingID and i.deleted =
 	// false")
 
-	@Query("select m.instituteDirMapID, i.institutionID, i.institutionName, i.address, i.contactNo1, i.contactNo2, "
-			+ "i.contactNo3 from DirectoryMapping m JOIN m.institutionDetails i where m.deleted = false and "
-			+ "m.instituteDirectoryID = :instituteDirectoryID and "
+	@Query("select m.instituteDirMapID, i from DirectoryMapping m JOIN m.institutionDetails i "
+			+ "where m.deleted = false and m.instituteDirectoryID = :instituteDirectoryID and "
 			+ "m.instituteSubDirectoryID = :instituteSubDirectoryID and "
 			+ "i.stateID = :stateID and i.districtID = :districtID and i.blockID = :blockID and "
 			+ "i.districtBranchMappingID = :districtBranchMappingID and i.deleted = false")
@@ -35,9 +34,8 @@ public interface DirectoryMappingRepository extends CrudRepository<DirectoryMapp
 			@Param("districtID") Integer districtID, @Param("blockID") Integer blockID,
 			@Param("districtBranchMappingID") Integer districtBranchMappingID);
 
-	@Query("select m.instituteDirMapID, i.institutionID, i.institutionName, i.address, i.contactNo1, i.contactNo2, "
-			+ "i.contactNo3 from DirectoryMapping m JOIN m.institutionDetails i where m.deleted = false and "
-			+ "m.instituteDirectoryID = :instituteDirectoryID and "
+	@Query("select m.instituteDirMapID, i from DirectoryMapping m JOIN m.institutionDetails i "
+			+ "where m.deleted = false and m.instituteDirectoryID = :instituteDirectoryID and "
 			+ "m.instituteSubDirectoryID = :instituteSubDirectoryID and "
 			+ "i.stateID = :stateID and i.districtID = :districtID and i.blockID = :blockID and i.deleted = false")
 
@@ -45,9 +43,14 @@ public interface DirectoryMappingRepository extends CrudRepository<DirectoryMapp
 			@Param("instituteSubDirectoryID") Integer instituteSubDirectoryID, @Param("stateID") Integer stateID,
 			@Param("districtID") Integer districtID, @Param("blockID") Integer blockID);
 
-	@Query("select m.instituteDirMapID, i.institutionID, i.institutionName, i.address, i.contactNo1, i.contactNo2, "
-			+ "i.contactNo3 from DirectoryMapping m JOIN m.institutionDetails i where m.deleted = false and "
-			+ "m.instituteDirectoryID = :instituteDirectoryID and "
+//	@Query("select m.instituteDirMapID, i.institutionID, i.institutionName, i.address, i.contactNo1, i.contactNo2, "
+//			+ "i.contactNo3 from DirectoryMapping m JOIN m.institutionDetails i where m.deleted = false and "
+//			+ "m.instituteDirectoryID = :instituteDirectoryID and "
+//			+ "m.instituteSubDirectoryID = :instituteSubDirectoryID and "
+//			+ "i.stateID = :stateID and i.districtID = :districtID and i.deleted = false")
+//
+	@Query("select m.instituteDirMapID, i from DirectoryMapping m JOIN m.institutionDetails i "
+			+ "where m.deleted = false and m.instituteDirectoryID = :instituteDirectoryID and "
 			+ "m.instituteSubDirectoryID = :instituteSubDirectoryID and "
 			+ "i.stateID = :stateID and i.districtID = :districtID and i.deleted = false")
 

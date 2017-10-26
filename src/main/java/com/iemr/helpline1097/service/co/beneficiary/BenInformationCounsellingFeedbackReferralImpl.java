@@ -199,10 +199,9 @@ public class BenInformationCounsellingFeedbackReferralImpl implements BenInforma
 				DirectoryMapping maps = new DirectoryMapping();
 				for (Object[] objects : dirMaps)
 				{
-					if (objects != null && objects.length == 7)
+					if (objects != null && objects.length == 2)
 					{
-						maps = new DirectoryMapping((Long) objects[0], (Integer) objects[1], (String) objects[2],
-								(String) objects[3], (String) objects[4], (String) objects[5], (String) objects[6]);
+						maps = new DirectoryMapping((Long) objects[0], (InstitutionDetails) objects[1]);
 						resultSet.add(maps);
 						reqArray[idx].setInstituteDirMapID((Long) objects[0]);
 						benCalServiceCatSubcatMappingRepo.save(reqArray[idx]);

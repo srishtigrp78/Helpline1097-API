@@ -77,6 +77,12 @@ public class DirectoryMapping
 				contactNo2, contactNo3);
 	}
 
+	public DirectoryMapping(Long instituteDirMapID, InstitutionDetails institution)
+	{
+		this.instituteDirMapID = instituteDirMapID;
+		this.institutionDetails = institution;
+	}
+
 	/**
 	 * @return the instituteDirMapID
 	 */

@@ -70,15 +70,40 @@ public class InstitutionDetails
 	@Expose
 	private String address;
 
+	@Column(name = "ContactPerson1")
+	@Expose
+	private String contactPerson1;
 	@Column(name = "ContactNo1")
 	@Expose
 	private String contactNo1;
+	@Column(name = "ContactPerson1_Email")
+	@Expose
+	private String contactPerson1Email;
+	
+	@Column(name = "ContactPerson2")
+	@Expose
+	private String contactPerson2;
 	@Column(name = "ContactNo2")
 	@Expose
 	private String contactNo2;
+	@Column(name = "ContactPerson2_Email")
+	@Expose
+	private String contactPerson2Email;
+	
+	@Column(name = "ContactPerson3")
+	@Expose
+	private String contactPerson3;
 	@Column(name = "ContactNo3")
 	@Expose
 	private String contactNo3;
+	@Column(name = "ContactPerson3_Email")
+	@Expose
+	private String contactPerson3Email;
+	
+	@Column(name = "Website")
+	@Expose
+	private String website;
+	
 	@Column(name = "Deleted", insertable = false, updatable = true)
 	@Expose
 	private Boolean deleted;
