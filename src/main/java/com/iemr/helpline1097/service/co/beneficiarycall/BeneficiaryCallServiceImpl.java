@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 import com.iemr.helpline1097.data.co.beneficiarycall.BeneficiaryCall;
+import com.iemr.helpline1097.data.co.beneficiarycall.CallType;
 import com.iemr.helpline1097.repository.co.beneficiarycall.BeneficiaryCallRepository;
 
 @Service
@@ -63,10 +64,10 @@ public class BeneficiaryCallServiceImpl implements BeneficiaryCallService {
 		ArrayList<Objects[]> queryResult = beneficiaryCallRepository.findCallsHistoryByBenefeciaryID(benificiaryCallId,
 				new PageRequest(pageNo, rows));
 		for (Object[] objects : queryResult) {
-			if (objects != null && objects.length >= 8) {
+			if (objects != null && objects.length >= 9) {
 				BeneficiaryCall beneficiaryCall = new BeneficiaryCall((Long) objects[0], (Timestamp) objects[1],
 						(String) objects[2], (Long) objects[3], (Long) objects[4], (Long) objects[5],
-						(Timestamp) objects[6], (Long) objects[7]);
+						(Timestamp) objects[6], (Long) objects[7], (CallType) objects[8]);
 				benCalls.add(beneficiaryCall);
 			}
 		}
@@ -81,7 +82,7 @@ public class BeneficiaryCallServiceImpl implements BeneficiaryCallService {
 			if (objects != null && objects.length >= 8) {
 				BeneficiaryCall beneficiaryCall = new BeneficiaryCall((Long) objects[0], (Timestamp) objects[1],
 						(String) objects[2], (Long) objects[3], (Long) objects[4], (Long) objects[5],
-						(Timestamp) objects[6], (Long) objects[7]);
+						(Timestamp) objects[6], (Long) objects[7], (CallType) objects[8]);
 				benCalls.add(beneficiaryCall);
 			}
 		}

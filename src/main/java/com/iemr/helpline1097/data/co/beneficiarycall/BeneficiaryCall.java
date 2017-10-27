@@ -10,7 +10,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -82,6 +84,14 @@ public class BeneficiaryCall
 	private String modifiedBy;
 	@Column(name = "LastModDate", insertable = false, updatable = false)
 	private Timestamp lastModDate;
+
+	@Column(name = "CallTypeID")
+	@Expose
+	private Integer callTypeID;
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "CallTypeID", insertable = false, updatable = false)
+	@Expose
+	private CallType callTypeObj;
 
 	@Expose
 	@Transient
@@ -231,7 +241,8 @@ public class BeneficiaryCall
 	}
 
 	public BeneficiaryCall(Long benCallID, Timestamp callTime, String remarks, Long informationServices,
-			Long feedbackServices, Long referralServices, Timestamp createdDate, Long counsellingServices)
+			Long feedbackServices, Long referralServices, Timestamp createdDate, Long counsellingServices,
+			CallType callTypeObj)
 	{
 		this.benCallID = benCallID;
 		this.callTime = callTime;
@@ -241,6 +252,7 @@ public class BeneficiaryCall
 		this.referralServices = new Long((referralServices > 0) ? 1 : 0);
 		this.counsellingServices = new Long((counsellingServices > 0) ? 1 : 0);
 		this.createdDate = createdDate;
+		this.callTypeObj = callTypeObj;
 	}
 
 	public BeneficiaryCall(Long beneficiaryRegID, Boolean is1097, String createdBy)

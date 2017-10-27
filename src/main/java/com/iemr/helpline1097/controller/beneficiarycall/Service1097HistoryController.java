@@ -154,7 +154,7 @@ public class Service1097HistoryController
 			value = "/getBeneficiaryCallsHistory",
 			method = RequestMethod.POST,
 			produces = MediaType.APPLICATION_JSON)
-	private String getBeneficiaryCallsHistory(@ApiParam(
+	public String getBeneficiaryCallsHistory(@ApiParam(
 			value = "{\"beneficiaryRegID\":\"Integer - Beneficiary registration ID\"}") @RequestBody String request)
 	{
 		OutputResponse response = new OutputResponse();
