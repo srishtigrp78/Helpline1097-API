@@ -11,7 +11,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 
 @Entity
-@Table(name = "i_Beneficiaryoccupation")
+@Table(name = "m_Beneficiaryoccupation")
 public class I_BeneficiaryOccupation {
 
 	@Id
