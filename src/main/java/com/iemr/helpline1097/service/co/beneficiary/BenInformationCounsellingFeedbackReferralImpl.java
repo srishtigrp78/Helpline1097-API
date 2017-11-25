@@ -197,14 +197,18 @@ public class BenInformationCounsellingFeedbackReferralImpl implements BenInforma
 							institutes[idx].getStateID(), institutes[idx].getDistrictID());
 				}
 				DirectoryMapping maps = new DirectoryMapping();
+				BenCallServicesMappingHistory hist = null;
 				for (Object[] objects : dirMaps)
 				{
+					hist = inputMapper.gson().fromJson(reqArray[idx].toString(), BenCallServicesMappingHistory.class);
 					if (objects != null && objects.length >= 2)
 					{
 						maps = new DirectoryMapping((Long) objects[0], (InstitutionDetails) objects[1]);
 						resultSet.add(maps);
-						reqArray[idx].setInstituteDirMapID((Long) objects[0]);
-						benCalServiceCatSubcatMappingRepo.save(reqArray[idx]);
+						// reqArray[idx].setInstituteDirMapID((Long) objects[0]);
+						// benCalServiceCatSubcatMappingRepo.save(reqArray[idx]);
+						hist.setInstituteDirMapID((Long) objects[0]);
+						benCalServiceCatSubcatMappingRepo.save(hist);
 					}
 				}
 			}
