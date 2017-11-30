@@ -33,7 +33,15 @@ public interface BeneficiaryCallRepository extends CrudRepository<BeneficiaryCal
 			+ "count(m.feedbackID), count(m.instituteDirMapID) , b.createdDate, "
 			+ "count(m.coSubCategoryID), c from BeneficiaryCall b left join b.benCallServicesMappingHistories m "
 			+ "left join b.callTypeObj c "
-			+ "where b.benCallID = :id group by b.benCallID order by b.benCallID desc")
+			+ "where b.beneficiaryRegID = :beneficiaryRegID and b.calledServiceID = :calledServiceID "
+			+ "group by b.benCallID order by b.benCallID desc")
+	public ArrayList<Objects[]> findCallsHistoryByBenefeciaryID(@Param("beneficiaryRegID") Long beneficiaryRegID,
+			@Param("calledServiceID") Integer calledServiceID, Pageable page);
+
+	@Query("select b.benCallID, b.callTime, b.remarks, count(m.subCategoryID), "
+			+ "count(m.feedbackID), count(m.instituteDirMapID) , b.createdDate, "
+			+ "count(m.coSubCategoryID), c from BeneficiaryCall b left join b.benCallServicesMappingHistories m "
+			+ "left join b.callTypeObj c " + "where b.benCallID = :id group by b.benCallID order by b.benCallID desc")
 	public ArrayList<Objects[]> findCallSummaryByCallID(@Param("id") Long id);
 
 	@Transactional

@@ -155,7 +155,8 @@ public class Service1097HistoryController
 			method = RequestMethod.POST,
 			produces = MediaType.APPLICATION_JSON)
 	public String getBeneficiaryCallsHistory(@ApiParam(
-			value = "{\"beneficiaryRegID\":\"Integer - Beneficiary registration ID\"}") @RequestBody String request)
+			value = "{\"beneficiaryRegID\":\"Integer - Beneficiary registration ID\", "
+					+ "\"calledServiceID\":\"provider Service Map ID as integer\"}") @RequestBody String request)
 	{
 		OutputResponse response = new OutputResponse();
 		try
@@ -164,8 +165,16 @@ public class Service1097HistoryController
 			int pageNo = requestObject.has("pageNo") ? (requestObject.getInt("pageNo") - 1) : 0;
 			int rows = requestObject.has("rowsPerPage") ? requestObject.getInt("rowsPerPage") : 1000;
 			BeneficiaryCall call = inputMapper.gson().fromJson(request, BeneficiaryCall.class);
-			List<BeneficiaryCall> callHistoryList = beneficiaryCallService
-					.getBeneficiaryCallsHistory(call.getBeneficiaryRegID(), pageNo, rows);
+			List<BeneficiaryCall> callHistoryList;
+			if (call.getCalledServiceID() != null)
+			{
+				callHistoryList = beneficiaryCallService.getBeneficiaryCallsHistory(call.getBeneficiaryRegID(),
+						call.getCalledServiceID(), pageNo, rows);
+			} else
+			{
+				callHistoryList = beneficiaryCallService.getBeneficiaryCallsHistory(call.getBeneficiaryRegID(), pageNo,
+						rows);
+			}
 			response.setResponse(callHistoryList.toString());
 		} catch (JSONException e)
 		{
