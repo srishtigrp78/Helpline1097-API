@@ -2,11 +2,10 @@ package com.iemr.helpline1097.service.co.beneficiarycall;
 
 import java.util.List;
 
-import org.springframework.data.domain.Pageable;
-
 import com.iemr.helpline1097.data.co.beneficiarycall.BenCallServicesMappingHistory;
 
-public interface ServicesHistoryService {
+public interface ServicesHistoryService
+{
 
 	/**
 	 * 
@@ -30,5 +29,17 @@ public interface ServicesHistoryService {
 	List<BenCallServicesMappingHistory> getInformationsHistory(Long id, int pageNo, int rows);
 
 	List<BenCallServicesMappingHistory> getCounsellingsHistory(Long id, int pageNo, int rows);
+
+	List<BenCallServicesMappingHistory> getServiceHistory(String beneficiaryRequest) throws Exception;
+
+	List<BenCallServicesMappingHistory> getCallSummary(String beneficiaryRequest) throws Exception;
+
+	List<BenCallServicesMappingHistory> getReferralsHistory(String beneficiaryRequest) throws Exception;
+
+	List<BenCallServicesMappingHistory> getFeedbacksHistory(String beneficiaryRequest) throws Exception;
+
+	List<BenCallServicesMappingHistory> getInformationsHistory(String beneficiaryRequest) throws Exception;
+
+	List<BenCallServicesMappingHistory> getCounsellingsHistory(String beneficiaryRequest) throws Exception;
 
 }

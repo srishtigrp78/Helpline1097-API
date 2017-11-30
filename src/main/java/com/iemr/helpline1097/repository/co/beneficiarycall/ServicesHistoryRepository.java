@@ -40,6 +40,20 @@ public interface ServicesHistoryRepository extends CrudRepository<BenCallService
 	@Query("select b.benCall97ServiceMapID, b.beneficiaryRegID, b.benCallID, "
 			+ "b.subServiceID, b.subServices, b.categoryID, b.categoryDetails, b.subCategoryID, "
 			+ "b.subCategoryDetails, b.feedbackID, b.feedbackDetails, b.instituteDirMapID, "
+			+ "b.instituteDirectoryMapping, b.createdBy, b.createdDate, b.coCategoryID, b.coCategoryDetails, "
+			+ "b.coSubCategoryID, b.coSubCategoryDetails  "
+			+ "from BenCallServicesMappingHistory b join b.beneficiaryCall bc join b.subServices sm "
+			+ "left join b.categoryDetails c left join b.subCategoryDetails s left join b.feedbackDetails f "
+			+ "left join b.instituteDirectoryMapping i "
+			+ "where bc.calledServiceID = :calledServiceID and bc.benCallID = b.benCallID "
+			+ "and b.benCallID = :benCallID group by b.benCallID, b.subServices "
+			+ "order by b.benCall97ServiceMapID desc ")
+	public List<Objects[]> getCallSummary(@Param("benCallID") Long benCallID,
+			@Param("calledServiceID") Integer calledServiceID);
+
+	@Query("select b.benCall97ServiceMapID, b.beneficiaryRegID, b.benCallID, "
+			+ "b.subServiceID, b.subServices, b.categoryID, b.categoryDetails, b.subCategoryID, "
+			+ "b.subCategoryDetails, b.feedbackID, b.feedbackDetails, b.instituteDirMapID, "
 			+ "b.instituteDirectoryMapping , b.createdBy, b.createdDate, b.coCategoryID, b.coCategoryDetails, "
 			+ "b.coSubCategoryID, b.coSubCategoryDetails "
 			+ "from BenCallServicesMappingHistory b left join b.subServices sm left join b.categoryDetails c "
@@ -47,6 +61,20 @@ public interface ServicesHistoryRepository extends CrudRepository<BenCallService
 			+ "where b.beneficiaryRegID = :beneficiaryRegID group by b.benCallID, b.subServices "
 			+ "order by b.benCall97ServiceMapID desc")
 	public List<Objects[]> findCallDetailsForBeneficiary(@Param("beneficiaryRegID") Long beneficiaryRegID);
+
+	@Query("select b.benCall97ServiceMapID, b.beneficiaryRegID, b.benCallID, "
+			+ "b.subServiceID, b.subServices, b.categoryID, b.categoryDetails, b.subCategoryID, "
+			+ "b.subCategoryDetails, b.feedbackID, b.feedbackDetails, b.instituteDirMapID, "
+			+ "b.instituteDirectoryMapping , b.createdBy, b.createdDate, b.coCategoryID, b.coCategoryDetails, "
+			+ "b.coSubCategoryID, b.coSubCategoryDetails "
+			+ "from BenCallServicesMappingHistory b join b.beneficiaryCall bc left join b.subServices sm "
+			+ "left join b.categoryDetails c left join b.subCategoryDetails s left join b.feedbackDetails f "
+			+ "left join b.instituteDirectoryMapping i "
+			+ "where bc.calledServiceID = :calledServiceID and bc.benCallID = b.benCallID "
+			+ "and b.beneficiaryRegID = :beneficiaryRegID group by b.benCallID, b.subServices "
+			+ "order by b.benCall97ServiceMapID desc")
+	public List<Objects[]> findCallDetailsForBeneficiary(@Param("beneficiaryRegID") Long beneficiaryRegID,
+			@Param("calledServiceID") Integer calledServiceID);
 
 	@Query("select b.benCall97ServiceMapID, b.beneficiaryRegID, b.benCallID, "
 			+ "b.subServiceID, b.subServices, b.instituteDirMapID, "
@@ -83,4 +111,46 @@ public interface ServicesHistoryRepository extends CrudRepository<BenCallService
 			+ "order by b.benCall97ServiceMapID desc ")
 	public List<Objects[]> findCounsellingsForBeneficiary(@Param("beneficiaryRegID") Long beneficiaryRegID,
 			Pageable page);
+
+	@Query("select b.benCall97ServiceMapID, b.beneficiaryRegID, b.benCallID, "
+			+ "b.subServiceID, b.subServices, b.instituteDirMapID, "
+			+ "b.instituteDirectoryMapping, b.createdBy, b.createdDate "
+			+ "from BenCallServicesMappingHistory b join b.beneficiaryCall bc left join b.subServices sm "
+			+ "join b.instituteDirectoryMapping i join i.institutionDetails ii "
+			+ "where bc.calledServiceID = :calledServiceID and bc.benCallID = b.benCallID "
+			+ "and b.beneficiaryRegID = :beneficiaryRegID group by b.benCallID, b.instituteDirMapID "
+			+ "order by b.benCall97ServiceMapID desc ")
+	public List<Objects[]> findReferralsForBeneficiary(@Param("beneficiaryRegID") Long beneficiaryRegID,
+			@Param("calledServiceID") Integer calledServiceID, Pageable page);
+
+	@Query("select b.benCall97ServiceMapID, b.beneficiaryRegID, b.benCallID, "
+			+ "b.subServiceID, b.subServices, b.feedbackID, b.feedbackDetails, b.createdBy, b.createdDate "
+			+ "from BenCallServicesMappingHistory b join b.beneficiaryCall bc left join b.subServices sm join b.feedbackDetails f "
+			+ "where bc.calledServiceID = :calledServiceID and bc.benCallID = b.benCallID "
+			+ "and b.beneficiaryRegID = :beneficiaryRegID group by b.benCallID, b.feedbackID "
+			+ "order by b.benCall97ServiceMapID desc ")
+	public List<Objects[]> findFeedbacksForBeneficiary(@Param("beneficiaryRegID") Long beneficiaryRegID,
+			@Param("calledServiceID") Integer calledServiceID, Pageable page);
+
+	@Query("select b.benCall97ServiceMapID, b.beneficiaryRegID, b.benCallID, "
+			+ "b.subServiceID, b.subServices, b.categoryID, b.categoryDetails, b.subCategoryID, "
+			+ "b.subCategoryDetails, b.createdBy, b.createdDate "
+			+ "from BenCallServicesMappingHistory b join b.beneficiaryCall bc join b.subServices sm "
+			+ "join b.categoryDetails c join b.subCategoryDetails s "
+			+ "where bc.calledServiceID = :calledServiceID and bc.benCallID = b.benCallID "
+			+ "and b.beneficiaryRegID = :beneficiaryRegID group by b.benCallID, b.subCategoryID "
+			+ "order by b.benCall97ServiceMapID desc ")
+	public List<Objects[]> findInformationsForBeneficiary(@Param("beneficiaryRegID") Long beneficiaryRegID,
+			@Param("calledServiceID") Integer calledServiceID, Pageable page);
+
+	@Query("select b.benCall97ServiceMapID, b.beneficiaryRegID, b.benCallID, "
+			+ "b.subServiceID, b.subServices, b.coCategoryID, b.coCategoryDetails, b.coSubCategoryID, "
+			+ "b.coSubCategoryDetails, b.createdBy, b.createdDate "
+			+ "from BenCallServicesMappingHistory b join b.beneficiaryCall bc join b.subServices sm "
+			+ "join b.coCategoryDetails c join b.coSubCategoryDetails s "
+			+ "where bc.calledServiceID = :calledServiceID and bc.benCallID = b.benCallID "
+			+ "and b.beneficiaryRegID = :beneficiaryRegID group by b.benCallID, b.coSubCategoryID "
+			+ "order by b.benCall97ServiceMapID desc ")
+	public List<Objects[]> findCounsellingsForBeneficiary(@Param("beneficiaryRegID") Long beneficiaryRegID,
+			@Param("calledServiceID") Integer calledServiceID, Pageable page);
 }
