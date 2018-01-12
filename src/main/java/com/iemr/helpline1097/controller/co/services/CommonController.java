@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.iemr.helpline1097.data.co.beneficiarycall.SubServices;
 import com.iemr.helpline1097.data.co.services.CategoryDetails;
 import com.iemr.helpline1097.service.co.services.CommonService;
-import com.iemr.utils.mapper.InputMapper;
-import com.iemr.utils.response.OutputResponse;
+import com.iemr.helpline1097.utils.mapper.InputMapper;
+import com.iemr.helpline1097.utils.response.OutputResponse;
 
 @RestController
 @RequestMapping(value = "/api/helpline1097/co/get")

@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,14 +19,15 @@ import com.iemr.helpline1097.data.co.feedback.FeedbackDetails;
 import com.iemr.helpline1097.data.co.feedback.FeedbackRequestDetails;
 import com.iemr.helpline1097.repository.co.beneficiary.BenCalServiceCatSubcatMappingRepo;
 import com.iemr.helpline1097.repository.co.feedback.FeedbackRepository;
-import com.iemr.utils.config.ConfigProperties;
-import com.iemr.utils.exception.IEMRException;
-import com.iemr.utils.http.HttpUtils;
-import com.iemr.utils.mapper.InputMapper;
-import com.iemr.utils.response.OutputResponse;
+import com.iemr.helpline1097.utils.config.ConfigProperties;
+import com.iemr.helpline1097.utils.exception.IEMRException;
+import com.iemr.helpline1097.utils.http.HttpUtils;
+import com.iemr.helpline1097.utils.mapper.InputMapper;
+import com.iemr.helpline1097.utils.response.OutputResponse;
 
 @Service
-public class FeedbackServiceImpl implements FeedbackService {
+public class FeedbackServiceImpl implements FeedbackService
+{
 
 	private Logger logger = LoggerFactory.getLogger(FeedbackServiceImpl.class);
 	/***
@@ -35,7 +38,8 @@ public class FeedbackServiceImpl implements FeedbackService {
 
 	@Autowired
 	public void getBenCalServiceCatSubcatMappingRepo(
-			BenCalServiceCatSubcatMappingRepo benCalServiceCatSubcatMappingRepo) {
+			BenCalServiceCatSubcatMappingRepo benCalServiceCatSubcatMappingRepo)
+	{
 		this.benCalServiceCatSubcatMappingRepo = benCalServiceCatSubcatMappingRepo;
 	}
 
@@ -50,7 +54,8 @@ public class FeedbackServiceImpl implements FeedbackService {
 	private FeedbackRepository feedbackRepository;
 
 	@Autowired
-	public void setFeedbackRepository(FeedbackRepository feedbackRepository) {
+	public void setFeedbackRepository(FeedbackRepository feedbackRepository)
+	{
 
 		this.feedbackRepository = feedbackRepository;
 	}
@@ -60,18 +65,22 @@ public class FeedbackServiceImpl implements FeedbackService {
 	private ConfigProperties properties;
 
 	@Autowired
-	public void setProperties(ConfigProperties properties) {
+	public void setProperties(ConfigProperties properties)
+	{
 		this.properties = properties;
 	}
 
 	@Override
-	public List<FeedbackDetails> getFeedbackRequests(long id) {
+	public List<FeedbackDetails> getFeedbackRequests(long id)
+	{
 
 		List<FeedbackDetails> feedbackList = new ArrayList<FeedbackDetails>();
 		ArrayList<Objects[]> lists = feedbackRepository.findByBeneficiaryID(id);
 
-		for (Object[] objects : lists) {
-			if (objects != null && objects.length >= 6) {
+		for (Object[] objects : lists)
+		{
+			if (objects != null && objects.length >= 6)
+			{
 				feedbackList.add(new FeedbackDetails((Long) objects[0], (Short) objects[1], (Short) objects[2],
 						(Short) objects[3], (String) objects[4], (String) objects[5]));
 			}
@@ -80,13 +89,16 @@ public class FeedbackServiceImpl implements FeedbackService {
 	}
 
 	@Override
-	public List<FeedbackDetails> getFeedbackRequest(long id) {
+	public List<FeedbackDetails> getFeedbackRequest(long id)
+	{
 
 		List<FeedbackDetails> feedbackList = new ArrayList<FeedbackDetails>();
 		ArrayList<Objects[]> lists = feedbackRepository.findByFeedbackID(id);
 
-		for (Object[] objects : lists) {
-			if (objects != null && objects.length >= 6) {
+		for (Object[] objects : lists)
+		{
+			if (objects != null && objects.length >= 6)
+			{
 				feedbackList.add(new FeedbackDetails((Long) objects[0], (Short) objects[1], (Short) objects[2],
 						(Short) objects[3], (String) objects[4], (String) objects[5]));
 			}
@@ -95,25 +107,22 @@ public class FeedbackServiceImpl implements FeedbackService {
 	}
 
 	@Override
-	public FeedbackDetails createFeedback(FeedbackDetails feedbackDetails) {
+	public FeedbackDetails createFeedback(FeedbackDetails feedbackDetails)
+	{
 
 		/*
-		 * String feedbackDetailsJson = new
-		 * Gson().toJson(payload.get("feedbackDetails")); String
-		 * feedbackRequestDetailsJson = new
-		 * Gson().toJson(payload.get("feedbackRequestDetails"));
+		 * String feedbackDetailsJson = new Gson().toJson(payload.get("feedbackDetails")); String
+		 * feedbackRequestDetailsJson = new Gson().toJson(payload.get("feedbackRequestDetails"));
 		 * 
-		 * FeedbackDetails feedbackDetails = (FeedbackDetails) new
-		 * Gson().fromJson(feedbackDetailsJson, FeedbackDetails.class);
-		 * FeedbackRequestDetails[] feedbackRequestArray =
-		 * (FeedbackRequestDetails[]) new
-		 * Gson().fromJson(feedbackRequestDetailsJson,
-		 * FeedbackRequestDetails[].class);
+		 * FeedbackDetails feedbackDetails = (FeedbackDetails) new Gson().fromJson(feedbackDetailsJson,
+		 * FeedbackDetails.class); FeedbackRequestDetails[] feedbackRequestArray = (FeedbackRequestDetails[]) new
+		 * Gson().fromJson(feedbackRequestDetailsJson, FeedbackRequestDetails[].class);
 		 */
 
 		List<FeedbackRequestDetails> feedbackRequestList = feedbackDetails.getFeedbackRequestDetails();
 
-		for (FeedbackRequestDetails frd : feedbackRequestList) {
+		for (FeedbackRequestDetails frd : feedbackRequestList)
+		{
 
 			frd.setFeedback(feedbackDetails);
 		}
@@ -124,7 +133,8 @@ public class FeedbackServiceImpl implements FeedbackService {
 	}
 
 	@Override
-	public String updateFeedback(FeedbackDetails feedbackDetails) {
+	public String updateFeedback(FeedbackDetails feedbackDetails)
+	{
 		return null;
 	}
 
@@ -134,9 +144,8 @@ public class FeedbackServiceImpl implements FeedbackService {
 	 */
 
 	/***
-	 * Author: Neeraj kumar (298657), Date: 04-06-2017, Purpose: Save customer
-	 * feedback in to T_Feeedback and return feedbackID and save into
-	 * m_BenCall1097ServicesMapping table
+	 * Author: Neeraj kumar (298657), Date: 04-06-2017, Purpose: Save customer feedback in to T_Feeedback and return
+	 * feedbackID and save into m_BenCall1097ServicesMapping table
 	 **/
 	// @Override
 	// // public String saveFeedbackFromCustomer(Iterable<FeedbackDetails>
@@ -178,45 +187,57 @@ public class FeedbackServiceImpl implements FeedbackService {
 	// }
 	/***
 	 * Neeraj code End.....
-	 * @throws Exception 
+	 * 
+	 * @param request
+	 * 
+	 * @throws Exception
 	 * 
 	 */
 	@Override
-	public String saveFeedbackFromCustomer(String feedbackDetails) throws Exception {
+	public String saveFeedbackFromCustomer(String feedbackDetails, HttpServletRequest request) throws Exception
+	{
 		Map<String, Long> resMap = new HashMap<String, Long>();
-		OutputResponse response = createFeedback(feedbackDetails);
+		OutputResponse response = createFeedback(feedbackDetails, request);
 		resMap.put("feedBackId", (long) 0);
-		if (response.isSuccess()) {
+		if (response.isSuccess())
+		{
 			logger.info(response.getData());
 			FeedbackDetails[] feedbackSavedData = inputMapper.gson().fromJson(response.getData(),
 					FeedbackDetails[].class);
 			// feedbackSavedData = inputMapper.gson().fromJson();
-			if (feedbackSavedData != null) {
+			if (feedbackSavedData != null)
+			{
 				List<BenCallServicesMappingHistory> obj = new ArrayList<>();
-				for (FeedbackDetails f : feedbackSavedData) {
+				for (FeedbackDetails f : feedbackSavedData)
+				{
 					BenCallServicesMappingHistory benCallServicesMappingHistory = new BenCallServicesMappingHistory(
 							f.getBeneficiaryRegID(), f.getBenCallID(), f.getSubServiceID(), f.getFeedbackID(), false,
 							f.getCreatedBy());
 					obj.add(benCallServicesMappingHistory);
 				}
 				Iterable<BenCallServicesMappingHistory> dataInserted = benCalServiceCatSubcatMappingRepo.save(obj);
-				for (BenCallServicesMappingHistory m : dataInserted) {
+				for (BenCallServicesMappingHistory m : dataInserted)
+				{
 					resMap.put("feedBackId", m.getFeedbackID());
 				}
 			}
-		} else {
+		} else
+		{
 			throw new Exception(response.getErrorMessage());
 		}
 		return new Gson().toJson(resMap);
 	}
 
-	private OutputResponse createFeedback(String feedbackDetails) throws IEMRException {
+	private OutputResponse createFeedback(String feedbackDetails, HttpServletRequest request) throws IEMRException
+	{
 		HttpUtils utils = new HttpUtils();
+		HashMap<String, Object> header = new HashMap<String, Object>();
+		header.put("Authorization", request.getHeader("Authorization"));
 		String responseStr = utils.post(
 				properties.getPropertyByName("common-url") + "/" + properties.getPropertyByName("create-feedback"),
-				feedbackDetails);
+				feedbackDetails, header);
 		OutputResponse response = inputMapper.gson().fromJson(responseStr, OutputResponse.class);
-//		response.setResponse(responseStr);
+		// response.setResponse(responseStr);
 		return response;
 	}
 }

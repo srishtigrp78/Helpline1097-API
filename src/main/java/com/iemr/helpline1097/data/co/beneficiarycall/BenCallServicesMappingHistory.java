@@ -27,7 +27,7 @@ import com.iemr.helpline1097.data.co.feedback.FeedbackDetails;
 import com.iemr.helpline1097.data.co.services.CategoryDetails;
 import com.iemr.helpline1097.data.co.services.DirectoryMapping;
 import com.iemr.helpline1097.data.co.services.SubCategoryDetails;
-import com.iemr.utils.mapper.OutputMapper;
+import com.iemr.helpline1097.utils.mapper.OutputMapper;
 
 @Entity
 @Table(name = "m_bencall1097servicesmapping")

@@ -15,7 +15,7 @@ import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.gson.annotations.Expose;
-import com.iemr.utils.mapper.OutputMapper;
+import com.iemr.helpline1097.utils.mapper.OutputMapper;
 
 @Entity
 @Table(name = "m_institution")
@@ -79,7 +79,7 @@ public class InstitutionDetails
 	@Column(name = "ContactPerson1_Email")
 	@Expose
 	private String contactPerson1Email;
-	
+
 	@Column(name = "ContactPerson2")
 	@Expose
 	private String contactPerson2;
@@ -89,7 +89,7 @@ public class InstitutionDetails
 	@Column(name = "ContactPerson2_Email")
 	@Expose
 	private String contactPerson2Email;
-	
+
 	@Column(name = "ContactPerson3")
 	@Expose
 	private String contactPerson3;
@@ -99,11 +99,11 @@ public class InstitutionDetails
 	@Column(name = "ContactPerson3_Email")
 	@Expose
 	private String contactPerson3Email;
-	
+
 	@Column(name = "Website")
 	@Expose
 	private String website;
-	
+
 	@Column(name = "Deleted", insertable = false, updatable = true)
 	@Expose
 	private Boolean deleted;

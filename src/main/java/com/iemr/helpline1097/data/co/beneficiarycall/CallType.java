@@ -15,7 +15,7 @@ import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.gson.annotations.Expose;
-import com.iemr.utils.mapper.OutputMapper;
+import com.iemr.helpline1097.utils.mapper.OutputMapper;
 
 @Entity
 @Table(name = "m_calltype")
@@ -39,9 +39,9 @@ public class CallType
 	@Expose
 	@Column(name = "CallTypeDesc")
 	private String callTypeDesc;
-//	@Expose
-//	@Column(name = "MctsType")
-//	private Integer mctsType;
+	// @Expose
+	// @Column(name = "MctsType")
+	// private Integer mctsType;
 	@Expose
 	@Column(name = "ProviderServiceMapID")
 	private Integer providerServiceMapID;
@@ -74,7 +74,7 @@ public class CallType
 		this.fitToBlock = fitToBlock;
 		this.fitForFollowUp = fitForFollowUp;
 	}
-	
+
 	public CallType()
 	{
 	}

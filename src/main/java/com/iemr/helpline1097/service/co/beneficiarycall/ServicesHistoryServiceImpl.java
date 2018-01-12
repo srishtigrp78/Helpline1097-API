@@ -18,7 +18,7 @@ import com.iemr.helpline1097.data.co.services.DirectoryMapping;
 import com.iemr.helpline1097.data.co.services.SubCategoryDetails;
 import com.iemr.helpline1097.repository.co.beneficiarycall.ServicesHistoryRepository;
 import com.iemr.helpline1097.repository.co.services.InstitutionRepository;
-import com.iemr.utils.mapper.InputMapper;
+import com.iemr.helpline1097.utils.mapper.InputMapper;
 
 @Service
 public class ServicesHistoryServiceImpl implements ServicesHistoryService

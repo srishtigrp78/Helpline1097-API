@@ -20,8 +20,8 @@ import com.iemr.helpline1097.data.co.beneficiarycall.BenCallServicesMappingHisto
 import com.iemr.helpline1097.data.co.beneficiarycall.BeneficiaryCall;
 import com.iemr.helpline1097.service.co.beneficiarycall.BeneficiaryCallService;
 import com.iemr.helpline1097.service.co.beneficiarycall.ServicesHistoryService;
-import com.iemr.utils.mapper.InputMapper;
-import com.iemr.utils.response.OutputResponse;
+import com.iemr.helpline1097.utils.mapper.InputMapper;
+import com.iemr.helpline1097.utils.response.OutputResponse;
 
 import io.swagger.annotations.ApiParam;
 

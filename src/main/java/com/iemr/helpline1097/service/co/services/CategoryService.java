@@ -3,7 +3,7 @@ package com.iemr.helpline1097.service.co.services;
 import java.util.List;
 
 import com.iemr.helpline1097.data.co.services.CategoryDetails;
-import com.iemr.utils.exception.IEMRException;
+import com.iemr.helpline1097.utils.exception.IEMRException;
 
 
 

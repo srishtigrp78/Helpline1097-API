@@ -12,30 +12,35 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.helpline1097.controller.co.services.CommonController;
 import com.iemr.helpline1097.service.co.feedback.FeedbackSeverityService;
-import com.iemr.utils.mapper.InputMapper;
-import com.iemr.utils.response.OutputResponse;
+import com.iemr.helpline1097.utils.mapper.InputMapper;
+import com.iemr.helpline1097.utils.response.OutputResponse;
 
 @RequestMapping(value = "/feedback")
 @RestController
-public class FeedbackSeverity {
+public class FeedbackSeverity
+{
 	InputMapper inputMapper = new InputMapper();
 	Logger logger = LoggerFactory.getLogger(CommonController.class);
 	private FeedbackSeverityService feedbackSeverityService;
 
 	@Autowired
-	public void SetFeedbackSeverityService(FeedbackSeverityService feedbackSeverityService) {
+	public void SetFeedbackSeverityService(FeedbackSeverityService feedbackSeverityService)
+	{
 		this.feedbackSeverityService = feedbackSeverityService;
 	}
 
 	@CrossOrigin()
 	@RequestMapping(value = "/getseverity", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON)
-	public String getFeedbackType() {
+	public String getFeedbackType()
+	{
 
 		OutputResponse response = new OutputResponse();
-		try {
+		try
+		{
 
 			response.setResponse(feedbackSeverityService.getActiveFeedbackSeverity().toString());
-		} catch (Exception e) {
+		} catch (Exception e)
+		{
 			logger.error("", e);
 			response.setError(e);
 		}

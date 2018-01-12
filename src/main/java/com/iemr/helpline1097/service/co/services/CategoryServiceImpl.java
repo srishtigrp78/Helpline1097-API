@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.iemr.helpline1097.data.co.services.CategoryDetails;
 import com.iemr.helpline1097.repository.co.services.CategoryRepository;
-import com.iemr.utils.exception.IEMRException;
-import com.iemr.utils.mapper.InputMapper;
+import com.iemr.helpline1097.utils.exception.IEMRException;
+import com.iemr.helpline1097.utils.mapper.InputMapper;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {

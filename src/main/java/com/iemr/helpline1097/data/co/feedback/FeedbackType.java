@@ -11,11 +11,12 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.google.gson.annotations.Expose;
-import com.iemr.utils.mapper.OutputMapper;
+import com.iemr.helpline1097.utils.mapper.OutputMapper;
 
 @Entity
 @Table(name = "m_feedbacktype")
-public class FeedbackType {
+public class FeedbackType
+{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "FeedbackTypeID")
@@ -40,11 +41,13 @@ public class FeedbackType {
 	@Column(name = "LastModDate", insertable = false, updatable = false)
 	private Timestamp lastModDate;
 
-	public FeedbackType() {
+	public FeedbackType()
+	{
 
 	}
 
-	public FeedbackType(Integer feedbackTypeID, String feedbackTypeName) {
+	public FeedbackType(Integer feedbackTypeID, String feedbackTypeName)
+	{
 		this.feedbackTypeID = feedbackTypeID;
 		this.feedbackTypeName = feedbackTypeName;
 	}
@@ -53,7 +56,8 @@ public class FeedbackType {
 	private OutputMapper outputMapper = new OutputMapper();
 
 	@Override
-	public String toString() {
+	public String toString()
+	{
 		return outputMapper.gson().toJson(this);
 	}
 }

@@ -15,12 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.iemr.helpline1097.controller.co.services.CommonController;
 import com.iemr.helpline1097.data.co.feedbackRequest.FeedbackRequest;
 import com.iemr.helpline1097.service.co.feedback.FeedbackRequestServiceImpl;
-import com.iemr.utils.mapper.InputMapper;
-import com.iemr.utils.response.OutputResponse;
+import com.iemr.helpline1097.utils.mapper.InputMapper;
+import com.iemr.helpline1097.utils.response.OutputResponse;
 
 @RequestMapping(value = "/iEMR")
 @RestController
-public class FeedbackRequestController {
+public class FeedbackRequestController
+{
 	InputMapper inputMapper = new InputMapper();
 	Logger logger = LoggerFactory.getLogger(CommonController.class);
 
@@ -29,13 +30,16 @@ public class FeedbackRequestController {
 
 	@CrossOrigin()
 	@RequestMapping(value = "/put/feedbackRequest", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON)
-	public String feedbackCreate(@RequestBody String request) {
+	public String feedbackCreate(@RequestBody String request)
+	{
 		OutputResponse response = new OutputResponse();
-		try {
+		try
+		{
 			FeedbackRequest t_feedbackRequest = inputMapper.gson().fromJson(request, FeedbackRequest.class);
 			FeedbackRequest savedDetails = feedbackRequestServiceImpl.createFeedbackRequest(t_feedbackRequest);
 			response.setResponse(savedDetails.toString());
-		} catch (Exception e) {
+		} catch (Exception e)
+		{
 			logger.error("", e);
 			response.setError(e);
 		}
@@ -43,13 +47,19 @@ public class FeedbackRequestController {
 	}
 
 	@CrossOrigin()
-	@RequestMapping(value = "/get/feedbackRequest/{feedbackRequestID}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON)
-	public String getFeedbackRequests(@PathVariable("feedbackRequestID") int feedbackRequestID) {
+	@RequestMapping(
+			value = "/get/feedbackRequest/{feedbackRequestID}",
+			method = RequestMethod.POST,
+			produces = MediaType.APPLICATION_JSON)
+	public String getFeedbackRequests(@PathVariable("feedbackRequestID") int feedbackRequestID)
+	{
 		OutputResponse response = new OutputResponse();
-		try {
+		try
+		{
 			FeedbackRequest savedDetails = feedbackRequestServiceImpl.getFeedbackReuest(feedbackRequestID);
 			response.setResponse(savedDetails.toString());
-		} catch (Exception e) {
+		} catch (Exception e)
+		{
 			logger.error("", e);
 			response.setError(e);
 		}

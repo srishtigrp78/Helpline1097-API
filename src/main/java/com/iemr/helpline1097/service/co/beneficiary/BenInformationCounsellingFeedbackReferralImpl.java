@@ -18,8 +18,8 @@ import com.iemr.helpline1097.data.co.services.SubCategoryDetails;
 import com.iemr.helpline1097.repository.co.beneficiary.BenCalServiceCatSubcatMappingRepo;
 import com.iemr.helpline1097.repository.co.services.DirectoryMappingRepository;
 import com.iemr.helpline1097.repository.co.services.SubCategoryRepository;
-import com.iemr.utils.config.ConfigProperties;
-import com.iemr.utils.mapper.InputMapper;
+import com.iemr.helpline1097.utils.config.ConfigProperties;
+import com.iemr.helpline1097.utils.mapper.InputMapper;
 
 /**
  * Author: Neeraj Kumar (298657) Date: 02-06-2017

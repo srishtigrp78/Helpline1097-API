@@ -8,11 +8,12 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.google.gson.annotations.Expose;
-import com.iemr.utils.mapper.OutputMapper;
+import com.iemr.helpline1097.utils.mapper.OutputMapper;
 
 @Entity
 @Table(name = "m_serviceprovided")
-public class ServiceProvided {
+public class ServiceProvided
+{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
@@ -27,12 +28,14 @@ public class ServiceProvided {
 	@Expose
 	private String FeedbackSystem;
 
-	public ServiceProvided() {
+	public ServiceProvided()
+	{
 		super();
 	}
 
 	public ServiceProvided(Long serviceID, String informationService, String counsellingService, String referralService,
-			String feedbackSystem) {
+			String feedbackSystem)
+	{
 		super();
 		ServiceID = serviceID;
 		InformationService = informationService;
@@ -41,43 +44,53 @@ public class ServiceProvided {
 		FeedbackSystem = feedbackSystem;
 	}
 
-	public Long getServiceID() {
+	public Long getServiceID()
+	{
 		return ServiceID;
 	}
 
-	public void setServiceID(Long serviceID) {
+	public void setServiceID(Long serviceID)
+	{
 		ServiceID = serviceID;
 	}
 
-	public String getInformationService() {
+	public String getInformationService()
+	{
 		return InformationService;
 	}
 
-	public void setInformationService(String informationService) {
+	public void setInformationService(String informationService)
+	{
 		InformationService = informationService;
 	}
 
-	public String getCounsellingService() {
+	public String getCounsellingService()
+	{
 		return CounsellingService;
 	}
 
-	public void setCounsellingService(String counsellingService) {
+	public void setCounsellingService(String counsellingService)
+	{
 		CounsellingService = counsellingService;
 	}
 
-	public String getReferralService() {
+	public String getReferralService()
+	{
 		return ReferralService;
 	}
 
-	public void setReferralService(String referralService) {
+	public void setReferralService(String referralService)
+	{
 		ReferralService = referralService;
 	}
 
-	public String getFeedbackSystem() {
+	public String getFeedbackSystem()
+	{
 		return FeedbackSystem;
 	}
 
-	public void setFeedbackSystem(String feedbackSystem) {
+	public void setFeedbackSystem(String feedbackSystem)
+	{
 		FeedbackSystem = feedbackSystem;
 	}
 
@@ -85,7 +98,8 @@ public class ServiceProvided {
 	private OutputMapper outputMapper = new OutputMapper();
 
 	@Override
-	public String toString() {
+	public String toString()
+	{
 		return outputMapper.gson().toJson(this);
 	}
 }

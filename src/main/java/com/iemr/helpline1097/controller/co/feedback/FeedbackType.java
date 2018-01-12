@@ -12,30 +12,35 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.helpline1097.controller.co.services.CommonController;
 import com.iemr.helpline1097.service.co.feedback.FeedbackTypeService;
-import com.iemr.utils.mapper.InputMapper;
-import com.iemr.utils.response.OutputResponse;
+import com.iemr.helpline1097.utils.mapper.InputMapper;
+import com.iemr.helpline1097.utils.response.OutputResponse;
 
 @RequestMapping(value = "/feedback")
 @RestController
-public class FeedbackType {
+public class FeedbackType
+{
 	InputMapper inputMapper = new InputMapper();
 	Logger logger = LoggerFactory.getLogger(CommonController.class);
 	private FeedbackTypeService feedbackTypeService;
 
 	@Autowired
-	public void SetFeedbackTypeService(FeedbackTypeService feedbackTypeService) {
+	public void SetFeedbackTypeService(FeedbackTypeService feedbackTypeService)
+	{
 		this.feedbackTypeService = feedbackTypeService;
 	}
 
 	@CrossOrigin()
 	@RequestMapping(value = "/gettype", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON)
-	public String getFeedbackType() {
+	public String getFeedbackType()
+	{
 
 		OutputResponse response = new OutputResponse();
-		try {
+		try
+		{
 
 			response.setResponse(feedbackTypeService.getActiveFeedbackTypes().toString());
-		} catch (Exception e) {
+		} catch (Exception e)
+		{
 			logger.error("", e);
 			response.setError(e);
 		}

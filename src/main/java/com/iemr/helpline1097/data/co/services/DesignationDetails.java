@@ -11,11 +11,12 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.google.gson.annotations.Expose;
-import com.iemr.utils.mapper.OutputMapper;
+import com.iemr.helpline1097.utils.mapper.OutputMapper;
 
 @Entity
 @Table(name = "m_designation")
-public class DesignationDetails {
+public class DesignationDetails
+{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -44,7 +45,8 @@ public class DesignationDetails {
 	/**
 	 * @return the designationID
 	 */
-	public Integer getDesignationID() {
+	public Integer getDesignationID()
+	{
 		return designationID;
 	}
 
@@ -52,14 +54,16 @@ public class DesignationDetails {
 	 * @param designationID
 	 *            the designationID to set
 	 */
-	public void setDesignationID(Integer designationID) {
+	public void setDesignationID(Integer designationID)
+	{
 		this.designationID = designationID;
 	}
 
 	/**
 	 * @return the designationName
 	 */
-	public String getDesignationName() {
+	public String getDesignationName()
+	{
 		return designationName;
 	}
 
@@ -67,14 +71,16 @@ public class DesignationDetails {
 	 * @param designationName
 	 *            the designationName to set
 	 */
-	public void setDesignationName(String designationName) {
+	public void setDesignationName(String designationName)
+	{
 		this.designationName = designationName;
 	}
 
 	/**
 	 * @return the designationDesc
 	 */
-	public String getDesignationDesc() {
+	public String getDesignationDesc()
+	{
 		return designationDesc;
 	}
 
@@ -82,14 +88,16 @@ public class DesignationDetails {
 	 * @param designationDesc
 	 *            the designationDesc to set
 	 */
-	public void setDesignationDesc(String designationDesc) {
+	public void setDesignationDesc(String designationDesc)
+	{
 		this.designationDesc = designationDesc;
 	}
 
 	/**
 	 * @return the deleted
 	 */
-	public Boolean isDeleted() {
+	public Boolean isDeleted()
+	{
 		return deleted;
 	}
 
@@ -97,14 +105,16 @@ public class DesignationDetails {
 	 * @param deleted
 	 *            the deleted to set
 	 */
-	public void setDeleted(Boolean deleted) {
+	public void setDeleted(Boolean deleted)
+	{
 		this.deleted = deleted;
 	}
 
 	/**
 	 * @return the createdBy
 	 */
-	public String getCreatedBy() {
+	public String getCreatedBy()
+	{
 		return createdBy;
 	}
 
@@ -112,14 +122,16 @@ public class DesignationDetails {
 	 * @param createdBy
 	 *            the createdBy to set
 	 */
-	public void setCreatedBy(String createdBy) {
+	public void setCreatedBy(String createdBy)
+	{
 		this.createdBy = createdBy;
 	}
 
 	/**
 	 * @return the createdDate
 	 */
-	public Timestamp getCreatedDate() {
+	public Timestamp getCreatedDate()
+	{
 		return createdDate;
 	}
 
@@ -127,14 +139,16 @@ public class DesignationDetails {
 	 * @param createdDate
 	 *            the createdDate to set
 	 */
-	public void setCreatedDate(Timestamp createdDate) {
+	public void setCreatedDate(Timestamp createdDate)
+	{
 		this.createdDate = createdDate;
 	}
 
 	/**
 	 * @return the modifiedBy
 	 */
-	public String getModifiedBy() {
+	public String getModifiedBy()
+	{
 		return modifiedBy;
 	}
 
@@ -142,14 +156,16 @@ public class DesignationDetails {
 	 * @param modifiedBy
 	 *            the modifiedBy to set
 	 */
-	public void setModifiedBy(String modifiedBy) {
+	public void setModifiedBy(String modifiedBy)
+	{
 		this.modifiedBy = modifiedBy;
 	}
 
 	/**
 	 * @return the lastModDate
 	 */
-	public Timestamp getLastModDate() {
+	public Timestamp getLastModDate()
+	{
 		return lastModDate;
 	}
 
@@ -157,14 +173,17 @@ public class DesignationDetails {
 	 * @param lastModDate
 	 *            the lastModDate to set
 	 */
-	public void setLastModDate(Timestamp lastModDate) {
+	public void setLastModDate(Timestamp lastModDate)
+	{
 		this.lastModDate = lastModDate;
 	}
 
-	public DesignationDetails() {
+	public DesignationDetails()
+	{
 	}
 
-	public DesignationDetails(Integer designationId, String designationName) {
+	public DesignationDetails(Integer designationId, String designationName)
+	{
 		this.designationID = designationId;
 		this.designationName = designationName;
 	}
@@ -173,7 +192,8 @@ public class DesignationDetails {
 	private OutputMapper outputMapper = new OutputMapper();
 
 	@Override
-	public String toString() {
+	public String toString()
+	{
 		return outputMapper.gson().toJson(this);
 	}
 }

@@ -14,11 +14,12 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.google.gson.annotations.Expose;
-import com.iemr.utils.mapper.OutputMapper;
+import com.iemr.helpline1097.utils.mapper.OutputMapper;
 
 @Entity
 @Table(name = "t_feedback")
-public class FeedbackDetails {
+public class FeedbackDetails
+{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -85,14 +86,16 @@ public class FeedbackDetails {
 	@Expose
 	private Integer subServiceID;
 
-	public FeedbackDetails() {
+	public FeedbackDetails()
+	{
 
 	}
 
 	public FeedbackDetails(Long feedbackID, Long institutionID, Integer designationID, Short severityID,
 			Short feedbackTypeID, Short feedbackStatusID, String feedback, Long beneficiaryRegID, Integer serviceID,
 			Integer userID, String sMSPhoneNo, Timestamp serviceAvailDate, Boolean deleted, String createdBy,
-			Timestamp createdDate, String modifiedBy, Timestamp lastModDate) {
+			Timestamp createdDate, String modifiedBy, Timestamp lastModDate)
+	{
 		super();
 		this.feedbackID = feedbackID;
 		this.institutionID = institutionID;
@@ -114,7 +117,8 @@ public class FeedbackDetails {
 	}
 
 	public FeedbackDetails(Long feedbackID, Short severityID, Short feedbackTypeID, Short feedbackStatusID,
-			String feedback, String createdBy) {
+			String feedback, String createdBy)
+	{
 		this.feedbackID = feedbackID;
 		this.severityID = severityID;
 		this.feedbackTypeID = feedbackTypeID;
@@ -123,151 +127,188 @@ public class FeedbackDetails {
 		this.createdBy = createdBy;
 	}
 
-	public Long getFeedbackID() {
+	public Long getFeedbackID()
+	{
 		return feedbackID;
 	}
 
-	public void setFeedbackID(Long feedbackID) {
+	public void setFeedbackID(Long feedbackID)
+	{
 		this.feedbackID = feedbackID;
 	}
 
-	public Long getInstitutionID() {
+	public Long getInstitutionID()
+	{
 		return institutionID;
 	}
 
-	public void setInstitutionID(Long institutionID) {
+	public void setInstitutionID(Long institutionID)
+	{
 		this.institutionID = institutionID;
 	}
 
-	public Integer getDesignationID() {
+	public Integer getDesignationID()
+	{
 		return designationID;
 	}
 
-	public void setDesignationID(Integer designationID) {
+	public void setDesignationID(Integer designationID)
+	{
 		this.designationID = designationID;
 	}
 
-	public Short getSeverityID() {
+	public Short getSeverityID()
+	{
 		return severityID;
 	}
 
-	public void setSeverityID(Short severityID) {
+	public void setSeverityID(Short severityID)
+	{
 		this.severityID = severityID;
 	}
 
-	public Short getFeedbackTypeID() {
+	public Short getFeedbackTypeID()
+	{
 		return feedbackTypeID;
 	}
 
-	public void setFeedbackTypeID(Short feedbackTypeID) {
+	public void setFeedbackTypeID(Short feedbackTypeID)
+	{
 		this.feedbackTypeID = feedbackTypeID;
 	}
 
-	public Short getFeedbackStatusID() {
+	public Short getFeedbackStatusID()
+	{
 		return feedbackStatusID;
 	}
 
-	public void setFeedbackStatusID(Short feedbackStatusID) {
+	public void setFeedbackStatusID(Short feedbackStatusID)
+	{
 		this.feedbackStatusID = feedbackStatusID;
 	}
 
-	public String getFeedback() {
+	public String getFeedback()
+	{
 		return feedback;
 	}
 
-	public void setFeedback(String feedback) {
+	public void setFeedback(String feedback)
+	{
 		this.feedback = feedback;
 	}
 
-	public Long getBeneficiaryRegID() {
+	public Long getBeneficiaryRegID()
+	{
 		return beneficiaryRegID;
 	}
 
-	public void setBeneficiaryRegID(Long beneficiaryRegID) {
+	public void setBeneficiaryRegID(Long beneficiaryRegID)
+	{
 		this.beneficiaryRegID = beneficiaryRegID;
 	}
 
-	public Integer getServiceID() {
+	public Integer getServiceID()
+	{
 		return serviceID;
 	}
 
-	public void setServiceID(Integer serviceID) {
+	public void setServiceID(Integer serviceID)
+	{
 		this.serviceID = serviceID;
 	}
 
-	public Integer getUserID() {
+	public Integer getUserID()
+	{
 		return userID;
 	}
 
-	public void setUserID(Integer userID) {
+	public void setUserID(Integer userID)
+	{
 		this.userID = userID;
 	}
 
-	public String getsMSPhoneNo() {
+	public String getsMSPhoneNo()
+	{
 		return sMSPhoneNo;
 	}
 
-	public void setsMSPhoneNo(String sMSPhoneNo) {
+	public void setsMSPhoneNo(String sMSPhoneNo)
+	{
 		this.sMSPhoneNo = sMSPhoneNo;
 	}
 
-	public Timestamp getServiceAvailDate() {
+	public Timestamp getServiceAvailDate()
+	{
 		return serviceAvailDate;
 	}
 
-	public void setServiceAvailDate(Timestamp serviceAvailDate) {
+	public void setServiceAvailDate(Timestamp serviceAvailDate)
+	{
 		this.serviceAvailDate = serviceAvailDate;
 	}
 
-	public Boolean getDeleted() {
+	public Boolean getDeleted()
+	{
 		return deleted;
 	}
 
-	public void setDeleted(Boolean deleted) {
+	public void setDeleted(Boolean deleted)
+	{
 		this.deleted = deleted;
 	}
 
-	public String getCreatedBy() {
+	public String getCreatedBy()
+	{
 		return createdBy;
 	}
 
-	public void setCreatedBy(String createdBy) {
+	public void setCreatedBy(String createdBy)
+	{
 		this.createdBy = createdBy;
 	}
 
-	public Timestamp getCreatedDate() {
+	public Timestamp getCreatedDate()
+	{
 		return CreatedDate;
 	}
 
-	public void setCreatedDate(Timestamp createdDate) {
+	public void setCreatedDate(Timestamp createdDate)
+	{
 		CreatedDate = createdDate;
 	}
 
-	public String getModifiedBy() {
+	public String getModifiedBy()
+	{
 		return modifiedBy;
 	}
 
-	public void setModifiedBy(String modifiedBy) {
+	public void setModifiedBy(String modifiedBy)
+	{
 		this.modifiedBy = modifiedBy;
 	}
 
-	public Timestamp getLastModDate() {
+	public Timestamp getLastModDate()
+	{
 		return lastModDate;
 	}
 
-	public void setLastModDate(Timestamp lastModDate) {
+	public void setLastModDate(Timestamp lastModDate)
+	{
 		this.lastModDate = lastModDate;
 	}
 
-	public Long getBenCallID() {
+	public Long getBenCallID()
+	{
 		return benCallID;
 	}
 
-	public Integer getSubServiceID() {
+	public Integer getSubServiceID()
+	{
 		return subServiceID;
 	}
 
-	public void setBenCallID(Long benCallID) {
+	public void setBenCallID(Long benCallID)
+	{
 		this.benCallID = benCallID;
 	}
 
@@ -277,7 +318,8 @@ public class FeedbackDetails {
 	/**
 	 * @return the feedbackRquestDetails
 	 */
-	public List<FeedbackRequestDetails> getFeedbackRequestDetails() {
+	public List<FeedbackRequestDetails> getFeedbackRequestDetails()
+	{
 		return feedbackRequestDetails;
 	}
 
@@ -285,7 +327,8 @@ public class FeedbackDetails {
 	 * @param feedbackRquestDetails
 	 *            the feedbackRquestDetails to set
 	 */
-	public void setFeedbackRequestDetails(List<FeedbackRequestDetails> feedbackRequestDetails) {
+	public void setFeedbackRequestDetails(List<FeedbackRequestDetails> feedbackRequestDetails)
+	{
 		this.feedbackRequestDetails = feedbackRequestDetails;
 	}
 
@@ -293,7 +336,8 @@ public class FeedbackDetails {
 	private OutputMapper outputMapper = new OutputMapper();
 
 	@Override
-	public String toString() {
+	public String toString()
+	{
 		return outputMapper.gson().toJson(this);
 	}
 }

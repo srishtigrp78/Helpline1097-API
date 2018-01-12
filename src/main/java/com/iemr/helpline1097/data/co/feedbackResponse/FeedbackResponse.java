@@ -9,11 +9,12 @@ import javax.persistence.Id;
 import javax.persistence.Transient;
 
 import com.google.gson.annotations.Expose;
-import com.iemr.utils.mapper.OutputMapper;
+import com.iemr.helpline1097.utils.mapper.OutputMapper;
 
 @Entity
 
-public class FeedbackResponse {
+public class FeedbackResponse
+{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -35,14 +36,16 @@ public class FeedbackResponse {
 	private String ModifiedBy;
 	private Timestamp LastModDate;
 
-	public FeedbackResponse() {
+	public FeedbackResponse()
+	{
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public FeedbackResponse(Long feedbackResponseID, Long feedbackRequestID, String responseSummary, Integer authUserID,
 			String comments, Boolean deleted, String createdBy, Timestamp createdDate, String modifiedBy,
-			Timestamp lastModDate) {
+			Timestamp lastModDate)
+	{
 		super();
 		FeedbackResponseID = feedbackResponseID;
 		FeedbackRequestID = feedbackRequestID;
@@ -56,83 +59,103 @@ public class FeedbackResponse {
 		LastModDate = lastModDate;
 	}
 
-	public Long getFeedbackResponseID() {
+	public Long getFeedbackResponseID()
+	{
 		return FeedbackResponseID;
 	}
 
-	public void setFeedbackResponseID(Long feedbackResponseID) {
+	public void setFeedbackResponseID(Long feedbackResponseID)
+	{
 		FeedbackResponseID = feedbackResponseID;
 	}
 
-	public Long getFeedbackRequestID() {
+	public Long getFeedbackRequestID()
+	{
 		return FeedbackRequestID;
 	}
 
-	public void setFeedbackRequestID(Long feedbackRequestID) {
+	public void setFeedbackRequestID(Long feedbackRequestID)
+	{
 		FeedbackRequestID = feedbackRequestID;
 	}
 
-	public String getResponseSummary() {
+	public String getResponseSummary()
+	{
 		return ResponseSummary;
 	}
 
-	public void setResponseSummary(String responseSummary) {
+	public void setResponseSummary(String responseSummary)
+	{
 		ResponseSummary = responseSummary;
 	}
 
-	public Integer getAuthUserID() {
+	public Integer getAuthUserID()
+	{
 		return AuthUserID;
 	}
 
-	public void setAuthUserID(Integer authUserID) {
+	public void setAuthUserID(Integer authUserID)
+	{
 		AuthUserID = authUserID;
 	}
 
-	public String getComments() {
+	public String getComments()
+	{
 		return Comments;
 	}
 
-	public void setComments(String comments) {
+	public void setComments(String comments)
+	{
 		Comments = comments;
 	}
 
-	public Boolean getDeleted() {
+	public Boolean getDeleted()
+	{
 		return Deleted;
 	}
 
-	public void setDeleted(Boolean deleted) {
+	public void setDeleted(Boolean deleted)
+	{
 		Deleted = deleted;
 	}
 
-	public String getCreatedBy() {
+	public String getCreatedBy()
+	{
 		return CreatedBy;
 	}
 
-	public void setCreatedBy(String createdBy) {
+	public void setCreatedBy(String createdBy)
+	{
 		CreatedBy = createdBy;
 	}
 
-	public Timestamp getCreatedDate() {
+	public Timestamp getCreatedDate()
+	{
 		return CreatedDate;
 	}
 
-	public void setCreatedDate(Timestamp createdDate) {
+	public void setCreatedDate(Timestamp createdDate)
+	{
 		CreatedDate = createdDate;
 	}
 
-	public String getModifiedBy() {
+	public String getModifiedBy()
+	{
 		return ModifiedBy;
 	}
 
-	public void setModifiedBy(String modifiedBy) {
+	public void setModifiedBy(String modifiedBy)
+	{
 		ModifiedBy = modifiedBy;
 	}
 
-	public Timestamp getLastModDate() {
+	public Timestamp getLastModDate()
+	{
 		return LastModDate;
 	}
 
-	public void setLastModDate(Timestamp lastModDate) {
+	public void setLastModDate(Timestamp lastModDate)
+	{
 		LastModDate = lastModDate;
 	}
 
@@ -140,7 +163,8 @@ public class FeedbackResponse {
 	private OutputMapper outputMapper = new OutputMapper();
 
 	@Override
-	public String toString() {
+	public String toString()
+	{
 		return outputMapper.gson().toJson(this);
 	}
 }

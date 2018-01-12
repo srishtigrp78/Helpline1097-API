@@ -7,16 +7,20 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
-import com.iemr.utils.config.ConfigProperties;
+import com.iemr.helpline1097.utils.IEMRApplBeans;
 
+/**
+ * @author VI314759
+ *
+ */
 @SpringBootApplication
 @ComponentScan
 public class HelpLine1097Application extends SpringBootServletInitializer
 {
 	@Bean
-	public ConfigProperties configProperties()
+	public IEMRApplBeans instantiateBeans()
 	{
-		return new ConfigProperties();
+		return new IEMRApplBeans();
 	}
 
 	public static void main(String[] args)

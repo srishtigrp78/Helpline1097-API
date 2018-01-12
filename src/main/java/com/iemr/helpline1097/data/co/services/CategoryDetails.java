@@ -20,11 +20,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.gson.annotations.Expose;
 import com.iemr.helpline1097.data.co.beneficiarycall.BenCallServicesMappingHistory;
 import com.iemr.helpline1097.data.co.beneficiarycall.SubServices;
-import com.iemr.utils.mapper.OutputMapper;
+import com.iemr.helpline1097.utils.mapper.OutputMapper;
 
 @Entity
 @Table(name = "m_Category")
-public class CategoryDetails {
+public class CategoryDetails
+{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -71,84 +72,104 @@ public class CategoryDetails {
 	@Transient
 	private OutputMapper outputMapper = new OutputMapper();
 
-	public Integer getCategoryID() {
+	public Integer getCategoryID()
+	{
 		return categoryID;
 	}
 
-	public Integer getSubServiceID() {
+	public Integer getSubServiceID()
+	{
 		return subServiceID;
 	}
 
-	public void setCategoryID(Integer categoryID) {
+	public void setCategoryID(Integer categoryID)
+	{
 		this.categoryID = categoryID;
 	}
 
-	public String getCategoryName() {
+	public String getCategoryName()
+	{
 		return this.categoryName;
 	}
 
-	public void setCategoryName(String categoryName) {
+	public void setCategoryName(String categoryName)
+	{
 		this.categoryName = categoryName;
 	}
 
-	public String getCategoryDesc() {
+	public String getCategoryDesc()
+	{
 		return categoryDesc;
 	}
 
-	public void setCategoryDesc(String categoryDesc) {
+	public void setCategoryDesc(String categoryDesc)
+	{
 		this.categoryDesc = categoryDesc;
 	}
 
-	public Boolean getDeleted() {
+	public Boolean getDeleted()
+	{
 		return deleted;
 	}
 
-	public void setDeleted(Boolean deleted) {
+	public void setDeleted(Boolean deleted)
+	{
 		this.deleted = deleted;
 	}
 
-	public String getCreatedBy() {
+	public String getCreatedBy()
+	{
 		return createdBy;
 	}
 
-	public void setCreatedBy(String createdBy) {
+	public void setCreatedBy(String createdBy)
+	{
 		this.createdBy = createdBy;
 	}
 
-	public Timestamp getCreatedDate() {
+	public Timestamp getCreatedDate()
+	{
 		return createdDate;
 	}
 
-	public void setCreatedDate(Timestamp createdDate) {
+	public void setCreatedDate(Timestamp createdDate)
+	{
 		this.createdDate = createdDate;
 	}
 
-	public String getModifiedBy() {
+	public String getModifiedBy()
+	{
 		return modifiedBy;
 	}
 
-	public void setModifiedBy(String modifiedBy) {
+	public void setModifiedBy(String modifiedBy)
+	{
 		this.modifiedBy = modifiedBy;
 	}
 
-	public Timestamp getLastModDate() {
+	public Timestamp getLastModDate()
+	{
 		return lastModDate;
 	}
 
-	public void setLastModDate(Timestamp lastModDate) {
+	public void setLastModDate(Timestamp lastModDate)
+	{
 		this.lastModDate = lastModDate;
 	}
 
-	public CategoryDetails() {
+	public CategoryDetails()
+	{
 	}
 
-	public CategoryDetails(Integer CategoryID, String CategoryName) {
+	public CategoryDetails(Integer CategoryID, String CategoryName)
+	{
 		this.categoryID = CategoryID;
 		this.categoryName = CategoryName;
 	}
 
 	@Override
-	public String toString() {
+	public String toString()
+	{
 		return outputMapper.gson().toJson(this);
 	}
 }

@@ -2,6 +2,7 @@ package com.iemr.helpline1097.controller.co.feedback;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.core.MediaType;
 
 import org.slf4j.Logger;
@@ -18,12 +19,13 @@ import com.iemr.helpline1097.controller.co.services.CommonController;
 import com.iemr.helpline1097.data.co.feedback.FeedbackDetails;
 import com.iemr.helpline1097.service.co.feedback.FeedbackService;
 import com.iemr.helpline1097.service.co.feedback.FeedbackServiceImpl;
-import com.iemr.utils.mapper.InputMapper;
-import com.iemr.utils.response.OutputResponse;
+import com.iemr.helpline1097.utils.mapper.InputMapper;
+import com.iemr.helpline1097.utils.response.OutputResponse;
 
 @RequestMapping(value = "/co")
 @RestController
-public class FeedbackController {
+public class FeedbackController
+{
 	private static final String request = null;
 	private InputMapper inputMapper = new InputMapper();
 	private Logger logger = LoggerFactory.getLogger(CommonController.class);
@@ -34,32 +36,36 @@ public class FeedbackController {
 	private FeedbackService feedbackService;
 
 	/***
-	 * Author: Neeraj Kumar (298657) Date: 04-06-2017 Purpose: Creating object
-	 * of FeedbackServiceImpl
+	 * Author: Neeraj Kumar (298657) Date: 04-06-2017 Purpose: Creating object of FeedbackServiceImpl
 	 */
 	private FeedbackServiceImpl feedbackServiceImpl;
 
 	@Autowired
-	public void setFeedbackServiceImpl(FeedbackServiceImpl feedbackServiceImpl) {
+	public void setFeedbackServiceImpl(FeedbackServiceImpl feedbackServiceImpl)
+	{
 		this.feedbackServiceImpl = feedbackServiceImpl;
 	}
 
 	@Autowired
-	public void setFeedbackService(FeedbackService feedbackService) {
+	public void setFeedbackService(FeedbackService feedbackService)
+	{
 
 		this.feedbackService = feedbackService;
 	}
 
 	@CrossOrigin()
 	@RequestMapping(value = "/getfeedbacklist", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON)
-	public String feedbackReuest(@RequestBody String request) {
+	public String feedbackReuest(@RequestBody String request)
+	{
 		OutputResponse response = new OutputResponse();
-		try {
+		try
+		{
 			FeedbackDetails feedbackDetails = inputMapper.gson().fromJson(request, FeedbackDetails.class);
 			List<FeedbackDetails> feedbackList = feedbackService
 					.getFeedbackRequests(feedbackDetails.getBeneficiaryRegID());
 			response.setResponse(feedbackList.toString());
-		} catch (Exception e) {
+		} catch (Exception e)
+		{
 			logger.error("", e);
 			response.setError(e);
 		}
@@ -69,13 +75,16 @@ public class FeedbackController {
 	@CrossOrigin()
 	@RequestMapping(value = "/setfeedback", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON)
 	@Deprecated
-	public String feedbackCreate(@RequestBody String request) {
+	public String feedbackCreate(@RequestBody String request)
+	{
 		OutputResponse response = new OutputResponse();
-		try {
+		try
+		{
 			FeedbackDetails feedbackDetails = inputMapper.gson().fromJson(request, FeedbackDetails.class);
 			FeedbackDetails savedDetails = feedbackService.createFeedback(feedbackDetails);
 			response.setResponse("success: " + savedDetails.toString());
-		} catch (Exception e) {
+		} catch (Exception e)
+		{
 			logger.error("", e);
 			response.setError(e);
 		}
@@ -83,14 +92,20 @@ public class FeedbackController {
 	}
 
 	@CrossOrigin()
-	@RequestMapping(value = "/getfeedback/{feedbackID}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON)
-	public String getFeedbackByPost(@PathVariable("feedbackID") int feedbackID) {
+	@RequestMapping(
+			value = "/getfeedback/{feedbackID}",
+			method = RequestMethod.POST,
+			produces = MediaType.APPLICATION_JSON)
+	public String getFeedbackByPost(@PathVariable("feedbackID") int feedbackID)
+	{
 		OutputResponse response = new OutputResponse();
-		try {
+		try
+		{
 			logger.info("" + feedbackID);
 			List<FeedbackDetails> savedDetails = feedbackService.getFeedbackRequests(feedbackID);
 			response.setResponse(savedDetails.toString());
-		} catch (Exception e) {
+		} catch (Exception e)
+		{
 			logger.error("", e);
 			response.setError(e);
 		}
@@ -100,21 +115,21 @@ public class FeedbackController {
 	@CrossOrigin()
 	@Deprecated
 	@RequestMapping(value = "/updatefeedback", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON)
-	public String updateFeedback(@RequestBody FeedbackDetails feedbackDetails) {
+	public String updateFeedback(@RequestBody FeedbackDetails feedbackDetails)
+	{
 		OutputResponse response = new OutputResponse();
-//		try {
-//			response.setResponse(feedbackService.updateFeedback(feedbackDetails));
-//		} catch (Exception e) {
-//			logger.error("", e);
-//			response.setError(e);
-//		}
+		// try {
+		// response.setResponse(feedbackService.updateFeedback(feedbackDetails));
+		// } catch (Exception e) {
+		// logger.error("", e);
+		// response.setError(e);
+		// }
 		response.setResponse("Call deprecated use API from common to update feedback");
 		return response.toString();
 	}
 
 	/**
-	 * Author: Neeraj Kumar (298657) Date: 04-06-2017 Purpose: Save Feedback
-	 * from taken from cuntomer
+	 * Author: Neeraj Kumar (298657) Date: 04-06-2017 Purpose: Save Feedback from taken from cuntomer
 	 * 
 	 */
 
@@ -138,12 +153,16 @@ public class FeedbackController {
 
 	@CrossOrigin()
 	@RequestMapping(value = "/saveBenFeedback", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON)
-	private String saveBenFeedback(@RequestBody String feedbackRequest) {
+	private String saveBenFeedback(@RequestBody String feedbackRequest, HttpServletRequest request)
+	{
 		OutputResponse response = new OutputResponse();
-		try {
-			String savedFeedback = feedbackServiceImpl.saveFeedbackFromCustomer(feedbackRequest);
+		try
+		{
+			String savedFeedback = feedbackServiceImpl.saveFeedbackFromCustomer(feedbackRequest,
+					request);
 			response.setResponse(savedFeedback);
-		} catch (Exception e) {
+		} catch (Exception e)
+		{
 			logger.error("saveBenFeedback failed with error " + e.getMessage(), e);
 			response.setError(e);
 		}

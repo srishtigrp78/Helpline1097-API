@@ -13,11 +13,12 @@ import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.gson.annotations.Expose;
-import com.iemr.utils.mapper.OutputMapper;
+import com.iemr.helpline1097.utils.mapper.OutputMapper;
 
 @Entity
 @Table(name = "t_FeedbackRequest")
-public class FeedbackRequestDetails {
+public class FeedbackRequestDetails
+{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -47,7 +48,8 @@ public class FeedbackRequestDetails {
 	/**
 	 * @return the feedbackRequestID
 	 */
-	public Long getFeedbackRequestID() {
+	public Long getFeedbackRequestID()
+	{
 		return feedbackRequestID;
 	}
 
@@ -55,14 +57,16 @@ public class FeedbackRequestDetails {
 	 * @param feedbackRequestID
 	 *            the feedbackRequestID to set
 	 */
-	public void setFeedbackRequestID(Long feedbackRequestID) {
+	public void setFeedbackRequestID(Long feedbackRequestID)
+	{
 		this.feedbackRequestID = feedbackRequestID;
 	}
 
 	/**
 	 * @return the feedbackID
 	 */
-	public Long getFeedbackID() {
+	public Long getFeedbackID()
+	{
 		return feedbackID;
 	}
 
@@ -70,14 +74,16 @@ public class FeedbackRequestDetails {
 	 * @param feedbackID
 	 *            the feedbackID to set
 	 */
-	public void setFeedbackID(Long feedbackID) {
+	public void setFeedbackID(Long feedbackID)
+	{
 		this.feedbackID = feedbackID;
 	}
 
 	/**
 	 * @return the feedbackSupSummary
 	 */
-	public String getFeedbackSupSummary() {
+	public String getFeedbackSupSummary()
+	{
 		return feedbackSupSummary;
 	}
 
@@ -85,14 +91,16 @@ public class FeedbackRequestDetails {
 	 * @param feedbackSupSummary
 	 *            the feedbackSupSummary to set
 	 */
-	public void setFeedbackSupSummary(String feedbackSupSummary) {
+	public void setFeedbackSupSummary(String feedbackSupSummary)
+	{
 		this.feedbackSupSummary = feedbackSupSummary;
 	}
 
 	/**
 	 * @return the supUserID
 	 */
-	public Integer getSupUserID() {
+	public Integer getSupUserID()
+	{
 		return supUserID;
 	}
 
@@ -100,14 +108,16 @@ public class FeedbackRequestDetails {
 	 * @param supUserID
 	 *            the supUserID to set
 	 */
-	public void setSupUserID(Integer supUserID) {
+	public void setSupUserID(Integer supUserID)
+	{
 		this.supUserID = supUserID;
 	}
 
 	/**
 	 * @return the comments
 	 */
-	public String getComments() {
+	public String getComments()
+	{
 		return comments;
 	}
 
@@ -115,14 +125,16 @@ public class FeedbackRequestDetails {
 	 * @param comments
 	 *            the comments to set
 	 */
-	public void setComments(String comments) {
+	public void setComments(String comments)
+	{
 		this.comments = comments;
 	}
 
 	/**
 	 * @return the deleted
 	 */
-	public Boolean getDeleted() {
+	public Boolean getDeleted()
+	{
 		return deleted;
 	}
 
@@ -130,14 +142,16 @@ public class FeedbackRequestDetails {
 	 * @param deleted
 	 *            the deleted to set
 	 */
-	public void setDeleted(Boolean deleted) {
+	public void setDeleted(Boolean deleted)
+	{
 		this.deleted = deleted;
 	}
 
 	/**
 	 * @return the createdBy
 	 */
-	public String getCreatedBy() {
+	public String getCreatedBy()
+	{
 		return createdBy;
 	}
 
@@ -145,14 +159,16 @@ public class FeedbackRequestDetails {
 	 * @param createdBy
 	 *            the createdBy to set
 	 */
-	public void setCreatedBy(String createdBy) {
+	public void setCreatedBy(String createdBy)
+	{
 		this.createdBy = createdBy;
 	}
 
 	/**
 	 * @return the modifiedBy
 	 */
-	public String getModifiedBy() {
+	public String getModifiedBy()
+	{
 		return modifiedBy;
 	}
 
@@ -160,14 +176,16 @@ public class FeedbackRequestDetails {
 	 * @param modifiedBy
 	 *            the modifiedBy to set
 	 */
-	public void setModifiedBy(String modifiedBy) {
+	public void setModifiedBy(String modifiedBy)
+	{
 		this.modifiedBy = modifiedBy;
 	}
 
 	/**
 	 * @return the lastModDate
 	 */
-	public Timestamp getLastModDate() {
+	public Timestamp getLastModDate()
+	{
 		return lastModDate;
 	}
 
@@ -175,14 +193,16 @@ public class FeedbackRequestDetails {
 	 * @param lastModDate
 	 *            the lastModDate to set
 	 */
-	public void setLastModDate(Timestamp lastModDate) {
+	public void setLastModDate(Timestamp lastModDate)
+	{
 		this.lastModDate = lastModDate;
 	}
 
 	/**
 	 * @return the feedback
 	 */
-	public FeedbackDetails getFeedback() {
+	public FeedbackDetails getFeedback()
+	{
 		return feedback;
 	}
 
@@ -190,7 +210,8 @@ public class FeedbackRequestDetails {
 	 * @param feedback
 	 *            the feedback to set
 	 */
-	public void setFeedback(FeedbackDetails feedback) {
+	public void setFeedback(FeedbackDetails feedback)
+	{
 		this.feedback = feedback;
 	}
 
@@ -198,7 +219,8 @@ public class FeedbackRequestDetails {
 	private OutputMapper outputMapper = new OutputMapper();
 
 	@Override
-	public String toString() {
+	public String toString()
+	{
 		return outputMapper.gson().toJson(this);
 	}
 }

@@ -24,8 +24,8 @@ import com.iemr.helpline1097.service.co.beneficiary.IEMRBenDemographicsServiceIm
 import com.iemr.helpline1097.service.co.beneficiary.IEMRBeneficiaryEducationServiceImpl;
 import com.iemr.helpline1097.service.co.beneficiary.IEMRBeneficiaryOccupationServiceImpl;
 import com.iemr.helpline1097.service.co.beneficiary.IEMRPromoserviceDetailsServiceImpl;
-import com.iemr.utils.mapper.InputMapper;
-import com.iemr.utils.response.OutputResponse;
+import com.iemr.helpline1097.utils.mapper.InputMapper;
+import com.iemr.helpline1097.utils.response.OutputResponse;
 
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

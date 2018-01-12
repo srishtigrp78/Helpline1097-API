@@ -17,7 +17,7 @@ public class FeedbackTypeServiceImpl implements FeedbackTypeService {
 	FeedbackTypeRepository feedbackRepositorty;
 
 	@Autowired
-	public void SetFeedbackTypeRepository(FeedbackTypeRepository feedbackTypeRepository) {
+	public void setFeedbackTypeRepository(FeedbackTypeRepository feedbackTypeRepository) {
 		this.feedbackRepositorty = feedbackTypeRepository;
 	}
 
