@@ -59,6 +59,8 @@ public class HTTPRequestInterceptor extends HandlerInterceptorAdapter
 				case "saveUserSecurityQuesAns":
 				case "swagger-ui.html":
 				case "ui":
+				case "swagger-resources":
+				case "api-docs":
 					break;
 				default:
 					validator.checkKeyExists(authorization, request.getRemoteAddr());
