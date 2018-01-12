@@ -84,7 +84,8 @@ public class BeneficiaryController
 			value = "/add/beneficiaryOccupation",
 			method = RequestMethod.POST,
 			produces = MediaType.APPLICATION_JSON,
-			consumes = MediaType.APPLICATION_JSON)
+			consumes = MediaType.APPLICATION_JSON,
+			headers = "Authorization")
 	public String addBeneficiaryOccupation(
 			@ApiParam(
 					value = "{\n\"occupationType\":\"string-Mandatory\","
@@ -121,7 +122,8 @@ public class BeneficiaryController
 			value = "/add/beneficiaryEducation",
 			method = RequestMethod.POST,
 			produces = MediaType.APPLICATION_JSON,
-			consumes = MediaType.APPLICATION_JSON)
+			consumes = MediaType.APPLICATION_JSON,
+			headers = "Authorization")
 	public String addBeneficiaryEducation(@RequestBody String request)
 	{
 
@@ -149,7 +151,7 @@ public class BeneficiaryController
 	}
 
 	@CrossOrigin()
-	@RequestMapping(value = "/get/beneficiaryOccupation", method = RequestMethod.GET)
+	@RequestMapping(value = "/get/beneficiaryOccupation", method = RequestMethod.GET, headers = "Authorization")
 	public String getBeneficiaryOccupation()
 	{
 
@@ -168,7 +170,7 @@ public class BeneficiaryController
 	}
 
 	@CrossOrigin()
-	@RequestMapping(value = "/get/beneficiaryEducation", method = RequestMethod.GET)
+	@RequestMapping(value = "/get/beneficiaryEducation", method = RequestMethod.GET, headers = "Authorization")
 	public String getBeneficiaryEducation()
 	{
 
@@ -188,7 +190,7 @@ public class BeneficiaryController
 	}
 
 	@CrossOrigin()
-	@RequestMapping(value = "/add/benDemographics", method = RequestMethod.POST)
+	@RequestMapping(value = "/add/benDemographics", method = RequestMethod.POST, headers = "Authorization")
 	public String addBenDemographics(@RequestBody String request)
 	{
 
@@ -214,7 +216,7 @@ public class BeneficiaryController
 	}
 
 	@CrossOrigin()
-	@RequestMapping(value = "add/promoServiceDetails", method = RequestMethod.POST)
+	@RequestMapping(value = "add/promoServiceDetails", method = RequestMethod.POST, headers = "Authorization")
 	public String addPromoServiceDetails(@RequestBody String request)
 	{
 
@@ -249,7 +251,10 @@ public class BeneficiaryController
 
 	@CrossOrigin()
 	@ApiOperation(value = "This will save information requested by the beneficiary during call")
-	@RequestMapping(value = "/saveBenCalServiceCatSubcatMapping", method = RequestMethod.POST)
+	@RequestMapping(
+			value = "/saveBenCalServiceCatSubcatMapping",
+			method = RequestMethod.POST,
+			headers = "Authorization")
 	public String saveBenCalServiceCatSubcatMapping(@RequestBody String request)
 	{
 		OutputResponse response = new OutputResponse();
@@ -273,7 +278,10 @@ public class BeneficiaryController
 
 	@CrossOrigin()
 	@ApiOperation(value = "This will save counselling requested by the beneficiary during call")
-	@RequestMapping(value = "/saveBenCalServiceCOCatSubcatMapping", method = RequestMethod.POST)
+	@RequestMapping(
+			value = "/saveBenCalServiceCOCatSubcatMapping",
+			method = RequestMethod.POST,
+			headers = "Authorization")
 	public String saveBenCalServiceCOCatSubcatMapping(@RequestBody String request)
 	{
 		OutputResponse response = new OutputResponse();
@@ -308,7 +316,8 @@ public class BeneficiaryController
 			value = "/saveBenCalReferralMapping",
 			method = RequestMethod.POST,
 			consumes = MediaType.APPLICATION_JSON,
-			produces = MediaType.APPLICATION_JSON)
+			produces = MediaType.APPLICATION_JSON,
+			headers = "Authorization")
 	public String saveBenCalReferralMapping(@RequestBody String referralRequest)
 	{
 		OutputResponse response = new OutputResponse();

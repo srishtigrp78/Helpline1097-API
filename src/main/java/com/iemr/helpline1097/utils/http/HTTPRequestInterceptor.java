@@ -57,6 +57,8 @@ public class HTTPRequestInterceptor extends HandlerInterceptorAdapter
 				case "setForgetPassword":
 				case "changePassword":
 				case "saveUserSecurityQuesAns":
+				case "swagger-ui.html":
+				case "ui":
 					break;
 				default:
 					validator.checkKeyExists(authorization, request.getRemoteAddr());

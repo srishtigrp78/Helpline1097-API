@@ -49,7 +49,11 @@ public class Service1097HistoryController
 	}
 
 	@CrossOrigin()
-	@RequestMapping(value = "/getHistory", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON)
+	@RequestMapping(
+			value = "/getHistory",
+			method = RequestMethod.POST,
+			produces = MediaType.APPLICATION_JSON,
+			headers = "Authorization")
 	public String getServiceHistory(@ApiParam(
 			value = "{\"beneficiaryRegID\":\"Integer - Beneficiary registration ID\", "
 					+ "\"calledServiceID\":\"provider Service Map ID as integer\"}") @RequestBody String beneficiaryRequest)
@@ -76,7 +80,8 @@ public class Service1097HistoryController
 	@RequestMapping(
 			value = "/getBeneficiaryCallHistory",
 			method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON)
+			produces = MediaType.APPLICATION_JSON,
+			headers = "Authorization")
 	public String getBeneficiaryCallHistory(@ApiParam(
 			value = "{\"beneficiaryRegID\":\"Integer - Beneficiary registration ID\", "
 					+ "\"calledServiceID\":\"provider Service Map ID as integer\"}") @RequestBody String beneficiaryRequest)
@@ -100,7 +105,11 @@ public class Service1097HistoryController
 	}
 
 	@CrossOrigin()
-	@RequestMapping(value = "/setHistory", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON)
+	@RequestMapping(
+			value = "/setHistory",
+			method = RequestMethod.POST,
+			produces = MediaType.APPLICATION_JSON,
+			headers = "Authorization")
 	public String setServiceHistory(@RequestBody String request)
 	{
 		OutputResponse response = new OutputResponse();
@@ -119,7 +128,11 @@ public class Service1097HistoryController
 	}
 
 	@CrossOrigin()
-	@RequestMapping(value = "/getCallSummary", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON)
+	@RequestMapping(
+			value = "/getCallSummary",
+			method = RequestMethod.POST,
+			produces = MediaType.APPLICATION_JSON,
+			headers = "Authorization")
 	// public String getCallSummary(@RequestBody BenCallServicesMappingHistory
 	// service1097HistoryDetails) {
 	//
@@ -149,7 +162,8 @@ public class Service1097HistoryController
 	@RequestMapping(
 			value = "/getBeneficiaryCallsHistory",
 			method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON)
+			produces = MediaType.APPLICATION_JSON,
+			headers = "Authorization")
 	public String getBeneficiaryCallsHistory(@ApiParam(
 			value = "{\"beneficiaryRegID\":\"Integer - Beneficiary registration ID\", "
 					+ "\"calledServiceID\":\"provider Service Map ID as integer\"}") @RequestBody String request)
@@ -186,7 +200,11 @@ public class Service1097HistoryController
 	}
 
 	@CrossOrigin()
-	@RequestMapping(value = "/getReferralsHistory", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON)
+	@RequestMapping(
+			value = "/getReferralsHistory",
+			method = RequestMethod.POST,
+			produces = MediaType.APPLICATION_JSON,
+			headers = "Authorization")
 	public String getReferralsHistory(@ApiParam(
 			value = "{\"beneficiaryRegID\":\"Integer - Beneficiary registration ID\", "
 					+ "\"calledServiceID\":\"provider Service Map ID as integer\"}") @RequestBody String request)
@@ -221,7 +239,11 @@ public class Service1097HistoryController
 	}
 
 	@CrossOrigin()
-	@RequestMapping(value = "/getFeedbacksHistory", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON)
+	@RequestMapping(
+			value = "/getFeedbacksHistory",
+			method = RequestMethod.POST,
+			produces = MediaType.APPLICATION_JSON,
+			headers = "Authorization")
 	public String getFeedbacksHistory(@ApiParam(
 			value = "{\"beneficiaryRegID\":\"Integer - Beneficiary registration ID\", "
 					+ "\"calledServiceID\":\"provider Service Map ID as integer\"}") @RequestBody String request)
@@ -259,7 +281,8 @@ public class Service1097HistoryController
 	@RequestMapping(
 			value = "/getInformationsHistory",
 			method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON)
+			produces = MediaType.APPLICATION_JSON,
+			headers = "Authorization")
 	public String getInformationsHistory(@ApiParam(
 			value = "{\"beneficiaryRegID\":\"Integer - Beneficiary registration ID\"}, "
 					+ "\"calledServiceID\":\"provider Service Map ID as integer\"") @RequestBody String request)
@@ -298,7 +321,8 @@ public class Service1097HistoryController
 	@RequestMapping(
 			value = "/getCounsellingsHistory",
 			method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON)
+			produces = MediaType.APPLICATION_JSON,
+			headers = "Authorization")
 	public String getCounsellingsHistory(@ApiParam(
 			value = "{\"beneficiaryRegID\":\"Integer - Beneficiary registration ID\", "
 					+ "\"calledServiceID\":\"provider Service Map ID as integer\"}") @RequestBody String request)
@@ -338,7 +362,8 @@ public class Service1097HistoryController
 	@RequestMapping(
 			value = "/updateBeneficiaryIDForCall",
 			method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON)
+			produces = MediaType.APPLICATION_JSON,
+			headers = "Authorization")
 	private String updateBeneficiaryIDForCall(@RequestBody String request)
 	{
 		OutputResponse response = new OutputResponse();
@@ -361,7 +386,11 @@ public class Service1097HistoryController
 
 	@CrossOrigin()
 	@Deprecated
-	@RequestMapping(value = "/startCall", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON)
+	@RequestMapping(
+			value = "/startCall",
+			method = RequestMethod.POST,
+			produces = MediaType.APPLICATION_JSON,
+			headers = "Authorization")
 	private String startCall(@RequestBody String request)
 	{
 		OutputResponse response = new OutputResponse();
@@ -392,7 +421,8 @@ public class Service1097HistoryController
 	@RequestMapping(
 			value = "/updatebeneficiaryincall",
 			method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON)
+			produces = MediaType.APPLICATION_JSON,
+			headers = "Authorization")
 	private String updateBeneficiaryIDInCall(@RequestBody String request)
 	{
 		OutputResponse response = new OutputResponse();
@@ -414,7 +444,11 @@ public class Service1097HistoryController
 
 	@CrossOrigin()
 	@Deprecated
-	@RequestMapping(value = "/closeCall", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON)
+	@RequestMapping(
+			value = "/closeCall",
+			method = RequestMethod.POST,
+			produces = MediaType.APPLICATION_JSON,
+			headers = "Authorization")
 	private String closeCall(@RequestBody String request)
 	{
 		OutputResponse response = new OutputResponse();
