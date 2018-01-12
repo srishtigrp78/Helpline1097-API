@@ -54,7 +54,11 @@ public class FeedbackController
 	}
 
 	@CrossOrigin()
-	@RequestMapping(value = "/getfeedbacklist", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON)
+	@RequestMapping(
+			value = "/getfeedbacklist",
+			method = RequestMethod.POST,
+			produces = MediaType.APPLICATION_JSON,
+			headers = "Authorization")
 	public String feedbackReuest(@RequestBody String request)
 	{
 		OutputResponse response = new OutputResponse();
@@ -73,7 +77,11 @@ public class FeedbackController
 	}
 
 	@CrossOrigin()
-	@RequestMapping(value = "/setfeedback", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON)
+	@RequestMapping(
+			value = "/setfeedback",
+			method = RequestMethod.POST,
+			produces = MediaType.APPLICATION_JSON,
+			headers = "Authorization")
 	@Deprecated
 	public String feedbackCreate(@RequestBody String request)
 	{
@@ -95,7 +103,8 @@ public class FeedbackController
 	@RequestMapping(
 			value = "/getfeedback/{feedbackID}",
 			method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON)
+			produces = MediaType.APPLICATION_JSON,
+			headers = "Authorization")
 	public String getFeedbackByPost(@PathVariable("feedbackID") int feedbackID)
 	{
 		OutputResponse response = new OutputResponse();
@@ -114,7 +123,11 @@ public class FeedbackController
 
 	@CrossOrigin()
 	@Deprecated
-	@RequestMapping(value = "/updatefeedback", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON)
+	@RequestMapping(
+			value = "/updatefeedback",
+			method = RequestMethod.POST,
+			produces = MediaType.APPLICATION_JSON,
+			headers = "Authorization")
 	public String updateFeedback(@RequestBody FeedbackDetails feedbackDetails)
 	{
 		OutputResponse response = new OutputResponse();
@@ -158,8 +171,7 @@ public class FeedbackController
 		OutputResponse response = new OutputResponse();
 		try
 		{
-			String savedFeedback = feedbackServiceImpl.saveFeedbackFromCustomer(feedbackRequest,
-					request);
+			String savedFeedback = feedbackServiceImpl.saveFeedbackFromCustomer(feedbackRequest, request);
 			response.setResponse(savedFeedback);
 		} catch (Exception e)
 		{

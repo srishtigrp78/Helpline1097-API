@@ -25,7 +25,11 @@ public class CommonController
 	Logger logger = LoggerFactory.getLogger(CommonController.class);
 
 	@CrossOrigin()
-	@RequestMapping(value = "/category", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON)
+	@RequestMapping(
+			value = "/category",
+			method = RequestMethod.POST,
+			produces = MediaType.APPLICATION_JSON,
+			headers = "Authorization")
 	// public Iterable<CategoryDetails> getCategories(){
 	@Deprecated
 	public String getCategories()
@@ -42,7 +46,11 @@ public class CommonController
 	}
 
 	@CrossOrigin()
-	@RequestMapping(value = "/subcategory", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON)
+	@RequestMapping(
+			value = "/subcategory",
+			method = RequestMethod.POST,
+			produces = MediaType.APPLICATION_JSON,
+			headers = "Authorization")
 	@Deprecated
 	public String getSubcategories(@RequestBody String request)
 	{
@@ -60,7 +68,11 @@ public class CommonController
 	}
 
 	@CrossOrigin()
-	@RequestMapping(value = "/categoryByID", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON)
+	@RequestMapping(
+			value = "/categoryByID",
+			method = RequestMethod.POST,
+			produces = MediaType.APPLICATION_JSON,
+			headers = "Authorization")
 	@Deprecated
 	public String getcategoriesById(@RequestBody String request)
 	{
@@ -80,7 +92,11 @@ public class CommonController
 	}
 
 	@CrossOrigin()
-	@RequestMapping(value = "/servicetypes", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON)
+	@RequestMapping(
+			value = "/servicetypes",
+			method = RequestMethod.POST,
+			produces = MediaType.APPLICATION_JSON,
+			headers = "Authorization")
 	@Deprecated
 	public String getservicetypes()
 	{

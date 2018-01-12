@@ -24,7 +24,8 @@ public class InstitutionController
 	@RequestMapping(
 			value = "/api/helpline1097/co/get/institutions",
 			method = RequestMethod.GET,
-			produces = MediaType.APPLICATION_JSON)
+			produces = MediaType.APPLICATION_JSON,
+			headers = "Authorization")
 	public String getInstitutions()
 	{
 		OutputResponse response = new OutputResponse();

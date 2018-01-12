@@ -28,7 +28,11 @@ public class CalltypeController
 	private IEMRCalltypeServiceImpl iEMRCalltypeServiceImpl;
 
 	@CrossOrigin()
-	@RequestMapping(value = "/addType", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON)
+	@RequestMapping(
+			value = "/addType",
+			method = RequestMethod.POST,
+			produces = MediaType.APPLICATION_JSON,
+			headers = "Authorization")
 	public String addCallType(@RequestBody String request)
 	{
 
@@ -54,7 +58,11 @@ public class CalltypeController
 	}
 
 	@CrossOrigin()
-	@RequestMapping(value = "/getTypes/{id}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON)
+	@RequestMapping(
+			value = "/getTypes/{id}",
+			method = RequestMethod.POST,
+			produces = MediaType.APPLICATION_JSON,
+			headers = "Authorization")
 	public String getAllCallTypes(@PathVariable("id") int id)
 	{
 

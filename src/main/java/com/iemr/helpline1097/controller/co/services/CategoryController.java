@@ -27,7 +27,7 @@ public class CategoryController
 	@RequestMapping(
 			value = "/api/helpline1097/v1/get/category",
 			method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON)
+			produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String getAllCategries()
 	{
 

@@ -30,7 +30,11 @@ public class FeedbackResponseController
 
 	@CrossOrigin()
 	@Deprecated
-	@RequestMapping(value = "/put/feedbackResponse", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON)
+	@RequestMapping(
+			value = "/put/feedbackResponse",
+			method = RequestMethod.POST,
+			produces = MediaType.APPLICATION_JSON,
+			headers = "Authorization")
 	public String feedbackCreate(@RequestBody String request)
 	{
 		OutputResponse response = new OutputResponse();
@@ -51,7 +55,8 @@ public class FeedbackResponseController
 	@RequestMapping(
 			value = "/get/feedbackResponse/{feedbackResponseID}",
 			method = RequestMethod.GET,
-			produces = MediaType.APPLICATION_JSON)
+			produces = MediaType.APPLICATION_JSON,
+			headers = "Authorization")
 	@Deprecated
 	public String getFeedback(@PathVariable("feedbackResponseID") int feedbackResponseID)
 	{

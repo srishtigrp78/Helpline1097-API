@@ -30,7 +30,11 @@ public class FeedbackType
 	}
 
 	@CrossOrigin()
-	@RequestMapping(value = "/gettype", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON)
+	@RequestMapping(
+			value = "/gettype",
+			method = RequestMethod.POST,
+			produces = MediaType.APPLICATION_JSON,
+			headers = "Authorization")
 	public String getFeedbackType()
 	{
 

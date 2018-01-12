@@ -29,7 +29,11 @@ public class FeedbackRequestController
 	private FeedbackRequestServiceImpl feedbackRequestServiceImpl;
 
 	@CrossOrigin()
-	@RequestMapping(value = "/put/feedbackRequest", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON)
+	@RequestMapping(
+			value = "/put/feedbackRequest",
+			method = RequestMethod.POST,
+			produces = MediaType.APPLICATION_JSON,
+			headers = "Authorization")
 	public String feedbackCreate(@RequestBody String request)
 	{
 		OutputResponse response = new OutputResponse();
@@ -50,7 +54,8 @@ public class FeedbackRequestController
 	@RequestMapping(
 			value = "/get/feedbackRequest/{feedbackRequestID}",
 			method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON)
+			produces = MediaType.APPLICATION_JSON,
+			headers = "Authorization")
 	public String getFeedbackRequests(@PathVariable("feedbackRequestID") int feedbackRequestID)
 	{
 		OutputResponse response = new OutputResponse();

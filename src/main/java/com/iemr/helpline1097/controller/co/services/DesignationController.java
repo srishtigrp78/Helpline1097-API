@@ -22,7 +22,11 @@ public class DesignationController
 	Logger logger = LoggerFactory.getLogger(CommonController.class);
 
 	@CrossOrigin()
-	@RequestMapping(value = "/get", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON)
+	@RequestMapping(
+			value = "/get",
+			method = RequestMethod.POST,
+			produces = MediaType.APPLICATION_JSON,
+			headers = "Authorization")
 	public String getDesignations()
 	{
 		OutputResponse response = new OutputResponse();
