@@ -41,39 +41,44 @@ public class HTTPRequestInterceptor extends HandlerInterceptorAdapter
 		boolean status = true;
 		logger.debug("In preHandle we are Intercepting the Request");
 		String authorization = request.getHeader("Authorization");
-		logger.debug("RequestURI::" + request.getRequestURI() + " || Authorization ::" + authorization);
-		// if (authorization != null)
-		// {
-		try
+		logger.debug("RequestURI::" + request.getRequestURI() + " || Authorization ::" + authorization
+				+ " || method :: " + request.getMethod());
+		if (!request.getMethod().equalsIgnoreCase("OPTIONS"))
 		{
-			String[] requestURIParts = request.getRequestURI().split("/");
-			String requestAPI = requestURIParts[requestURIParts.length - 1];
-			switch (requestAPI)
+			try
 			{
-				case "userAuthenticate":
-				case "userAuthenticateNew":
-				case "userAuthenticateV1":
-				case "forgetPassword":
-				case "setForgetPassword":
-				case "changePassword":
-				case "saveUserSecurityQuesAns":
-				case "swagger-ui.html":
-				case "ui":
-				case "swagger-resources":
-				case "api-docs":
-					break;
-				default:
-					validator.checkKeyExists(authorization, request.getRemoteAddr());
-					break;
+				String[] requestURIParts = request.getRequestURI().split("/");
+				String requestAPI = requestURIParts[requestURIParts.length - 1];
+				switch (requestAPI)
+				{
+					case "userAuthenticate":
+					case "userAuthenticateNew":
+					case "userAuthenticateV1":
+					case "forgetPassword":
+					case "setForgetPassword":
+					case "changePassword":
+					case "saveUserSecurityQuesAns":
+					case "swagger-ui.html":
+					case "ui":
+					case "swagger-resources":
+					case "api-docs":
+
+						break;
+					case "error":
+						status = false;
+						break;
+					default:
+						validator.checkKeyExists(authorization, request.getRemoteAddr());
+						break;
+				}
+			} catch (Exception e)
+			{
+				OutputResponse output = new OutputResponse();
+				output.setError(e);
+				response.getOutputStream().print(output.toString());
+				status = false;
 			}
-		} catch (Exception e)
-		{
-			OutputResponse output = new OutputResponse();
-			output.setError(e);
-			response.getOutputStream().print(output.toString());
-			status = false;
 		}
-		// }
 		return status;
 	}
 
@@ -84,7 +89,10 @@ public class HTTPRequestInterceptor extends HandlerInterceptorAdapter
 		logger.debug("In postHandle we are Intercepting the Request");
 		String authorization = request.getHeader("Authorization");
 		logger.debug("RequestURI::" + request.getRequestURI() + " || Authorization ::" + authorization);
-		sessionObject.updateSessionObject(authorization, sessionObject.getSessionObject(authorization));
+		if (authorization != null)
+		{
+			sessionObject.updateSessionObject(authorization, sessionObject.getSessionObject(authorization));
+		}
 	}
 
 	@Override
