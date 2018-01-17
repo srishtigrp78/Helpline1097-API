@@ -2,6 +2,7 @@ package com.iemr.helpline1097.utils.http;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.core.MediaType;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -76,6 +77,9 @@ public class HTTPRequestInterceptor extends HandlerInterceptorAdapter
 				OutputResponse output = new OutputResponse();
 				output.setError(e);
 				response.getOutputStream().print(output.toString());
+				response.setContentType(MediaType.APPLICATION_JSON);
+				response.setContentLength(output.toString().length());
+				response.setHeader("Access-Control-Allow-Origin", "*");
 				status = false;
 			}
 		}
@@ -86,12 +90,18 @@ public class HTTPRequestInterceptor extends HandlerInterceptorAdapter
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object object, ModelAndView model)
 			throws Exception
 	{
-		logger.debug("In postHandle we are Intercepting the Request");
-		String authorization = request.getHeader("Authorization");
-		logger.debug("RequestURI::" + request.getRequestURI() + " || Authorization ::" + authorization);
-		if (authorization != null)
+		try
 		{
-			sessionObject.updateSessionObject(authorization, sessionObject.getSessionObject(authorization));
+			logger.debug("In postHandle we are Intercepting the Request");
+			String authorization = request.getHeader("Authorization");
+			logger.debug("RequestURI::" + request.getRequestURI() + " || Authorization ::" + authorization);
+			if (authorization != null)
+			{
+				sessionObject.updateSessionObject(authorization, sessionObject.getSessionObject(authorization));
+			}
+		} catch (Exception e)
+		{
+			logger.debug("postHandle failed with error " + e.getMessage());
 		}
 	}
 
