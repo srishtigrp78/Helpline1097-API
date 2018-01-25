@@ -45,15 +45,15 @@ public class Validator
 			{
 				responseObj.put("sessionStatus", "session creation failed");
 				String sessionData = session.getSessionObject(key);
-				if (sessionData != null && sessionData.trim().length() > 0)
-				{
-					JSONObject sessionObj = new JSONObject(sessionData);
-					if (!sessionObj.getString("loginIPAddress").equals(responseObj.getString("loginIPAddress")))
-					{
-						loggedFromDifferentIP = true;
-						status = "login success, but user logged in from " + sessionObj.getString("loginIPAddress");
-					}
-				}
+				// if (sessionData != null && sessionData.trim().length() > 0)
+				// {
+				// 	JSONObject sessionObj = new JSONObject(sessionData);
+				// 	if (!sessionObj.getString("loginIPAddress").equals(responseObj.getString("loginIPAddress")))
+				// 	{
+				// 		loggedFromDifferentIP = true;
+				// 		status = "login success, but user logged in from " + sessionObj.getString("loginIPAddress");
+				// 	}
+				// }
 			} catch (RedisSessionException e)
 			{
 				logger.error("Session validation failed with exception", e);
@@ -85,10 +85,10 @@ public class Validator
 		try
 		{
 			JSONObject sessionObj = new JSONObject(session.getSessionObject(loginKey));
-			if (!sessionObj.getString("loginIPAddress").equals(ipAddress))
-			{
-				throw new Exception();
-			}
+			// if (!sessionObj.getString("loginIPAddress").equals(ipAddress))
+			// {
+			// 	throw new Exception();
+			// }
 		} catch (Exception e)
 		{
 			throw new IEMRException("Invalid login key or session is expired");
