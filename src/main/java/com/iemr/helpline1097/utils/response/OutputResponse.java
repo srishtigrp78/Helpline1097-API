@@ -86,8 +86,9 @@ public class OutputResponse
 			case "ParseException":
 			case "NullPointerException":
 			case "SQLGrammarException":
+			case "ArrayIndexOutOfBoundsException":
 				this.statusCode = CODE_EXCEPTION;
-				status = "Failed with internal errors at " + currDate.toString() + ".Please try after some time. "
+				status = "Failed with critical errors at " + currDate.toString() + ".Please try after some time. "
 						+ "If error is still seen, contact your administrator.";
 				errorMessage = thrown.getMessage();
 				break;
