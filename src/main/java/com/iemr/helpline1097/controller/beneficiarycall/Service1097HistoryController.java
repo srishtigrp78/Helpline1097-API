@@ -49,13 +49,10 @@ public class Service1097HistoryController
 	}
 
 	@CrossOrigin()
-	@RequestMapping(
-			value = "/getHistory",
-			method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON,
+	@RequestMapping(value = "/getHistory", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON,
 			headers = "Authorization")
-	public String getServiceHistory(@ApiParam(
-			value = "{\"beneficiaryRegID\":\"Integer - Beneficiary registration ID\", "
+	public String
+			getServiceHistory(@ApiParam(value = "{\"beneficiaryRegID\":\"Integer - Beneficiary registration ID\", "
 					+ "\"calledServiceID\":\"provider Service Map ID as integer\"}") @RequestBody String beneficiaryRequest)
 	{
 		OutputResponse response = new OutputResponse();
@@ -65,8 +62,8 @@ public class Service1097HistoryController
 			// BenCallServicesMappingHistory.class);
 			// List<BenCallServicesMappingHistory> serviceHistoryList = servicesHistoryService
 			// .getServiceHistory(service1097HistoryDetails.getBeneficiaryRegID());
-			List<BenCallServicesMappingHistory> serviceHistoryList = servicesHistoryService
-					.getServiceHistory(beneficiaryRequest);
+			List<BenCallServicesMappingHistory> serviceHistoryList =
+					servicesHistoryService.getServiceHistory(beneficiaryRequest);
 			response.setResponse(serviceHistoryList.toString());
 		} catch (Exception e)
 		{
@@ -77,13 +74,10 @@ public class Service1097HistoryController
 	}
 
 	@CrossOrigin()
-	@RequestMapping(
-			value = "/getBeneficiaryCallHistory",
-			method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON,
-			headers = "Authorization")
-	public String getBeneficiaryCallHistory(@ApiParam(
-			value = "{\"beneficiaryRegID\":\"Integer - Beneficiary registration ID\", "
+	@RequestMapping(value = "/getBeneficiaryCallHistory", method = RequestMethod.POST,
+			produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	public String getBeneficiaryCallHistory(
+			@ApiParam(value = "{\"beneficiaryRegID\":\"Integer - Beneficiary registration ID\", "
 					+ "\"calledServiceID\":\"provider Service Map ID as integer\"}") @RequestBody String beneficiaryRequest)
 	{
 		OutputResponse response = new OutputResponse();
@@ -93,8 +87,8 @@ public class Service1097HistoryController
 			// BenCallServicesMappingHistory.class);
 			// List<BenCallServicesMappingHistory> serviceHistoryList = servicesHistoryService
 			// .getServiceHistory(service1097HistoryDetails.getBeneficiaryRegID());
-			List<BenCallServicesMappingHistory> serviceHistoryList = servicesHistoryService
-					.getServiceHistory(beneficiaryRequest);
+			List<BenCallServicesMappingHistory> serviceHistoryList =
+					servicesHistoryService.getServiceHistory(beneficiaryRequest);
 			response.setResponse(serviceHistoryList.toString());
 		} catch (Exception e)
 		{
@@ -105,18 +99,15 @@ public class Service1097HistoryController
 	}
 
 	@CrossOrigin()
-	@RequestMapping(
-			value = "/setHistory",
-			method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON,
+	@RequestMapping(value = "/setHistory", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON,
 			headers = "Authorization")
 	public String setServiceHistory(@RequestBody String request)
 	{
 		OutputResponse response = new OutputResponse();
 		try
 		{
-			BenCallServicesMappingHistory serviceHistoryDetails = inputMapper.gson().fromJson(request,
-					BenCallServicesMappingHistory.class);
+			BenCallServicesMappingHistory serviceHistoryDetails =
+					inputMapper.gson().fromJson(request, BenCallServicesMappingHistory.class);
 			BenCallServicesMappingHistory savedObj = servicesHistoryService.createServiceHistory(serviceHistoryDetails);
 			response.setResponse(savedObj.toString());
 		} catch (Exception e)
@@ -128,10 +119,7 @@ public class Service1097HistoryController
 	}
 
 	@CrossOrigin()
-	@RequestMapping(
-			value = "/getCallSummary",
-			method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON,
+	@RequestMapping(value = "/getCallSummary", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON,
 			headers = "Authorization")
 	// public String getCallSummary(@RequestBody BenCallServicesMappingHistory
 	// service1097HistoryDetails) {
@@ -159,13 +147,10 @@ public class Service1097HistoryController
 	}
 
 	@CrossOrigin()
-	@RequestMapping(
-			value = "/getBeneficiaryCallsHistory",
-			method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON,
-			headers = "Authorization")
-	public String getBeneficiaryCallsHistory(@ApiParam(
-			value = "{\"beneficiaryRegID\":\"Integer - Beneficiary registration ID\", "
+	@RequestMapping(value = "/getBeneficiaryCallsHistory", method = RequestMethod.POST,
+			produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	public String getBeneficiaryCallsHistory(
+			@ApiParam(value = "{\"beneficiaryRegID\":\"Integer - Beneficiary registration ID\", "
 					+ "\"calledServiceID\":\"provider Service Map ID as integer\"}") @RequestBody String request)
 	{
 		OutputResponse response = new OutputResponse();
@@ -182,8 +167,8 @@ public class Service1097HistoryController
 						call.getCalledServiceID(), pageNo, rows);
 			} else
 			{
-				callHistoryList = beneficiaryCallService.getBeneficiaryCallsHistory(call.getBeneficiaryRegID(), pageNo,
-						rows);
+				callHistoryList =
+						beneficiaryCallService.getBeneficiaryCallsHistory(call.getBeneficiaryRegID(), pageNo, rows);
 			}
 			response.setResponse(callHistoryList.toString());
 		} catch (JSONException e)
@@ -200,13 +185,10 @@ public class Service1097HistoryController
 	}
 
 	@CrossOrigin()
-	@RequestMapping(
-			value = "/getReferralsHistory",
-			method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON,
+	@RequestMapping(value = "/getReferralsHistory", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON,
 			headers = "Authorization")
-	public String getReferralsHistory(@ApiParam(
-			value = "{\"beneficiaryRegID\":\"Integer - Beneficiary registration ID\", "
+	public String
+			getReferralsHistory(@ApiParam(value = "{\"beneficiaryRegID\":\"Integer - Beneficiary registration ID\", "
 					+ "\"calledServiceID\":\"provider Service Map ID as integer\"}") @RequestBody String request)
 	{
 		OutputResponse response = new OutputResponse();
@@ -239,13 +221,10 @@ public class Service1097HistoryController
 	}
 
 	@CrossOrigin()
-	@RequestMapping(
-			value = "/getFeedbacksHistory",
-			method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON,
+	@RequestMapping(value = "/getFeedbacksHistory", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON,
 			headers = "Authorization")
-	public String getFeedbacksHistory(@ApiParam(
-			value = "{\"beneficiaryRegID\":\"Integer - Beneficiary registration ID\", "
+	public String
+			getFeedbacksHistory(@ApiParam(value = "{\"beneficiaryRegID\":\"Integer - Beneficiary registration ID\", "
 					+ "\"calledServiceID\":\"provider Service Map ID as integer\"}") @RequestBody String request)
 	{
 		OutputResponse response = new OutputResponse();
@@ -278,13 +257,10 @@ public class Service1097HistoryController
 	}
 
 	@CrossOrigin()
-	@RequestMapping(
-			value = "/getInformationsHistory",
-			method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON,
-			headers = "Authorization")
-	public String getInformationsHistory(@ApiParam(
-			value = "{\"beneficiaryRegID\":\"Integer - Beneficiary registration ID\"}, "
+	@RequestMapping(value = "/getInformationsHistory", method = RequestMethod.POST,
+			produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	public String getInformationsHistory(
+			@ApiParam(value = "{\"beneficiaryRegID\":\"Integer - Beneficiary registration ID\"}, "
 					+ "\"calledServiceID\":\"provider Service Map ID as integer\"") @RequestBody String request)
 	{
 		OutputResponse response = new OutputResponse();
@@ -301,8 +277,8 @@ public class Service1097HistoryController
 			// BenCallServicesMappingHistory.class);
 			// List<BenCallServicesMappingHistory> callHistoryList = servicesHistoryService
 			// .getInformationsHistory(call.getBeneficiaryRegID(), pageNo, rows);
-			List<BenCallServicesMappingHistory> callHistoryList = servicesHistoryService
-					.getInformationsHistory(request);
+			List<BenCallServicesMappingHistory> callHistoryList =
+					servicesHistoryService.getInformationsHistory(request);
 			response.setResponse(callHistoryList.toString());
 		} catch (JSONException e)
 		{
@@ -318,13 +294,10 @@ public class Service1097HistoryController
 	}
 
 	@CrossOrigin()
-	@RequestMapping(
-			value = "/getCounsellingsHistory",
-			method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON,
-			headers = "Authorization")
-	public String getCounsellingsHistory(@ApiParam(
-			value = "{\"beneficiaryRegID\":\"Integer - Beneficiary registration ID\", "
+	@RequestMapping(value = "/getCounsellingsHistory", method = RequestMethod.POST,
+			produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	public String
+			getCounsellingsHistory(@ApiParam(value = "{\"beneficiaryRegID\":\"Integer - Beneficiary registration ID\", "
 					+ "\"calledServiceID\":\"provider Service Map ID as integer\"}") @RequestBody String request)
 	{
 		OutputResponse response = new OutputResponse();
@@ -341,8 +314,8 @@ public class Service1097HistoryController
 			// BenCallServicesMappingHistory.class);
 			// List<BenCallServicesMappingHistory> callHistoryList = servicesHistoryService
 			// .getCounsellingsHistory(call.getBeneficiaryRegID(), pageNo, rows);
-			List<BenCallServicesMappingHistory> callHistoryList = servicesHistoryService
-					.getCounsellingsHistory(request);
+			List<BenCallServicesMappingHistory> callHistoryList =
+					servicesHistoryService.getCounsellingsHistory(request);
 			response.setResponse(callHistoryList.toString());
 		} catch (JSONException e)
 		{
@@ -359,11 +332,8 @@ public class Service1097HistoryController
 
 	@CrossOrigin()
 	@Deprecated
-	@RequestMapping(
-			value = "/updateBeneficiaryIDForCall",
-			method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON,
-			headers = "Authorization")
+	@RequestMapping(value = "/updateBeneficiaryIDForCall", method = RequestMethod.POST,
+			produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	private String updateBeneficiaryIDForCall(@RequestBody String request)
 	{
 		OutputResponse response = new OutputResponse();
@@ -386,10 +356,7 @@ public class Service1097HistoryController
 
 	@CrossOrigin()
 	@Deprecated
-	@RequestMapping(
-			value = "/startCall",
-			method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON,
+	@RequestMapping(value = "/startCall", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON,
 			headers = "Authorization")
 	private String startCall(@RequestBody String request)
 	{
@@ -418,11 +385,8 @@ public class Service1097HistoryController
 
 	@CrossOrigin()
 	@Deprecated
-	@RequestMapping(
-			value = "/updatebeneficiaryincall",
-			method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON,
-			headers = "Authorization")
+	@RequestMapping(value = "/updatebeneficiaryincall", method = RequestMethod.POST,
+			produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	private String updateBeneficiaryIDInCall(@RequestBody String request)
 	{
 		OutputResponse response = new OutputResponse();
@@ -444,10 +408,7 @@ public class Service1097HistoryController
 
 	@CrossOrigin()
 	@Deprecated
-	@RequestMapping(
-			value = "/closeCall",
-			method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON,
+	@RequestMapping(value = "/closeCall", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON,
 			headers = "Authorization")
 	private String closeCall(@RequestBody String request)
 	{
@@ -493,5 +454,26 @@ public class Service1097HistoryController
 	//
 	// return response.toString();
 	// }
+
+	@CrossOrigin()
+	@RequestMapping(value = "/getCaseSheet", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON,
+			headers = "Authorization")
+	public String
+			getCaseSheet(@ApiParam(value = "{\"benCallID\":\"Integer - current call ID\"}") @RequestBody String request)
+	{
+		OutputResponse response = new OutputResponse();
+		try
+		{
+			BeneficiaryCall call = inputMapper.gson().fromJson(request, BeneficiaryCall.class);
+			List<BenCallServicesMappingHistory> callHistoryList =
+					servicesHistoryService.getCallSummaryV1(call.getBenCallID());
+			response.setResponse(callHistoryList.toString());
+		} catch (Exception e)
+		{
+			logger.error("getCaseSheet failed with error" + e.getMessage(), e);
+			response.setError(e);
+		}
+		return response.toString();
+	}
 
 }

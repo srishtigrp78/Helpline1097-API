@@ -55,7 +55,7 @@ public class BenCallServicesMappingHistory
 	@Column(name = "SubServiceID")
 	@Expose
 	private Integer subServiceID;
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "SubServiceID", insertable = false, updatable = false, referencedColumnName = "SubServiceID")
 	@JsonIgnore
 	@Expose
@@ -64,7 +64,7 @@ public class BenCallServicesMappingHistory
 	@Column(name = "CategoryID")
 	@Expose
 	private Integer categoryID;
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "CategoryID", insertable = false, updatable = false)
 	@JsonIgnore
 	@Expose
@@ -73,7 +73,7 @@ public class BenCallServicesMappingHistory
 	@Column(name = "SubCategoryID")
 	@Expose
 	private Integer subCategoryID;
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "SubCategoryID", insertable = false, updatable = false)
 	@JsonIgnore
 	@Expose
@@ -82,7 +82,7 @@ public class BenCallServicesMappingHistory
 	@Column(name = "COCategoryID")
 	@Expose
 	private Integer coCategoryID;
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "COCategoryID", insertable = false, updatable = false, referencedColumnName = "categoryID")
 	@JsonIgnore
 	@Expose
@@ -91,7 +91,7 @@ public class BenCallServicesMappingHistory
 	@Column(name = "COSubCategoryID")
 	@Expose
 	private Integer coSubCategoryID;
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "COSubCategoryID", insertable = false, updatable = false, referencedColumnName = "subCategoryID")
 	@JsonIgnore
 	@Expose
@@ -104,7 +104,7 @@ public class BenCallServicesMappingHistory
 	@Column(name = "FeedbackID")
 	@Expose
 	private Long feedbackID;
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "FeedbackID", insertable = false, updatable = false)
 	@JsonIgnore
 	@Expose
@@ -113,7 +113,7 @@ public class BenCallServicesMappingHistory
 	@Column(name = "InstituteDirMapID")
 	@Expose
 	private Long instituteDirMapID;
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "InstituteDirMapID", insertable = false, updatable = false)
 	@JsonIgnore
 	@Expose

@@ -33,9 +33,12 @@ public interface ServicesHistoryRepository extends CrudRepository<BenCallService
 			+ "b.coSubCategoryID, b.coSubCategoryDetails  "
 			+ "from BenCallServicesMappingHistory b join b.subServices sm left join b.categoryDetails c "
 			+ "left join b.subCategoryDetails s left join b.feedbackDetails f left join b.instituteDirectoryMapping i "
-			+ "where b.benCallID = :benCallID group by b.benCallID, b.subServices "
-			+ "order by b.benCall97ServiceMapID desc ")
+			+ "where b.benCallID = :benCallID order by b.benCall97ServiceMapID desc ")
 	public List<Objects[]> getCallSummary(@Param("benCallID") Long benCallID);
+
+	@Query("select b from BenCallServicesMappingHistory b where b.benCallID = :benCallID "
+			+ "order by b.benCall97ServiceMapID desc ")
+	public List<BenCallServicesMappingHistory> getCallSummaryV1(@Param("benCallID") Long benCallID);
 
 	@Query("select b.benCall97ServiceMapID, b.beneficiaryRegID, b.benCallID, "
 			+ "b.subServiceID, b.subServices, b.categoryID, b.categoryDetails, b.subCategoryID, "

@@ -42,4 +42,6 @@ public interface ServicesHistoryService
 
 	List<BenCallServicesMappingHistory> getCounsellingsHistory(String beneficiaryRequest) throws Exception;
 
+	List<BenCallServicesMappingHistory> getCallSummaryV1(Long id);
+
 }

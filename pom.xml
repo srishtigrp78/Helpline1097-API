@@ -19,11 +19,6 @@
 		<version>1.5.3.RELEASE</version>
 	</parent>
 
-	<properties>
-		<java.version>1.8</java.version>
-	</properties>
-	
-
 	<repositories>
 		<repository>
 			<id>openkm.com</id>
@@ -194,7 +189,27 @@
 
 	</dependencies>
 
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<m2e.apt.activation>jdt_apt</m2e.apt.activation>
+		<org.mapstruct.version>1.2.0.Final</org.mapstruct.version>
+		<org.projectlombok.version>1.16.18</org.projectlombok.version>
+		<environment>dev</environment>
+		<target-properties>target/classes/application.properties</target-properties>
+		<source-properties>src/main/environment/common_${environment}.properties</source-properties>
+		<hostname-dev>10.152.3.99</hostname-dev>
+		<port-dev>9990</port-dev>
+		<hostname-uat>deviemr.piramalswasthya.org</hostname-uat>
+		<port-uat>9990</port-uat>
+		<server-id>wildfly-${environment}</server-id>
+		<server-hostname>{hostname-${environment}}</server-hostname>
+		<server-port>{port-${environment}}</server-port>
+	</properties>
+
 	<build>
+
 		<finalName>1097api-v1.0</finalName>
 		<plugins>
 			<plugin>
@@ -203,8 +218,52 @@
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.8</version>
+				<executions>
+					<execution>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<id>properties-updated</id>
+						<configuration>
+							<target>
+								<echo>
+									concatinating properties file ${target-properties} and
+									${source-properties}
+									<!-- $${server-hostname} $${server-port} ${server-id} $${server-username} 
+										$${server-password} -->
+								</echo>
+								<concat destfile="${target-properties}" append="yes"
+									force="yes">
+									<fileset file="${source-properties}">
+									</fileset>
+								</concat>
+							</target>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+				<version>1.2.1.Final</version>
+				<configuration>
+					<id>${server-id}</id>
+					<hostname>$${server-hostname}</hostname>
+					<port>$${server-port}</port>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>install</phase>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
