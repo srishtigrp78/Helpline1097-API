@@ -29,8 +29,11 @@ import com.iemr.helpline1097.data.co.services.DirectoryMapping;
 import com.iemr.helpline1097.data.co.services.SubCategoryDetails;
 import com.iemr.helpline1097.utils.mapper.OutputMapper;
 
+import lombok.Data;
+
 @Entity
 @Table(name = "m_bencall1097servicesmapping")
+@Data
 public class BenCallServicesMappingHistory
 {
 	@Id

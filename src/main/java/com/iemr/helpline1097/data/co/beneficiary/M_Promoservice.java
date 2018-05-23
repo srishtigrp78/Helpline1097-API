@@ -9,7 +9,10 @@ import javax.persistence.Id;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 
+import lombok.Data;
+
 @Entity
+@Data
 public class M_Promoservice {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

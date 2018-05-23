@@ -22,8 +22,11 @@ import com.iemr.helpline1097.data.co.beneficiarycall.BenCallServicesMappingHisto
 import com.iemr.helpline1097.data.co.beneficiarycall.SubServices;
 import com.iemr.helpline1097.utils.mapper.OutputMapper;
 
+import lombok.Data;
+
 @Entity
 @Table(name = "m_Category")
+@Data
 public class CategoryDetails
 {
 

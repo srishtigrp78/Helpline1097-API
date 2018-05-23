@@ -20,8 +20,11 @@ import com.google.gson.annotations.Expose;
 import com.iemr.helpline1097.data.co.beneficiarycall.BenCallServicesMappingHistory;
 import com.iemr.helpline1097.utils.mapper.OutputMapper;
 
+import lombok.Data;
+
 @Entity
 @Table(name = "m_institutedirectorymapping")
+@Data
 public class DirectoryMapping
 {
 
@@ -46,9 +49,19 @@ public class DirectoryMapping
 	@Column(name = "InstituteDirectoryID")
 	@Expose
 	private Integer instituteDirectoryID;
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "InstituteDirectoryID", insertable = false, updatable = false)
+	@Expose
+	private Directory instituteDirectory;
+
 	@Column(name = "InstituteSubDirectoryID")
 	@Expose
 	private Integer instituteSubDirectoryID;
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "InstituteSubDirectoryID", insertable = false, updatable = false)
+	@Expose
+	private InstituteSubDirectory institut;
+
 	@Expose
 	@Column(name = "InstituteRouteDirectoryID")
 	private Integer instituteRouteDirectoryID;
@@ -73,8 +86,8 @@ public class DirectoryMapping
 			String contactNo1, String contactNo2, String contactNo3)
 	{
 		this.instituteDirMapID = instituteDirMapID;
-		this.institutionDetails = new InstitutionDetails(institutionID, institutionName, address, contactNo1,
-				contactNo2, contactNo3);
+		this.institutionDetails =
+				new InstitutionDetails(institutionID, institutionName, address, contactNo1, contactNo2, contactNo3);
 	}
 
 	public DirectoryMapping(Long instituteDirMapID, InstitutionDetails institution)

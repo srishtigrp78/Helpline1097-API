@@ -18,9 +18,12 @@ import com.google.gson.annotations.Expose;
 import com.iemr.helpline1097.data.co.services.CategoryDetails;
 import com.iemr.helpline1097.utils.mapper.OutputMapper;
 
+import lombok.Data;
+
 @Entity
 // @Table(name = "m_1097servicesmaster")
 @Table(name = "m_subservice")
+@Data
 public class SubServices
 {
 	@Id

@@ -1,4 +1,4 @@
-package com.iemr.helpline1097.data.co.feedback;
+package com.iemr.helpline1097.data.co.services;
 
 import java.sql.Timestamp;
 
@@ -16,21 +16,23 @@ import com.iemr.helpline1097.utils.mapper.OutputMapper;
 import lombok.Data;
 
 @Entity
-@Table(name = "m_feedbacktype")
+@Table(name = "m_institutedirectory")
 @Data
-public class FeedbackType
+public class Directory
 {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "FeedbackTypeID")
+	@Column(name = "InstituteDirectoryID")
 	@Expose
-	private Integer feedbackTypeID;
-	@Column(name = "FeedbackTypeName")
+	private Integer instituteDirectoryID;
+
+	@Column(name = "InstituteDirectoryName")
 	@Expose
-	private String feedbackTypeName;
-	@Column(name = "FeedbackDesc")
+	private String instituteDirectoryName;
+	@Column(name = "InstituteDirectoryDesc")
 	@Expose
-	private String feedbackDesc;
+	private String instituteDirectoryDesc;
 	@Column(name = "Deleted", insertable = false, updatable = true)
 	@Expose
 	private Boolean deleted;
@@ -43,20 +45,27 @@ public class FeedbackType
 	private String modifiedBy;
 	@Column(name = "LastModDate", insertable = false, updatable = false)
 	private Timestamp lastModDate;
-
-	public FeedbackType()
-	{
-
-	}
-
-	public FeedbackType(Integer feedbackTypeID, String feedbackTypeName)
-	{
-		this.feedbackTypeID = feedbackTypeID;
-		this.feedbackTypeName = feedbackTypeName;
-	}
+	@Column(name = "ProviderServiceMapID")
+	@Expose
+	private Integer providerServiceMapID;
 
 	@Transient
 	private OutputMapper outputMapper = new OutputMapper();
+
+	protected Directory()
+	{
+	}
+
+	public Directory(Integer institutionID, String directoryName)
+	{
+		this.instituteDirectoryID = institutionID;
+		this.instituteDirectoryName = directoryName;
+	}
+
+	public Integer getProviderServiceMapID()
+	{
+		return providerServiceMapID;
+	}
 
 	@Override
 	public String toString()

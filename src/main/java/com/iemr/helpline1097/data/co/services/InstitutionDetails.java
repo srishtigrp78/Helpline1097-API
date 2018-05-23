@@ -17,8 +17,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.gson.annotations.Expose;
 import com.iemr.helpline1097.utils.mapper.OutputMapper;
 
+import lombok.Data;
+
 @Entity
 @Table(name = "m_institution")
+@Data
 public class InstitutionDetails
 {
 

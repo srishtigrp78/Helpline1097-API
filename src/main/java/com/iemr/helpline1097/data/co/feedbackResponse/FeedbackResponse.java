@@ -11,8 +11,10 @@ import javax.persistence.Transient;
 import com.google.gson.annotations.Expose;
 import com.iemr.helpline1097.utils.mapper.OutputMapper;
 
-@Entity
+import lombok.Data;
 
+@Entity
+@Data
 public class FeedbackResponse
 {
 

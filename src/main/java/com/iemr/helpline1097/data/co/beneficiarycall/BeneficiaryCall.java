@@ -22,8 +22,11 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.reflect.TypeToken;
 import com.iemr.helpline1097.utils.mapper.OutputMapper;
 
+import lombok.Data;
+
 @Entity
 @Table(name = "t_bencall")
+@Data
 public class BeneficiaryCall
 {
 	@Id
