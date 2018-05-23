@@ -139,7 +139,30 @@ public class ServicesHistoryServiceImpl implements ServicesHistoryService
 	{
 		List<BenCallServicesMappingHistory> serviceHistoryList = new ArrayList<BenCallServicesMappingHistory>();
 		serviceHistoryList = serviceHistoryRepository.getCallSummaryV1(id);
-		return serviceHistoryList;
+		List<BenCallServicesMappingHistory> caseSheets = new ArrayList<BenCallServicesMappingHistory>();
+		BenCallServicesMappingHistory caseSheet = null;
+		if (serviceHistoryList.size() > 0)
+		{
+			caseSheets.add(serviceHistoryList.get(0));
+			caseSheet = caseSheets.get(0);
+		}
+		for (BenCallServicesMappingHistory benCallServicesMappingHistory : serviceHistoryList)
+		{
+			if (benCallServicesMappingHistory.getSubCategoryID() != null)
+			{
+				caseSheet.getInformations().add(benCallServicesMappingHistory.getSubCategoryDetails());
+			} else if (benCallServicesMappingHistory.getCoSubCategoryID() != null)
+			{
+				caseSheet.getCounsellings().add(benCallServicesMappingHistory.getCoSubCategoryDetails());
+			} else if (benCallServicesMappingHistory.getFeedbackID() != null)
+			{
+				caseSheet.getFeedbacks().add(benCallServicesMappingHistory.getFeedbackDetails());
+			} else if (benCallServicesMappingHistory.getInstituteDirMapID() != null)
+			{
+				caseSheet.getReferrals().add(benCallServicesMappingHistory.getInstituteDirectoryMapping());
+			}
+		}
+		return caseSheets;
 	}
 
 	@Override

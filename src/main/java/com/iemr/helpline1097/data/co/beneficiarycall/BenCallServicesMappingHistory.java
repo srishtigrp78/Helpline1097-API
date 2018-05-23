@@ -1,14 +1,14 @@
 package com.iemr.helpline1097.data.co.beneficiarycall;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Author: Neeraj Kumar (298657).
- * Date: 02-06-2017.
- * Purpose: 1097 service taken by Beneficiary pojo.... 
+ * Author: Neeraj Kumar (298657). Date: 02-06-2017. Purpose: 1097 service taken by Beneficiary pojo....
  * 
  * 
- * */
+ */
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -135,33 +135,23 @@ public class BenCallServicesMappingHistory
 	@Column(name = "LastModDate", insertable = false, updatable = false)
 	private Timestamp lastModDate;
 
+	@Transient
+	@Expose
+	private List<DirectoryMapping> referrals = new ArrayList<DirectoryMapping>();
+	@Transient
+	@Expose
+	private List<FeedbackDetails> feedbacks = new ArrayList<FeedbackDetails>();
+	@Transient
+	@Expose
+	private List<SubCategoryDetails> counsellings = new ArrayList<SubCategoryDetails>();
+	@Transient
+	@Expose
+	private List<SubCategoryDetails> informations = new ArrayList<SubCategoryDetails>();
+
 	public BenCallServicesMappingHistory()
 	{
 
 	}
-
-	// public BenCallServicesMappingHistory(Long benCall97ServiceMapID, long
-	// beneficiaryRegID, Long benCallID,
-	// Short subServiceID, Integer categoryID, Integer subCategoryID, Long
-	// feedbackID, Long instituteDirMapID,
-	// Boolean deleted, String createdBy, Timestamp createdDate, String
-	// modifiedBy,
-	// Timestamp lastModDate) {
-	// super();
-	// this.benCall97ServiceMapID = benCall97ServiceMapID;
-	// this.beneficiaryRegID = beneficiaryRegID;
-	// this.benCallID = benCallID;
-	// this.subServiceID = subServiceID;
-	// this.categoryID = categoryID;
-	// this.subCategoryID = subCategoryID;
-	// this.feedbackID = feedbackID;
-	// this.instituteDirMapID = instituteDirMapID;
-	// this.deleted = deleted;
-	// this.createdBy = createdBy;
-	// this.createdDate = createdDate;
-	// this.modifiedBy = modifiedBy;
-	// this.lastModDate = lastModDate;
-	// }
 
 	public BenCallServicesMappingHistory(long beneficiaryRegID, Long benCallID, Integer subServiceID,
 			Integer categoryID, Integer subCategoryID, Boolean deleted, String createdBy)
