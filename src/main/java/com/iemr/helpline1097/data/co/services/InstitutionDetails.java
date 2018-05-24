@@ -1,7 +1,6 @@
 package com.iemr.helpline1097.data.co.services;
 
 import java.sql.Timestamp;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +8,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -30,45 +30,42 @@ public class InstitutionDetails
 	@Column(name = "InstitutionID")
 	@Expose
 	private Integer institutionID;
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "institutionDetails")
-	@JsonIgnore
-	@Transient
-	private List<DirectoryMapping> instituteDirectory;
-	// m_bencall1097servicesmapping
-	// m_institutedirectorymapping
-	// t_feedback
 	@Column(name = "InstitutionName")
 	@Expose
 	private String institutionName;
+
 	@Column(name = "StateID")
 	@Expose
 	private Integer stateID;
-	// @OneToOne(fetch=FetchType.LAZY)
-	// @JoinColumn(name="StateID", insertable=false, updatable=false)
-	// @JsonIgnore
-	// private States states;
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "StateID", insertable = false, updatable = false)
+	@JsonIgnore
+	@Expose
+	private States states;
 	@Column(name = "DistrictID")
 	@Expose
 	private Integer districtID;
-	// @OneToOne(fetch=FetchType.LAZY)
-	// @JoinColumn(name="DistrictID", insertable=false, updatable=false)
-	// private Districts m_district;
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "DistrictID", insertable = false, updatable = false)
+	@Expose
+	private Districts m_district;
 	@Column(name = "BlockID")
 	@Expose
 	private Integer blockID;
-	// @OneToOne(fetch=FetchType.LAZY)
-	// @JoinColumn(name="DistrictBranchMappingID", insertable=false,
-	// updatable=false)
-	// @JsonIgnore
-	// private DistrictBranchMapping m_districtbranchmapping;
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "BlockID", insertable = false, updatable = false)
+	@JsonIgnore
+	@Expose
+	private DistrictBlock block;
 	@Column(name = "DistrictBranchMappingID")
 	@Expose
 	private Integer districtBranchMappingID;
-	// @OneToOne(fetch=FetchType.LAZY)
-	// @JoinColumn(name="DistrictBranchMappingID", insertable=false,
-	// updatable=false)
-	// @JsonIgnore
-	// private DistrictBranchMapping m_districtbranchmapping;
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "DistrictBranchMappingID", insertable = false, updatable = false)
+	@JsonIgnore
+	@Expose
+	private DistrictBranchMapping branch;
+
 	@Column(name = "Address")
 	@Expose
 	private String address;

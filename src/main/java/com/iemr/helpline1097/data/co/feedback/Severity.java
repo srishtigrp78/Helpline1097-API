@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.google.gson.annotations.Expose;
 import com.iemr.helpline1097.utils.mapper.OutputMapper;
 
 import lombok.Data;
@@ -22,10 +23,13 @@ public class Severity
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "SeverityID")
+	@Expose
 	private Integer severityID;
 	@Column(name = "SeverityTypeName")
+	@Expose
 	private String severityTypeName;
 	@Column(name = "SeverityDesc")
+	@Expose
 	private String severityDesc;
 	@Column(name = "ProviderServiceMapID")
 	private Integer providerServiceMapID;

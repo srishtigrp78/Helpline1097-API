@@ -35,8 +35,8 @@ public class FeedbackDetails
 	@Expose
 	private Long institutionID;
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "institutionID", insertable = false, updatable = false,
-			referencedColumnName = "institutionTypeID")
+	@JoinColumn(name = "InstitutionID", insertable = false, updatable = false,
+			referencedColumnName = "InstitutionTypeID")
 	@Expose
 	private InstituteType instituteType;
 
@@ -44,7 +44,7 @@ public class FeedbackDetails
 	@Expose
 	private Integer designationID;
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "designationID", insertable = false, updatable = false)
+	@JoinColumn(name = "DesignationID", insertable = false, updatable = false)
 	@Expose
 	private Designation designation;
 
@@ -52,7 +52,7 @@ public class FeedbackDetails
 	@Expose
 	private Short severityID;
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "severityID", insertable = false, updatable = false)
+	@JoinColumn(name = "SeverityID", insertable = false, updatable = false)
 	@Expose
 	private Severity severity;
 
@@ -62,13 +62,13 @@ public class FeedbackDetails
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "feedbackTypeID", insertable = false, updatable = false)
 	@Expose
-	private FeedbackType feedbackType;
+	private FeedbackType FeedbackTypeID;
 
 	@Column(name = "FeedbackStatusID")
 	@Expose
 	private Short feedbackStatusID;
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "feedbackStatusID", insertable = false, updatable = false)
+	@JoinColumn(name = "FeedbackStatusID", insertable = false, updatable = false)
 	@Expose
 	private FeedbackStatus feedbackStatus;
 

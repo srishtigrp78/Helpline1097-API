@@ -1,7 +1,6 @@
 package com.iemr.helpline1097.data.co.services;
 
 import java.sql.Timestamp;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,14 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.gson.annotations.Expose;
-import com.iemr.helpline1097.data.co.beneficiarycall.BenCallServicesMappingHistory;
 import com.iemr.helpline1097.utils.mapper.OutputMapper;
 
 import lombok.Data;
@@ -33,10 +28,6 @@ public class DirectoryMapping
 	@Column(name = "InstituteDirMapID")
 	@Expose
 	private Long instituteDirMapID;
-	@JsonIgnore
-	@OneToMany(mappedBy = "instituteDirectoryMapping", fetch = FetchType.LAZY)
-	@Transient
-	private List<BenCallServicesMappingHistory> benCallServicesMappingHistories;
 
 	@Column(name = "InstitutionID")
 	@Expose
@@ -61,6 +52,34 @@ public class DirectoryMapping
 	@JoinColumn(name = "InstituteSubDirectoryID", insertable = false, updatable = false)
 	@Expose
 	private InstituteSubDirectory subDirectory;
+
+	// @Column(name = "StateID")
+	// @Expose
+	// private Integer stateID;
+	// @OneToOne(fetch = FetchType.EAGER)
+	// @JoinColumn(name = "StateID", insertable = false, updatable = false)
+	// @JsonIgnore
+	// private States states;
+	// @Column(name = "DistrictID")
+	// @Expose
+	// private Integer districtID;
+	// @OneToOne(fetch = FetchType.EAGER)
+	// @JoinColumn(name = "DistrictID", insertable = false, updatable = false)
+	// private Districts m_district;
+	// @Column(name = "BlockID")
+	// @Expose
+	// private Integer blockID;
+	// @OneToOne(fetch = FetchType.EAGER)
+	// @JoinColumn(name = "BlockID", insertable = false, updatable = false)
+	// @JsonIgnore
+	// private DistrictBlock block;
+	// @Column(name = "DistrictBranchMappingID")
+	// @Expose
+	// private Integer districtBranchMappingID;
+	// @OneToOne(fetch = FetchType.EAGER)
+	// @JoinColumn(name = "DistrictBranchMappingID", insertable = false, updatable = false)
+	// @JsonIgnore
+	// private DistrictBranchMapping branch;
 
 	@Expose
 	@Column(name = "InstituteRouteDirectoryID")
@@ -96,105 +115,9 @@ public class DirectoryMapping
 		this.institutionDetails = institution;
 	}
 
-	/**
-	 * @return the instituteDirMapID
-	 */
-	public Long getInstituteDirMapID()
-	{
-		return instituteDirMapID;
-	}
-
-	/**
-	 * @return the institutionID
-	 */
-	public Integer getInstitutionID()
-	{
-		return institutionID;
-	}
-
-	/**
-	 * @return the institutionDetails
-	 */
-	public InstitutionDetails getInstitute()
-	{
-		return institutionDetails;
-	}
-
-	/**
-	 * @return the instituteDirectoryID
-	 */
-	public Integer getInstituteDirectoryID()
-	{
-		return instituteDirectoryID;
-	}
-
-	/**
-	 * @return the instituteSubDirectoryID
-	 */
-	public Integer getInstituteSubDirectoryID()
-	{
-		return instituteSubDirectoryID;
-	}
-
-	/**
-	 * @return the instituteRouteDirectoryID
-	 */
-	public Integer getInstituteRouteDirectoryID()
-	{
-		return instituteRouteDirectoryID;
-	}
-
-	/**
-	 * @return the deleted
-	 */
-	public Boolean getDeleted()
-	{
-		return deleted;
-	}
-
-	/**
-	 * @return the createdBy
-	 */
-	public String getCreatedBy()
-	{
-		return createdBy;
-	}
-
-	/**
-	 * @return the createdDate
-	 */
-	public Timestamp getCreatedDate()
-	{
-		return createdDate;
-	}
-
-	/**
-	 * @return the modifiedBy
-	 */
-	public String getModifiedBy()
-	{
-		return modifiedBy;
-	}
-
-	/**
-	 * @return the lastModDate
-	 */
-	public Timestamp getLastModDate()
-	{
-		return lastModDate;
-	}
-
-	public void setInstitutionDetails(InstitutionDetails institutionDetails)
-	{
-		this.institutionDetails = institutionDetails;
-	}
-
-	@Transient
-	private OutputMapper outputMapper = new OutputMapper();
-
 	@Override
 	public String toString()
 	{
-		return outputMapper.gson().toJson(this);
+		return OutputMapper.gson().toJson(this);
 	}
 }
