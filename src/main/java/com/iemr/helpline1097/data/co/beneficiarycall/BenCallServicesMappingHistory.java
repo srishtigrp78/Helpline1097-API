@@ -49,7 +49,7 @@ public class BenCallServicesMappingHistory
 	@Column(name = "BenCallID")
 	@Expose
 	private Long benCallID;
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "BenCallID", insertable = false, updatable = false)
 	@JsonIgnore
 	@Expose
@@ -100,10 +100,6 @@ public class BenCallServicesMappingHistory
 	@Expose
 	private SubCategoryDetails coSubCategoryDetails;
 
-	// COCategoryID int 10 √ null
-	// m_category
-	// COSubCategoryID int 10 √ null
-	// m_subcategory
 	@Column(name = "FeedbackID")
 	@Expose
 	private Long feedbackID;
@@ -156,7 +152,6 @@ public class BenCallServicesMappingHistory
 	public BenCallServicesMappingHistory(long beneficiaryRegID, Long benCallID, Integer subServiceID,
 			Integer categoryID, Integer subCategoryID, Boolean deleted, String createdBy)
 	{
-		// this.benCall97ServiceMapID = benCall97ServiceMapID;
 		this.beneficiaryRegID = beneficiaryRegID;
 		this.benCallID = benCallID;
 		this.subServiceID = subServiceID;
@@ -309,172 +304,9 @@ public class BenCallServicesMappingHistory
 		this.createdDate = createdDate;
 	}
 
-	public Long getBenCall97ServiceMapID()
-	{
-		return benCall97ServiceMapID;
-	}
-
-	public Long getBeneficiaryRegID()
-	{
-		return beneficiaryRegID;
-	}
-
-	public Long getBenCallID()
-	{
-		return benCallID;
-	}
-
-	public BeneficiaryCall getBeneficiaryCall()
-	{
-		return beneficiaryCall;
-	}
-
-	public Integer getSubServiceID()
-	{
-		return subServiceID;
-	}
-
-	public Integer getCategoryID()
-	{
-		return categoryID;
-	}
-
-	public Integer getSubCategoryID()
-	{
-		return subCategoryID;
-	}
-
-	public Long getFeedbackID()
-	{
-		return feedbackID;
-	}
-
-	public Long getInstituteDirMapID()
-	{
-		return instituteDirMapID;
-	}
-
-	public Boolean getDeleted()
-	{
-		return deleted;
-	}
-
-	public String getCreatedBy()
-	{
-		return createdBy;
-	}
-
-	public Timestamp getCreatedDate()
-	{
-		return createdDate;
-	}
-
-	public String getModifiedBy()
-	{
-		return modifiedBy;
-	}
-
-	public Timestamp getLastModDate()
-	{
-		return lastModDate;
-	}
-
-	public void setInstituteDirMapID(Long instituteDirMapID)
-	{
-		this.instituteDirMapID = instituteDirMapID;
-	}
-
-	/**
-	 * @return the subServices
-	 */
-	public SubServices getServicesMaster1097()
-	{
-		return subServices;
-	}
-
-	/**
-	 * @return the categoryDetails
-	 */
-	public CategoryDetails getCategoryDetails()
-	{
-		return categoryDetails;
-	}
-
-	/**
-	 * @return the subCategoryDetails
-	 */
-	public SubCategoryDetails getSubCategoryDetails()
-	{
-		return subCategoryDetails;
-	}
-
-	/**
-	 * @return the coCategoryID
-	 */
-	public Integer getCoCategoryID()
-	{
-		return coCategoryID;
-	}
-
-	/**
-	 * @return the coCategoryDetails
-	 */
-	public CategoryDetails getCoCategoryDetails()
-	{
-		return coCategoryDetails;
-	}
-
-	/**
-	 * @return the coSubCategoryID
-	 */
-	public Integer getCoSubCategoryID()
-	{
-		return coSubCategoryID;
-	}
-
-	/**
-	 * @return the coSubCategoryDetails
-	 */
-	public SubCategoryDetails getCoSubCategoryDetails()
-	{
-		return coSubCategoryDetails;
-	}
-
-	/**
-	 * @return the feedbackDetails
-	 */
-	public FeedbackDetails getFeedbackDetails()
-	{
-		return feedbackDetails;
-	}
-
-	/**
-	 * @return the instituteDirectoryMapping
-	 */
-	public DirectoryMapping getInstituteDirectoryMapping()
-	{
-		return instituteDirectoryMapping;
-	}
-
-	public void setInstituteDirectoryMapping(DirectoryMapping instituteDirectoryMapping)
-	{
-		this.instituteDirectoryMapping = instituteDirectoryMapping;
-	}
-
-	/**
-	 * @return the outputMapper
-	 */
-	public OutputMapper getOutputMapper()
-	{
-		return outputMapper;
-	}
-
-	@Transient
-	private OutputMapper outputMapper = new OutputMapper();
-
 	@Override
 	public String toString()
 	{
-		return outputMapper.gson().toJson(this);
+		return OutputMapper.gson().toJson(this);
 	}
 }

@@ -52,7 +52,7 @@ public class DirectoryMapping
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "InstituteDirectoryID", insertable = false, updatable = false)
 	@Expose
-	private Directory instituteDirectory;
+	private Directory directory;
 
 	@Column(name = "InstituteSubDirectoryID")
 	@Expose
@@ -60,7 +60,7 @@ public class DirectoryMapping
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "InstituteSubDirectoryID", insertable = false, updatable = false)
 	@Expose
-	private InstituteSubDirectory institut;
+	private InstituteSubDirectory subDirectory;
 
 	@Expose
 	@Column(name = "InstituteRouteDirectoryID")

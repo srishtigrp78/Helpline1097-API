@@ -41,7 +41,7 @@ public class SubCategoryDetails
 	@Expose
 	@Column(name = "CategoryID")
 	private Integer categoryID;
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "CategoryID", insertable = false, updatable = false)
 	@JsonIgnore
 	@Expose

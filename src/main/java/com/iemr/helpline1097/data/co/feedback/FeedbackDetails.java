@@ -9,7 +9,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -23,33 +25,53 @@ import lombok.Data;
 @Data
 public class FeedbackDetails
 {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "FeedbackID")
 	@Expose
 	private Long feedbackID;
-	// @JsonIgnore
-	// @OneToMany(mappedBy = "feedbackDetails", fetch = FetchType.LAZY)
-	// @Transient
-	// private List<BenCallServicesMappingHistory>
-	// benCallServicesMappingHistories;
 
 	@Column(name = "InstitutionID")
 	@Expose
 	private Long institutionID;
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "institutionID", insertable = false, updatable = false,
+			referencedColumnName = "institutionTypeID")
+	@Expose
+	private InstituteType instituteType;
+
 	@Column(name = "DesignationID")
 	@Expose
 	private Integer designationID;
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "designationID", insertable = false, updatable = false)
+	@Expose
+	private Designation designation;
+
 	@Column(name = "SeverityID")
 	@Expose
 	private Short severityID;
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "severityID", insertable = false, updatable = false)
+	@Expose
+	private Severity severity;
+
 	@Column(name = "FeedbackTypeID")
 	@Expose
 	private Short feedbackTypeID;
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "feedbackTypeID", insertable = false, updatable = false)
+	@Expose
+	private FeedbackType feedbackType;
+
 	@Column(name = "FeedbackStatusID")
 	@Expose
 	private Short feedbackStatusID;
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "feedbackStatusID", insertable = false, updatable = false)
+	@Expose
+	private FeedbackStatus feedbackStatus;
+
 	@Column(name = "Feedback")
 	@Expose
 	private String feedback;
@@ -327,7 +349,7 @@ public class FeedbackDetails
 	}
 
 	/**
-	 * @param feedbackRquestDetails
+	 * @param feedbackRequestDetails
 	 *            the feedbackRquestDetails to set
 	 */
 	public void setFeedbackRequestDetails(List<FeedbackRequestDetails> feedbackRequestDetails)
@@ -335,12 +357,9 @@ public class FeedbackDetails
 		this.feedbackRequestDetails = feedbackRequestDetails;
 	}
 
-	@Transient
-	private OutputMapper outputMapper = new OutputMapper();
-
 	@Override
 	public String toString()
 	{
-		return outputMapper.gson().toJson(this);
+		return OutputMapper.gson().toJson(this);
 	}
 }
