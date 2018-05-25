@@ -128,11 +128,12 @@ public class FeedbackDetails
 	@JoinColumn(name = "BlockID", insertable = false, updatable = false)
 	@Expose
 	private DistrictBlock districtBlock;
-	@Column(name = "DistrictBranchMappingID")
+	@Column(name = "DistrictBranchID")
 	@Expose
-	private Integer districtBranchMappingID;
+	private Integer districtBranchID;
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "DistrictBranchMappingID", insertable = false, updatable = false)
+	@JoinColumn(referencedColumnName = "DistrictBranchID", insertable = false, updatable = false,
+			name = "DistrictBranchID")
 	@Expose
 	private DistrictBranchMapping m_districtbranchmapping;
 
