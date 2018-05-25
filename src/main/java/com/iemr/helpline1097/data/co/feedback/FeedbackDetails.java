@@ -19,6 +19,7 @@ import com.google.gson.annotations.Expose;
 import com.iemr.helpline1097.data.co.services.DistrictBlock;
 import com.iemr.helpline1097.data.co.services.DistrictBranchMapping;
 import com.iemr.helpline1097.data.co.services.Districts;
+import com.iemr.helpline1097.data.co.services.Institute;
 import com.iemr.helpline1097.data.co.services.States;
 import com.iemr.helpline1097.utils.mapper.OutputMapper;
 
@@ -39,8 +40,15 @@ public class FeedbackDetails
 	@Expose
 	private Long institutionID;
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "InstitutionID", insertable = false, updatable = false,
-			referencedColumnName = "InstitutionTypeID")
+	@JoinColumn(name = "InstitutionID", insertable = false, updatable = false)
+	@Expose
+	private Institute institute;
+
+	@Column(name = "InstitutionTypeID")
+	@Expose
+	private Long institutionTypeID;
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "institutionTypeID", insertable = false, updatable = false)
 	@Expose
 	private InstituteType instituteType;
 
