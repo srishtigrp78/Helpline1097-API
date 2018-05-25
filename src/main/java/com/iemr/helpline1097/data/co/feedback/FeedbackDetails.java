@@ -16,6 +16,10 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.google.gson.annotations.Expose;
+import com.iemr.helpline1097.data.co.services.DistrictBlock;
+import com.iemr.helpline1097.data.co.services.DistrictBranchMapping;
+import com.iemr.helpline1097.data.co.services.Districts;
+import com.iemr.helpline1097.data.co.services.States;
 import com.iemr.helpline1097.utils.mapper.OutputMapper;
 
 import lombok.Data;
@@ -102,6 +106,35 @@ public class FeedbackDetails
 	private String modifiedBy;
 	@Column(name = "LastModDate", insertable = false, updatable = false)
 	private Timestamp lastModDate;
+
+	@Column(name = "StateID")
+	@Expose
+	private Integer stateID;
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "StateID", insertable = false, updatable = false)
+	@Expose
+	private States states;
+	@Column(name = "DistrictID")
+	@Expose
+	private Integer districtID;
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "DistrictID", insertable = false, updatable = false)
+	@Expose
+	private Districts district;
+	@Column(name = "BlockID")
+	@Expose
+	private Integer blockID;
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "BlockID", insertable = false, updatable = false)
+	@Expose
+	private DistrictBlock districtBlock;
+	@Column(name = "DistrictBranchMappingID")
+	@Expose
+	private Integer districtBranchMappingID;
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "DistrictBranchMappingID", insertable = false, updatable = false)
+	@Expose
+	private DistrictBranchMapping m_districtbranchmapping;
 
 	@Transient
 	@Expose
