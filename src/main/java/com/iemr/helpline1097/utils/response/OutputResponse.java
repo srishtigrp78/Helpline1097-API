@@ -87,6 +87,7 @@ public class OutputResponse
 			case "NullPointerException":
 			case "SQLGrammarException":
 			case "ArrayIndexOutOfBoundsException":
+			case "ConstraintViolationException":
 				this.statusCode = CODE_EXCEPTION;
 				status = "Failed with critical errors at " + currDate.toString() + ".Please try after some time. "
 						+ "If error is still seen, contact your administrator.";
