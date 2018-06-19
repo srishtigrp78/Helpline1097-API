@@ -13,7 +13,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.google.gson.Gson;
 import com.iemr.helpline1097.data.co.beneficiarycall.BenCallServicesMappingHistory;
 import com.iemr.helpline1097.data.co.feedback.FeedbackDetails;
 import com.iemr.helpline1097.data.co.feedback.FeedbackRequestDetails;
@@ -23,6 +22,7 @@ import com.iemr.helpline1097.utils.config.ConfigProperties;
 import com.iemr.helpline1097.utils.exception.IEMRException;
 import com.iemr.helpline1097.utils.http.HttpUtils;
 import com.iemr.helpline1097.utils.mapper.InputMapper;
+import com.iemr.helpline1097.utils.mapper.OutputMapper;
 import com.iemr.helpline1097.utils.response.OutputResponse;
 
 @Service
@@ -37,8 +37,8 @@ public class FeedbackServiceImpl implements FeedbackService
 	private BenCalServiceCatSubcatMappingRepo benCalServiceCatSubcatMappingRepo;
 
 	@Autowired
-	public void getBenCalServiceCatSubcatMappingRepo(
-			BenCalServiceCatSubcatMappingRepo benCalServiceCatSubcatMappingRepo)
+	public void
+			getBenCalServiceCatSubcatMappingRepo(BenCalServiceCatSubcatMappingRepo benCalServiceCatSubcatMappingRepo)
 	{
 		this.benCalServiceCatSubcatMappingRepo = benCalServiceCatSubcatMappingRepo;
 	}
@@ -202,17 +202,17 @@ public class FeedbackServiceImpl implements FeedbackService
 		if (response.isSuccess())
 		{
 			logger.info(response.getData());
-			FeedbackDetails[] feedbackSavedData = inputMapper.gson().fromJson(response.getData(),
-					FeedbackDetails[].class);
+			FeedbackDetails[] feedbackSavedData =
+					inputMapper.gson().fromJson(response.getData(), FeedbackDetails[].class);
 			// feedbackSavedData = inputMapper.gson().fromJson();
 			if (feedbackSavedData != null)
 			{
 				List<BenCallServicesMappingHistory> obj = new ArrayList<>();
 				for (FeedbackDetails f : feedbackSavedData)
 				{
-					BenCallServicesMappingHistory benCallServicesMappingHistory = new BenCallServicesMappingHistory(
-							f.getBeneficiaryRegID(), f.getBenCallID(), f.getSubServiceID(), f.getFeedbackID(), false,
-							f.getCreatedBy());
+					BenCallServicesMappingHistory benCallServicesMappingHistory =
+							new BenCallServicesMappingHistory(f.getBeneficiaryRegID(), f.getBenCallID(),
+									f.getSubServiceID(), f.getFeedbackID(), false, f.getCreatedBy());
 					obj.add(benCallServicesMappingHistory);
 				}
 				Iterable<BenCallServicesMappingHistory> dataInserted = benCalServiceCatSubcatMappingRepo.save(obj);
@@ -225,7 +225,7 @@ public class FeedbackServiceImpl implements FeedbackService
 		{
 			throw new Exception(response.getErrorMessage());
 		}
-		return new Gson().toJson(resMap);
+		return OutputMapper.gson().toJson(resMap);
 	}
 
 	private OutputResponse createFeedback(String feedbackDetails, HttpServletRequest request) throws IEMRException

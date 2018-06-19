@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 import com.iemr.helpline1097.data.co.beneficiarycall.BeneficiaryCall;
 import com.iemr.helpline1097.data.co.beneficiarycall.CallType;
 import com.iemr.helpline1097.repository.co.beneficiarycall.BeneficiaryCallRepository;
+import com.iemr.helpline1097.utils.mapper.OutputMapper;
 
 @Service
 public class BeneficiaryCallServiceImpl implements BeneficiaryCallService
@@ -30,13 +31,13 @@ public class BeneficiaryCallServiceImpl implements BeneficiaryCallService
 	public List<BeneficiaryCall> addCalltype(Long benificiaryCallId)
 	{
 		List<BeneficiaryCall> benCalls = new ArrayList<BeneficiaryCall>();
-		ArrayList<Objects[]> queryResult = beneficiaryCallRepository.findCallsByBenefeciaryID(benificiaryCallId,
-				new PageRequest(0, 1000));
+		ArrayList<Objects[]> queryResult =
+				beneficiaryCallRepository.findCallsByBenefeciaryID(benificiaryCallId, new PageRequest(0, 1000));
 		for (Object[] objects : queryResult)
 		{
 			if (queryResult != null && queryResult.size() >= 8)
 			{
-				String benCallServicesMappingHistories = new Gson().toJson(objects[1]);
+				String benCallServicesMappingHistories = OutputMapper.gson().toJson(objects[1]);
 				BeneficiaryCall beneficiaryCall = new BeneficiaryCall((Long) objects[0],
 						benCallServicesMappingHistories, (Integer) objects[2], (Boolean) objects[3],
 						(Timestamp) objects[4], (String) objects[5], (String) objects[6], (Integer) objects[7]);

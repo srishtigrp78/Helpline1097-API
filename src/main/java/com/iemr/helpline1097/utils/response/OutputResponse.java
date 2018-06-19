@@ -11,6 +11,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.LongSerializationPolicy;
 import com.google.gson.annotations.Expose;
 
 public class OutputResponse
@@ -179,7 +180,7 @@ public class OutputResponse
 		// return new Gson().toJson(this);
 		// Gson gson = OutputMapper.gson();
 		GsonBuilder builder = new GsonBuilder();
-		builder.excludeFieldsWithoutExposeAnnotation();
+		builder.excludeFieldsWithoutExposeAnnotation().setLongSerializationPolicy(LongSerializationPolicy.STRING);
 		// builder.disableInnerClassSerialization();
 		return builder.create().toJson(this);
 		// JSONObject response = new JSONObject();
@@ -194,7 +195,7 @@ public class OutputResponse
 	{
 		GsonBuilder builder = new GsonBuilder();
 		builder.excludeFieldsWithoutExposeAnnotation();
-		builder.serializeNulls();
+		builder.serializeNulls().setLongSerializationPolicy(LongSerializationPolicy.STRING);
 		return builder.create().toJson(this);
 	}
 

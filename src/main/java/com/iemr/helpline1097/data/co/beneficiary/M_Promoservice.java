@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import com.google.gson.GsonBuilder;
+import com.google.gson.LongSerializationPolicy;
 import com.google.gson.annotations.Expose;
 
 import lombok.Data;
@@ -114,7 +115,7 @@ public class M_Promoservice {
 	public String toString() {
 		GsonBuilder gsonBuilder = new GsonBuilder();
 		gsonBuilder.excludeFieldsWithoutExposeAnnotation();
-		gsonBuilder.serializeNulls();
+		gsonBuilder.serializeNulls().setLongSerializationPolicy(LongSerializationPolicy.STRING);
 		String tostring = gsonBuilder.create().toJson(this);
 		return tostring;
 	}
