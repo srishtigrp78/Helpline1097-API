@@ -1,5 +1,6 @@
 package com.iemr.helpline1097.utils;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
@@ -65,15 +66,20 @@ public class IEMRApplBeans
 		return new RedisStorage();
 	}
 
+	 private @Value("${spring.redis.host}") String redisHost;
+	    private @Value("${spring.redis.port}") int redisPort;
+	    
 	@Bean
 	public LettuceConnectionFactory connectionFactory()
 	{
-		return new LettuceConnectionFactory();
+		System.out.print("Connecting to Redis "+redisHost+":"+redisPort);
+		
+		return new LettuceConnectionFactory(redisHost,redisPort);
 	}
 
-	@Bean
+/*	@Bean
 	public RedisHttpSessionConfiguration redisSession()
 	{
 		return new RedisHttpSessionConfiguration();
-	}
+	}*/
 }
