@@ -1,6 +1,8 @@
 package com.iemr.helpline1097.service.co.feedback;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -196,9 +198,9 @@ public class FeedbackServiceImpl implements FeedbackService
 	@Override
 	public String saveFeedbackFromCustomer(String feedbackDetails, HttpServletRequest request) throws Exception
 	{
-		Map<String, Long> resMap = new HashMap<String, Long>();
+		Map<String, String> resMap = new HashMap<String, String>();
 		OutputResponse response = createFeedback(feedbackDetails, request);
-		resMap.put("feedBackId", (long) 0);
+		//resMap.put("feedBackId", (long) 0);
 		if (response.isSuccess())
 		{
 			logger.info(response.getData());
@@ -216,9 +218,34 @@ public class FeedbackServiceImpl implements FeedbackService
 					obj.add(benCallServicesMappingHistory);
 				}
 				Iterable<BenCallServicesMappingHistory> dataInserted = benCalServiceCatSubcatMappingRepo.save(obj);
-				for (BenCallServicesMappingHistory m : dataInserted)
-				{
-					resMap.put("feedBackId", m.getFeedbackID());
+//				for (BenCallServicesMappingHistory m : dataInserted)
+//				{
+//					resMap.put("feedBackId", m.getFeedbackID());
+//				}
+				String requestID = "";
+
+				for (FeedbackDetails feedback : feedbackSavedData) {
+
+//					String feedbackTypeCode = feedbackRepositorty
+//							.findFeedbackTypeCode(feedback.getFeedbackTypeID());
+
+					//logger.info("feedbackTypeCode: " + feedbackTypeCode);
+
+//					if (feedbackTypeCode == null) {
+//						feedbackTypeCode = "GC";
+//					}
+
+					requestID = "FE" + "/" + feedback.getDistrictID() + "/"
+							+ new SimpleDateFormat("ddMMyyyy").format(Calendar.getInstance().getTimeInMillis())
+							+ "/" + feedback.getFeedbackID();
+					feedback.setRequestID(requestID);
+					feedback.setDeleted(false);
+				}
+				createFeedback(new OutputMapper().gson().toJson(feedbackSavedData).toString(), request);
+
+				for (FeedbackDetails m : feedbackSavedData) {
+					resMap.put("feedBackId", m.getFeedbackID() + "");
+					resMap.put("requestID", requestID);
 				}
 			}
 		} else

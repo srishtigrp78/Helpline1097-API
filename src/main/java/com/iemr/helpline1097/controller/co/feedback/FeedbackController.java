@@ -165,7 +165,7 @@ public class FeedbackController
 	// }
 
 	@CrossOrigin()
-	@RequestMapping(value = "/saveBenFeedback", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON)
+	@RequestMapping(value = "/saveBenFeedback", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON,headers = "Authorization")
 	private String saveBenFeedback(@RequestBody String feedbackRequest, HttpServletRequest request)
 	{
 		OutputResponse response = new OutputResponse();

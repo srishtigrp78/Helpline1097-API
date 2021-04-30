@@ -35,7 +35,9 @@ public class FeedbackDetails
 	@Column(name = "FeedbackID")
 	@Expose
 	private Long feedbackID;
-
+	@Column(name = "requestID")
+	@Expose
+	private String requestID;
 	@Column(name = "InstitutionID")
 	@Expose
 	private Long institutionID;

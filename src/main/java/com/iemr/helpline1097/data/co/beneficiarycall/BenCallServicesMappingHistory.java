@@ -143,7 +143,9 @@ public class BenCallServicesMappingHistory
 	@Transient
 	@Expose
 	private List<SubCategoryDetails> informations = new ArrayList<SubCategoryDetails>();
-
+    @Transient
+    @Expose
+    String requestID;
 	public BenCallServicesMappingHistory()
 	{
 
