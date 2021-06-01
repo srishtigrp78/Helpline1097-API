@@ -18,6 +18,8 @@ import com.iemr.helpline1097.service.everwell.EverwellService;
 import com.iemr.helpline1097.utils.mapper.InputMapper;
 import com.iemr.helpline1097.utils.response.OutputResponse;
 
+import io.swagger.annotations.ApiParam;
+
 @RestController
 public class EverwellGuidelinesController {
 	InputMapper inputMapper = new InputMapper();
@@ -29,7 +31,8 @@ public class EverwellGuidelinesController {
 			value = "/saveEverwellGuidelines",
 			method = RequestMethod.POST,
 			produces = MediaType.APPLICATION_JSON, headers = "Authorization")
-	public String saveEverwellGuidelines(@RequestBody String request)
+	public String saveEverwellGuidelines( @ApiParam(value = "{\"providerServiceMapID\":\"Integer\",\"Category\":\\\"String\\\","
+			+ "\"fileContent\":\"String\"\"\\\"GuidelineName\\\":\\\"String\\\"\"\\\"GuidelineDescription\\\":\\\"String\\\"}") @RequestBody String request)
 	{
 
 		OutputResponse response = new OutputResponse();
@@ -49,7 +52,7 @@ public class EverwellGuidelinesController {
 			value = "/fetchEverwellGuidelines",
 			method = RequestMethod.POST,
 			produces = MediaType.APPLICATION_JSON, headers = "Authorization")
-	public String fetchEverwellGuidelines(@RequestBody String request)
+	public String fetchEverwellGuidelines(@ApiParam(value = "{\"providerServiceMapID\":\"Integer\",\"adherencePercentage\":\\\"Integer\\\"}") @RequestBody String request)
 	{
 
 		OutputResponse response = new OutputResponse();
@@ -64,5 +67,23 @@ public class EverwellGuidelinesController {
 		}
 		return response.toString();
 	}
-
+	@CrossOrigin()
+	@RequestMapping(
+			value = "/deleteEverwellGuidelines",
+			method = RequestMethod.POST,
+			produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	public String deleteEverwellGuidelines(@ApiParam(value = "{\"Id\":\"Integer\",\"modifiedBy\":\\\"String\\\"}") @RequestBody String request)
+	{
+		OutputResponse response = new OutputResponse();
+		try
+		{
+			String result = everwellService.deleteGuideline(request);
+			response.setResponse(result);
+		} catch (Exception e)
+		{
+			logger.error("Error while fetching everwell guidelines ", e);
+			response.setError(e);
+		}
+		return response.toString();
+	}
 }

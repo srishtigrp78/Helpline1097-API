@@ -46,7 +46,7 @@ public class EverwellGuidelines {
 	private Integer providerServiceMapID;
 	@Expose
 	@Column(name="userID")
-	private Integer userId;
+	private Integer userID;
 	@Expose
 	@Column(name="validFrom")
 	private Timestamp validFrom;
