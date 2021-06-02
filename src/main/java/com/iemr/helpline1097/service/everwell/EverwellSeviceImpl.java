@@ -63,7 +63,7 @@ public class EverwellSeviceImpl implements EverwellService {
 		if(everwell.getAdherencePercentage()==null)
 			ev=everwellGuidelinesRepo.findByProviderServiceMapID(everwell.getProviderServiceMapID());
 		else if(everwell.getAdherencePercentage()>95)
-			ev=everwellGuidelinesRepo.findGuidelinesByCategory(">95 adherence percentage", everwell.getProviderServiceMapID());
+			ev=everwellGuidelinesRepo.findGuidelinesByCategory("> 95 adherence percentage", everwell.getProviderServiceMapID());
 		else if(everwell.getAdherencePercentage()<=95)
 			ev=everwellGuidelinesRepo.findGuidelinesByCategory("<= 95 adherence percentage", everwell.getProviderServiceMapID());
 		else
