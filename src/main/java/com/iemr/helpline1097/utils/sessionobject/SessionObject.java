@@ -57,7 +57,7 @@ public class SessionObject
 		Boolean extendExpirationTime = ConfigProperties.getExtendExpiryTime();
 		Integer sessionExpiryTime = ConfigProperties.getSessionExpiryTime();
 		// RedisStorage objectStore = new RedisStorage();
-		return objectStore.getObject(key, Boolean.valueOf(extendExpirationTime), sessionExpiryTime);
+		return objectStore.getObject(key, extendExpirationTime, sessionExpiryTime);
 	}
 
 	public String setSessionObject(String key, String value) throws RedisSessionException
@@ -71,7 +71,7 @@ public class SessionObject
 		Boolean extendExpirationTime = ConfigProperties.getExtendExpiryTime();
 		Integer sessionExpiryTime = ConfigProperties.getSessionExpiryTime();
 		// RedisStorage objectStore = new RedisStorage();
-		return objectStore.updateObject(key, value, Boolean.valueOf(extendExpirationTime), sessionExpiryTime);
+		return objectStore.updateObject(key, value, extendExpirationTime, sessionExpiryTime);
 	}
 
 	public void deleteSessionObject(String key) throws RedisSessionException

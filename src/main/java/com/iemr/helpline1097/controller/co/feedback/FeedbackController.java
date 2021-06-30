@@ -70,7 +70,7 @@ public class FeedbackController
 			response.setResponse(feedbackList.toString());
 		} catch (Exception e)
 		{
-			logger.error("", e);
+			logger.error(e.getMessage());
 			response.setError(e);
 		}
 		return response.toString();
@@ -166,7 +166,7 @@ public class FeedbackController
 
 	@CrossOrigin()
 	@RequestMapping(value = "/saveBenFeedback", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON,headers = "Authorization")
-	private String saveBenFeedback(@RequestBody String feedbackRequest, HttpServletRequest request)
+	public String saveBenFeedback(@RequestBody String feedbackRequest, HttpServletRequest request)
 	{
 		OutputResponse response = new OutputResponse();
 		try

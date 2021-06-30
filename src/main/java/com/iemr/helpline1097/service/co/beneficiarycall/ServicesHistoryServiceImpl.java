@@ -148,17 +148,21 @@ public class ServicesHistoryServiceImpl implements ServicesHistoryService
 		}
 		for (BenCallServicesMappingHistory benCallServicesMappingHistory : serviceHistoryList)
 		{
-			if (benCallServicesMappingHistory.getSubCategoryID() != null)
+			if (benCallServicesMappingHistory.getSubCategoryID() != null && caseSheet!=null)
 			{
+				if(caseSheet.getInformations()!=null)
 				caseSheet.getInformations().add(benCallServicesMappingHistory.getSubCategoryDetails());
-			} else if (benCallServicesMappingHistory.getCoSubCategoryID() != null)
+			} else if (benCallServicesMappingHistory.getCoSubCategoryID() != null && caseSheet!=null)
 			{
+				if(caseSheet.getCounsellings()!=null)
 				caseSheet.getCounsellings().add(benCallServicesMappingHistory.getCoSubCategoryDetails());
-			} else if (benCallServicesMappingHistory.getFeedbackID() != null)
+			} else if (benCallServicesMappingHistory.getFeedbackID() != null && caseSheet!=null)
 			{
+				if(caseSheet.getFeedbacks()!=null)
 				caseSheet.getFeedbacks().add(benCallServicesMappingHistory.getFeedbackDetails());
-			} else if (benCallServicesMappingHistory.getInstituteDirMapID() != null)
+			} else if (benCallServicesMappingHistory.getInstituteDirMapID() != null && caseSheet!=null)
 			{
+				if(caseSheet.getReferrals()!=null)
 				caseSheet.getReferrals().add(benCallServicesMappingHistory.getInstituteDirectoryMapping());
 			}
 		}

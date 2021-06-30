@@ -4,6 +4,10 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.iemr.helpline1097.controller.co.services.CommonController;
 import com.iemr.helpline1097.utils.config.ConfigProperties;
 import com.iemr.helpline1097.utils.km.KMService;
 import com.openkm.sdk4j.OKMWebservices;
@@ -45,7 +49,7 @@ public class OpenKMServiceImpl implements KMService
 	public OpenKMServiceImpl()
 	{
 	}
-
+	private Logger logger = LoggerFactory.getLogger(CommonController.class);
 	private static OKMWebservices connector = null;
 
 	public void init()
@@ -74,10 +78,10 @@ public class OpenKMServiceImpl implements KMService
 		} catch (PathNotFoundException | RepositoryException | DatabaseException | UnknowException
 				| WebserviceException e)
 		{
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		} catch (Exception e)
 		{
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 		return response;
 	}
@@ -94,7 +98,7 @@ public class OpenKMServiceImpl implements KMService
 				| DatabaseException | ExtensionException | AutomationException | UnknowException
 				| WebserviceException e)
 		{
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 		return response;
 	}
@@ -118,7 +122,7 @@ public class OpenKMServiceImpl implements KMService
 				| DatabaseException | ExtensionException | AutomationException | UnknowException
 				| WebserviceException e)
 		{
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 		return response;
 	}
@@ -152,7 +156,7 @@ public class OpenKMServiceImpl implements KMService
 				| DatabaseException | ExtensionException | AutomationException | UnknowException
 				| WebserviceException e)
 		{
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 		return response;
 	}
@@ -178,7 +182,7 @@ public class OpenKMServiceImpl implements KMService
 		} catch (AccessDeniedException | RepositoryException | PathNotFoundException | LockException | DatabaseException
 				| ExtensionException | UnknowException | WebserviceException e)
 		{
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 		return response;
 	}

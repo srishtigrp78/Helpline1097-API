@@ -334,7 +334,7 @@ public class Service1097HistoryController
 	@Deprecated
 	@RequestMapping(value = "/updateBeneficiaryIDForCall", method = RequestMethod.POST,
 			produces = MediaType.APPLICATION_JSON, headers = "Authorization")
-	private String updateBeneficiaryIDForCall(@RequestBody String request)
+	public String updateBeneficiaryIDForCall(@RequestBody String request)
 	{
 		OutputResponse response = new OutputResponse();
 		// try {
@@ -358,7 +358,7 @@ public class Service1097HistoryController
 	@Deprecated
 	@RequestMapping(value = "/startCall", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON,
 			headers = "Authorization")
-	private String startCall(@RequestBody String request)
+	public String startCall(@RequestBody String request)
 	{
 		OutputResponse response = new OutputResponse();
 		// try {
@@ -387,7 +387,7 @@ public class Service1097HistoryController
 	@Deprecated
 	@RequestMapping(value = "/updatebeneficiaryincall", method = RequestMethod.POST,
 			produces = MediaType.APPLICATION_JSON, headers = "Authorization")
-	private String updateBeneficiaryIDInCall(@RequestBody String request)
+	public String updateBeneficiaryIDInCall(@RequestBody String request)
 	{
 		OutputResponse response = new OutputResponse();
 		// try {
@@ -410,7 +410,7 @@ public class Service1097HistoryController
 	@Deprecated
 	@RequestMapping(value = "/closeCall", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON,
 			headers = "Authorization")
-	private String closeCall(@RequestBody String request)
+	public String closeCall(@RequestBody String request)
 	{
 		OutputResponse response = new OutputResponse();
 		// try {

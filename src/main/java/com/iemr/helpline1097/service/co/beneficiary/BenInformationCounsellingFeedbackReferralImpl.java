@@ -5,12 +5,15 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 //import javax.transaction.Transactional;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.google.gson.Gson;
+import com.iemr.helpline1097.controller.co.services.CommonController;
 import com.iemr.helpline1097.data.co.beneficiarycall.BenCallServicesMappingHistory;
 import com.iemr.helpline1097.data.co.services.DirectoryMapping;
 import com.iemr.helpline1097.data.co.services.InstitutionDetails;
@@ -29,7 +32,7 @@ import com.iemr.helpline1097.utils.mapper.InputMapper;
 @Service
 public class BenInformationCounsellingFeedbackReferralImpl implements BenInformationCounsellingFeedbackReferral
 {
-
+	private Logger logger = LoggerFactory.getLogger(CommonController.class);
 	private BenCalServiceCatSubcatMappingRepo benCalServiceCatSubcatMappingRepo;
 
 	@Autowired
@@ -214,7 +217,7 @@ public class BenInformationCounsellingFeedbackReferralImpl implements BenInforma
 			}
 		} catch (Exception e)
 		{
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 		return resultSet.toString();
 	}
