@@ -198,17 +198,31 @@ public class FeedbackServiceImpl implements FeedbackService
 	@Override
 	public String saveFeedbackFromCustomer(String feedbackDetails, HttpServletRequest request) throws Exception
 	{
-		Map<String, String> resMap = new HashMap<String, String>();
-		OutputResponse response = createFeedback(feedbackDetails, request);
-		//resMap.put("feedBackId", (long) 0);
-		if (response.isSuccess())
-		{
-			logger.info(response.getData());
-			FeedbackDetails[] feedbackSavedData =
-					inputMapper.gson().fromJson(response.getData(), FeedbackDetails[].class);
-			// feedbackSavedData = inputMapper.gson().fromJson();
-			if (feedbackSavedData != null)
+		  OutputResponse output = new OutputResponse();
+				
+			 
+				FeedbackDetails[] feedbacks = inputMapper.gson().fromJson(feedbackDetails, FeedbackDetails[].class);
+				for (FeedbackDetails feedback : feedbacks) {
+					if (feedback.getSubServiceID() == null) {
+						throw new Exception("Sub service is not configured for this provider");
+					}
+					
+				}
+				
+	  
+		
+		
+			Map<String, String> resMap = new HashMap<String, String>();
+			OutputResponse response = createFeedback(feedbackDetails, request);
+			//resMap.put("feedBackId", (long) 0);
+			if (response.isSuccess())
 			{
+				logger.info(response.getData());
+				FeedbackDetails[] feedbackSavedData =
+						inputMapper.gson().fromJson(response.getData(), FeedbackDetails[].class);
+				// feedbackSavedData = inputMapper.gson().fromJson();
+			   if (feedbackSavedData != null)
+			   {
 				List<BenCallServicesMappingHistory> obj = new ArrayList<>();
 				for (FeedbackDetails f : feedbackSavedData)
 				{
@@ -253,6 +267,7 @@ public class FeedbackServiceImpl implements FeedbackService
 			throw new Exception(response.getErrorMessage());
 		}
 		return OutputMapper.gson().toJson(resMap);
+	  
 	}
 
 	private OutputResponse createFeedback(String feedbackDetails, HttpServletRequest request) throws IEMRException
