@@ -3,6 +3,9 @@ package com.iemr.helpline1097.utils.sessionobject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.iemr.helpline1097.utils.config.ConfigProperties;
 import com.iemr.helpline1097.utils.redis.RedisSessionException;
 import com.iemr.helpline1097.utils.redis.RedisStorage;
@@ -70,10 +73,24 @@ public class SessionObject
 	{
 		Boolean extendExpirationTime = ConfigProperties.getExtendExpiryTime();
 		Integer sessionExpiryTime = ConfigProperties.getSessionExpiryTime();
+		updateConcurrentSessionObject(key, value, extendExpirationTime, sessionExpiryTime);
 		// RedisStorage objectStore = new RedisStorage();
 		return objectStore.updateObject(key, value, extendExpirationTime, sessionExpiryTime);
 	}
-
+	private void updateConcurrentSessionObject(String key, String value, Boolean extendExpirationTime,
+			Integer sessionExpiryTime) {
+		try {
+			JsonObject jsnOBJ = new JsonObject();
+			JsonParser jsnParser = new JsonParser();
+			JsonElement jsnElmnt = jsnParser.parse(value);
+			jsnOBJ = jsnElmnt.getAsJsonObject();
+			if (jsnOBJ.has("userName") && jsnOBJ.get("userName") != null) {
+				objectStore.updateObject(jsnOBJ.get("userName").getAsString().trim().toLowerCase(), value,
+						extendExpirationTime, sessionExpiryTime);
+			}
+		} catch (Exception e) {
+		}
+	}
 	public void deleteSessionObject(String key) throws RedisSessionException
 	{
 		// RedisStorage objectStore = new RedisStorage();
