@@ -11,10 +11,14 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.data.rest.core.annotation.RestResource;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.iemr.helpline1097.data.co.beneficiarycall.BeneficiaryCall;
 
+@Repository
+@RestResource(exported = false)
 public interface BeneficiaryCallRepository extends CrudRepository<BeneficiaryCall, Long>
 {
 	@Query("select " + "b.benCallID, b.benCallServicesMappingHistories, b.calledServiceID, b.is1097, "
