@@ -248,6 +248,7 @@ public class FeedbackServiceImpl implements FeedbackService
 //					if (feedbackTypeCode == null) {
 //						feedbackTypeCode = "GC";
 //					}
+					feedback.setInstituteName(feedback.getInstiName());
 
 					requestID = "FE" + "/" + feedback.getDistrictID() + "/"
 							+ new SimpleDateFormat("ddMMyyyy").format(Calendar.getInstance().getTimeInMillis())
