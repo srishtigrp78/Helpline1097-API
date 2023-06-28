@@ -7,3 +7,7 @@ target/
 config.service.ts
 config.json
 
+#other
+mvnw
+mvnw.cmd
+/logs
