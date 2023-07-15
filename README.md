@@ -24,7 +24,7 @@ The AMRIT Helpline1097 service aims to provide comprehensive support to individu
 
 ## Building from source
 
-To build the HelplineMCTS microservice from source, follow these steps:
+To build the Helpline1097 microservice from source, follow these steps:
 
 ### Prerequisites
 
