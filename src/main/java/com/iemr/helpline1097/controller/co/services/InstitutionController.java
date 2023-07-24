@@ -35,26 +35,21 @@ import com.iemr.helpline1097.service.co.services.InstitutionService;
 import com.iemr.helpline1097.utils.mapper.InputMapper;
 import com.iemr.helpline1097.utils.response.OutputResponse;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
-public class InstitutionController
-{
+public class InstitutionController {
 	InputMapper inputMapper = new InputMapper();
-	Logger logger = LoggerFactory.getLogger(CommonController.class);
+	Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
 	@CrossOrigin()
-	@RequestMapping(
-			value = "/api/helpline1097/co/get/institutions",
-			method = RequestMethod.GET,
-			produces = MediaType.APPLICATION_JSON,
-			headers = "Authorization")
-	public String getInstitutions()
-	{
+	@ApiOperation(value = "Get institutions", consumes = "application/json", produces = "application/json")
+	@RequestMapping(value = "/api/helpline1097/co/get/institutions", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	public String getInstitutions() {
 		OutputResponse response = new OutputResponse();
-		try
-		{
+		try {
 			response.setResponse(institutionService.getInstitutions().toString());
-		} catch (Exception e)
-		{
+		} catch (Exception e) {
 			logger.error("", e);
 			response.setError(e);
 		}
@@ -67,8 +62,7 @@ public class InstitutionController
 	private InstitutionService institutionService;
 
 	@Autowired
-	public void setInstitutionService(InstitutionService institutionService)
-	{
+	public void setInstitutionService(InstitutionService institutionService) {
 
 		this.institutionService = institutionService;
 	}

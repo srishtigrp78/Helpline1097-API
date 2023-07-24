@@ -33,45 +33,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.iemr.helpline1097.controller.co.services.CommonController;
 import com.iemr.helpline1097.data.co.calltype.M_Calltype;
 import com.iemr.helpline1097.service.co.callhandling.IEMRCalltypeServiceImpl;
 import com.iemr.helpline1097.utils.mapper.InputMapper;
 import com.iemr.helpline1097.utils.response.OutputResponse;
 
+import io.swagger.annotations.ApiOperation;
+
 @RequestMapping(value = "/call")
 @RestController
-public class CalltypeController
-{
+public class CalltypeController {
 	InputMapper inputMapper = new InputMapper();
-	Logger logger = LoggerFactory.getLogger(CommonController.class);
+	Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 	@Autowired
 	private IEMRCalltypeServiceImpl iEMRCalltypeServiceImpl;
 
 	@CrossOrigin()
-	@RequestMapping(
-			value = "/addType",
-			method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON,
-			headers = "Authorization")
-	public String addCallType(@RequestBody String request)
-	{
+	@ApiOperation(value = "Add type", consumes = "application/json", produces = "application/json")
+	@RequestMapping(value = "/addType", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	public String addCallType(@RequestBody String request) {
 
 		OutputResponse response = new OutputResponse();
-		try
-		{
+		try {
 			M_Calltype payload = inputMapper.gson().fromJson(request, M_Calltype.class);
 			M_Calltype m_calltype = iEMRCalltypeServiceImpl.addCalltype(payload);
 
-			if (m_calltype != null)
-			{
+			if (m_calltype != null) {
 				response.setResponse("callType Added");
-			} else
-			{
+			} else {
 				response.setResponse("Failed to add callType");
 			}
-		} catch (Exception e)
-		{
+		} catch (Exception e) {
 			logger.error("", e);
 			response.setError(e);
 		}
@@ -79,22 +71,16 @@ public class CalltypeController
 	}
 
 	@CrossOrigin()
-	@RequestMapping(
-			value = "/getTypes/{id}",
-			method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON,
-			headers = "Authorization")
-	public String getAllCallTypes(@PathVariable("id") int id)
-	{
+	@ApiOperation(value = "Get type", consumes = "application/json", produces = "application/json")
+	@RequestMapping(value = "/getTypes/{id}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	public String getAllCallTypes(@PathVariable("id") int id) {
 
 		OutputResponse response = new OutputResponse();
-		try
-		{
+		try {
 			M_Calltype m_calltypes = iEMRCalltypeServiceImpl.getAllCalltypes(id);
 
 			response.setResponse(m_calltypes.toString());
-		} catch (Exception e)
-		{
+		} catch (Exception e) {
 			logger.error("", e);
 			response.setError(e);
 		}

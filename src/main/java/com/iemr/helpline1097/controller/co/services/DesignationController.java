@@ -35,27 +35,22 @@ import com.iemr.helpline1097.service.co.services.DesignationService;
 import com.iemr.helpline1097.utils.mapper.InputMapper;
 import com.iemr.helpline1097.utils.response.OutputResponse;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping(value = "/designation")
-public class DesignationController
-{
+public class DesignationController {
 	InputMapper inputMapper = new InputMapper();
-	Logger logger = LoggerFactory.getLogger(CommonController.class);
+	Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
 	@CrossOrigin()
-	@RequestMapping(
-			value = "/get",
-			method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON,
-			headers = "Authorization")
-	public String getDesignations()
-	{
+	@ApiOperation(value = "Get designations", consumes = "application/json", produces = "application/json")
+	@RequestMapping(value = "/get", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	public String getDesignations() {
 		OutputResponse response = new OutputResponse();
-		try
-		{
+		try {
 			response.setResponse(designationService.getDesignations().toString());
-		} catch (Exception e)
-		{
+		} catch (Exception e) {
 			logger.error("", e);
 			response.setError(e);
 		}
@@ -68,8 +63,7 @@ public class DesignationController
 	private DesignationService designationService;
 
 	@Autowired
-	public void setDesignationService(DesignationService designationService)
-	{
+	public void setDesignationService(DesignationService designationService) {
 
 		this.designationService = designationService;
 	}
