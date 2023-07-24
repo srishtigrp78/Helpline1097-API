@@ -27,12 +27,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
-import org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration;
 
 import com.iemr.helpline1097.utils.config.ConfigProperties;
 import com.iemr.helpline1097.utils.gateway.email.EmailService;
 import com.iemr.helpline1097.utils.gateway.email.GenericEmailServiceImpl;
-import com.iemr.helpline1097.utils.km.KMService;
 import com.iemr.helpline1097.utils.redis.RedisStorage;
 import com.iemr.helpline1097.utils.sessionobject.SessionObject;
 import com.iemr.helpline1097.utils.validator.Validator;

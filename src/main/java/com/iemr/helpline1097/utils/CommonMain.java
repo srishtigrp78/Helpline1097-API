@@ -26,7 +26,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration;
 
 import com.iemr.helpline1097.utils.config.ConfigProperties;
-import com.iemr.helpline1097.utils.km.KMService;
 import com.iemr.helpline1097.utils.redis.RedisStorage;
 
 @EnableAutoConfiguration
