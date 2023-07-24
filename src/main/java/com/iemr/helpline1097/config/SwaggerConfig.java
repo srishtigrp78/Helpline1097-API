@@ -51,5 +51,6 @@ public class SwaggerConfig {
 		ApiInfo apiInfo = new ApiInfo("Helpline 1097 API", "The AMRIT Helpline1097 provides comprehensive support to individuals and families affected by AIDS, offering a variety of services to meet their needs.", "1.0",
 				"Terms of service", new Contact("AMRIT", "https://psmri.github.io/PSMRI/", "amrit@piramalswasthya.org"), "",
                 "");
+		return apiInfo;
 	}
 }
