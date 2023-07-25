@@ -31,44 +31,56 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.iemr.helpline1097.controller.co.services.CommonController;
 import com.iemr.helpline1097.service.co.feedback.FeedbackSeverityService;
+import com.iemr.helpline1097.service.co.feedback.FeedbackTypeService;
 import com.iemr.helpline1097.utils.mapper.InputMapper;
 import com.iemr.helpline1097.utils.response.OutputResponse;
 
+import io.swagger.annotations.ApiOperation;
+
 @RequestMapping(value = "/feedback")
 @RestController
-public class FeedbackSeverity
-{
+public class FeedbackSeverity {
 	InputMapper inputMapper = new InputMapper();
-	Logger logger = LoggerFactory.getLogger(CommonController.class);
+	Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 	private FeedbackSeverityService feedbackSeverityService;
+	private FeedbackTypeService feedbackTypeService;
 
 	@Autowired
-	public void SetFeedbackSeverityService(FeedbackSeverityService feedbackSeverityService)
-	{
+	public void SetFeedbackSeverityService(FeedbackSeverityService feedbackSeverityService) {
 		this.feedbackSeverityService = feedbackSeverityService;
 	}
 
 	@CrossOrigin()
-	@RequestMapping(
-			value = "/getseverity",
-			method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON,
-			headers = "Authorization")
-	public String getFeedbackType()
-	{
+	@ApiOperation(value = "Get feedback type", consumes = "application/json", produces = "application/json")
+	@RequestMapping(value = "/getseverity", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	public String getSeverity() {
 
 		OutputResponse response = new OutputResponse();
-		try
-		{
+		try {
 
 			response.setResponse(feedbackSeverityService.getActiveFeedbackSeverity().toString());
-		} catch (Exception e)
-		{
+		} catch (Exception e) {
 			logger.error("", e);
 			response.setError(e);
 		}
 		return response.toString();
 	}
+
+	@CrossOrigin()
+	@ApiOperation(value = "Get feedback type", consumes = "application/json", produces = "application/json")
+	@RequestMapping(value = "/gettype", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	public String getFeedbackType() {
+
+		OutputResponse response = new OutputResponse();
+		try {
+
+			response.setResponse(feedbackTypeService.getActiveFeedbackTypes().toString());
+		} catch (Exception e) {
+			logger.error("", e);
+			response.setError(e);
+		}
+		return response.toString();
+	}
+
 }

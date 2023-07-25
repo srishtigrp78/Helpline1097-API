@@ -38,27 +38,23 @@ import com.iemr.helpline1097.service.co.services.CategoryService;
 import com.iemr.helpline1097.utils.mapper.InputMapper;
 import com.iemr.helpline1097.utils.response.OutputResponse;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
-public class CategoryController
-{
+public class CategoryController {
 	InputMapper inputMapper = new InputMapper();
-	Logger logger = LoggerFactory.getLogger(CommonController.class);
+	Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
 	@CrossOrigin()
-	@RequestMapping(
-			value = "/api/helpline1097/v1/get/category",
-			method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON, headers = "Authorization")
-	public String getAllCategries()
-	{
+	@ApiOperation(value = "Get all categries", consumes = "application/json", produces = "application/json")
+	@RequestMapping(value = "/api/helpline1097/v1/get/category", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	public String getAllCategries() {
 
 		OutputResponse response = new OutputResponse();
-		try
-		{
+		try {
 			List<CategoryDetails> categoryList = this.categoryService.getAllCategories();
 			response.setResponse(categoryList.toString());
-		} catch (Exception e)
-		{
+		} catch (Exception e) {
 			logger.error("", e);
 			response.setError(e);
 		}
@@ -74,8 +70,7 @@ public class CategoryController
 	 * Inject category service
 	 */
 	@Autowired
-	public void setCategoryService(CategoryService categoryService)
-	{
+	public void setCategoryService(CategoryService categoryService) {
 		this.categoryService = categoryService;
 	}
 }
