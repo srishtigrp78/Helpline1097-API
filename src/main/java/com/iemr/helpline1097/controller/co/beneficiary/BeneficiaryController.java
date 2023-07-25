@@ -88,7 +88,7 @@ public class BeneficiaryController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "This will save information requested by the beneficiary during call")
+	@ApiOperation(value = "Save information requested by the beneficiary during call")
 	@RequestMapping(value = "/saveBenCalServiceCatSubcatMapping", method = RequestMethod.POST, headers = "Authorization")
 	public String saveBenCalServiceCatSubcatMapping(@RequestBody String request) {
 		OutputResponse response = new OutputResponse();
@@ -109,7 +109,7 @@ public class BeneficiaryController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "This will save counselling requested by the beneficiary during call")
+	@ApiOperation(value = "Save counselling requested by beneficiary")
 	@RequestMapping(value = "/saveBenCalServiceCOCatSubcatMapping", method = RequestMethod.POST, headers = "Authorization")
 	public String saveBenCalServiceCOCatSubcatMapping(@RequestBody String request) {
 		OutputResponse response = new OutputResponse();
@@ -134,7 +134,7 @@ public class BeneficiaryController {
 	 * @return
 	 */
 	@CrossOrigin()
-	@ApiOperation(value = "This will save information requested by the beneficiary during call", consumes = "application/json", produces = "application/json")
+	@ApiOperation(value = "Save beneficiary call referral mapping", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/saveBenCalReferralMapping", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String saveBenCalReferralMapping(@RequestBody String referralRequest) {
 		OutputResponse response = new OutputResponse();
