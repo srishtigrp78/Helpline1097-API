@@ -25,8 +25,6 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Objects;
 
-//import javax.transaction.Transactional;
-
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -40,8 +38,7 @@ import com.iemr.helpline1097.data.co.beneficiarycall.BeneficiaryCall;
 
 @Repository
 @RestResource(exported = false)
-public interface BeneficiaryCallRepository extends CrudRepository<BeneficiaryCall, Long>
-{
+public interface BeneficiaryCallRepository extends CrudRepository<BeneficiaryCall, Long> {
 	@Query("select " + "b.benCallID, b.benCallServicesMappingHistories, b.calledServiceID, b.is1097, "
 			+ "b.callTime, b.remarks, b.callClosureType, b.dispositionStatusID from BeneficiaryCall b "
 			+ "where b.benCallID = :id order by b.benCallID desc")
