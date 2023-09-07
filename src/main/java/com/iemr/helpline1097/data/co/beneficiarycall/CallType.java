@@ -63,9 +63,6 @@ public class CallType
 	@Expose
 	@Column(name = "CallTypeDesc")
 	private String callTypeDesc;
-	// @Expose
-	// @Column(name = "MctsType")
-	// private Integer mctsType;
 	@Expose
 	@Column(name = "ProviderServiceMapID")
 	private Integer providerServiceMapID;

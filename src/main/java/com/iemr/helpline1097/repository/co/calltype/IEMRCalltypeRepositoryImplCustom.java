@@ -21,7 +21,6 @@
 */
 package com.iemr.helpline1097.repository.co.calltype;
 
-
 import java.util.Objects;
 import java.util.Set;
 
@@ -38,20 +37,15 @@ import com.iemr.helpline1097.data.co.calltype.M_Calltype;
 @Repository
 @RestResource(exported = false)
 public interface IEMRCalltypeRepositoryImplCustom extends CrudRepository<M_Calltype, Long> {
-	
-	
 
 	@Query("select callType,remarks from M_Calltype")
 	Iterable<M_Calltype> readData();
-	
+
 	@Transactional
 	@Modifying(clearAutomatically = true)
 	@Query("UPDATE M_Calltype c set c.remarks =:remarks, c.callType =:callType where c.id = :id")
-	int updateCallType(@Param("id") Long id,@Param("callType") String callType, @Param("remarks") String remarks);
-	
-	/*@Query("UPDATE M_Calltype c set c.remarks =:"+m_Calltype.getId()+", c.callType =:m_Calltype.getId() where c.id = :m_Calltype.getId()")
-	int updateCallType(M_Calltype m_Calltype);*/
-	
+	int updateCallType(@Param("id") Long id, @Param("callType") String callType, @Param("remarks") String remarks);
+
 	@Query("select callType,remarks from M_Calltype")
 	Set<Objects[]> getCallTypes();
 }

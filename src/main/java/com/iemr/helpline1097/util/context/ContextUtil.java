@@ -40,7 +40,6 @@ public class ContextUtil {
 			Field[] fields = bean.getClass().getDeclaredFields();
 
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			logger.error(e.getMessage());
 		}
 

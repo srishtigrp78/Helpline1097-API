@@ -30,6 +30,5 @@ public interface IEMRCalltypeService {
 	
 	M_Calltype getAllCalltypes(int id);
 	
-	/*String updateCalltype(Integer id,String callType,String remarks,String invalidType);*/
 	String updateCalltype(M_Calltype m_Calltype);
 }

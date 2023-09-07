@@ -46,8 +46,7 @@ import lombok.Data;
 @Entity
 @Table(name = "m_SubCategory")
 @Data
-public class SubCategoryDetails
-{
+public class SubCategoryDetails {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -97,13 +96,10 @@ public class SubCategoryDetails
 	@Column(name = "LastModDate", insertable = false, updatable = false)
 	private Timestamp lastModDate;
 
-	// private Set<SubCategoryDetails> subCategories;
-
 	/**
 	 * default constructor
 	 */
-	public SubCategoryDetails()
-	{
+	public SubCategoryDetails() {
 	}
 
 	/**
@@ -112,24 +108,21 @@ public class SubCategoryDetails
 	 * @param SubCategoryID
 	 * @param SubCategoryName
 	 */
-	public SubCategoryDetails(Integer SubCategoryID, String SubCategoryName, String SubCatFilePath)
-	{
+	public SubCategoryDetails(Integer SubCategoryID, String SubCategoryName, String SubCatFilePath) {
 
 		this.subCategoryID = SubCategoryID;
 		this.subCategoryName = SubCategoryName;
 		this.subCatFilePath = SubCatFilePath;
 	}
 
-	public SubCategoryDetails(String SubCategoryDesc, String SubCategoryName, String SubCatFilePath)
-	{
+	public SubCategoryDetails(String SubCategoryDesc, String SubCategoryName, String SubCatFilePath) {
 
 		this.subCategoryDesc = SubCategoryDesc;
 		this.subCategoryName = SubCategoryName;
 		this.subCatFilePath = SubCatFilePath;
 	}
 
-	public SubCategoryDetails(Integer SubCategoryID, String SubCategoryName)
-	{
+	public SubCategoryDetails(Integer SubCategoryID, String SubCategoryName) {
 
 		this.subCategoryID = SubCategoryID;
 		this.subCategoryName = SubCategoryName;
@@ -138,163 +131,134 @@ public class SubCategoryDetails
 	/**
 	 * @return the subCategoryID
 	 */
-	public Integer getSubCategoryID()
-	{
+	public Integer getSubCategoryID() {
 		return subCategoryID;
 	}
 
 	/**
-	 * @param subCategoryID
-	 *            the subCategoryID to set
+	 * @param subCategoryID the subCategoryID to set
 	 */
-	public void setSubCategoryID(Integer subCategoryID)
-	{
+	public void setSubCategoryID(Integer subCategoryID) {
 		this.subCategoryID = subCategoryID;
 	}
 
 	/**
 	 * @return the categoryID
 	 */
-	public Integer getCategoryID()
-	{
+	public Integer getCategoryID() {
 		return categoryID;
 	}
 
 	/**
-	 * @param categoryID
-	 *            the categoryID to set
+	 * @param categoryID the categoryID to set
 	 */
-	public void setCategoryID(Integer categoryID)
-	{
+	public void setCategoryID(Integer categoryID) {
 		this.categoryID = categoryID;
 	}
 
 	/**
 	 * @return the subCategoryName
 	 */
-	public String getSubCategoryName()
-	{
+	public String getSubCategoryName() {
 		return subCategoryName;
 	}
 
 	/**
-	 * @param subCategoryName
-	 *            the subCategoryName to set
+	 * @param subCategoryName the subCategoryName to set
 	 */
-	public void setSubCategoryName(String subCategoryName)
-	{
+	public void setSubCategoryName(String subCategoryName) {
 		this.subCategoryName = subCategoryName;
 	}
 
 	/**
 	 * @return the subCategoryDesc
 	 */
-	public String getSubCategoryDesc()
-	{
+	public String getSubCategoryDesc() {
 		return subCategoryDesc;
 	}
 
 	/**
-	 * @param subCategoryDesc
-	 *            the subCategoryDesc to set
+	 * @param subCategoryDesc the subCategoryDesc to set
 	 */
-	public void setSubCategoryDesc(String subCategoryDesc)
-	{
+	public void setSubCategoryDesc(String subCategoryDesc) {
 		this.subCategoryDesc = subCategoryDesc;
 	}
 
 	/**
 	 * @return the deleted
 	 */
-	public Boolean getDeleted()
-	{
+	public Boolean getDeleted() {
 		return deleted;
 	}
 
 	/**
-	 * @param deleted
-	 *            the deleted to set
+	 * @param deleted the deleted to set
 	 */
-	public void setDeleted(Boolean deleted)
-	{
+	public void setDeleted(Boolean deleted) {
 		this.deleted = deleted;
 	}
 
 	/**
 	 * @return the createdBy
 	 */
-	public String getCreatedBy()
-	{
+	public String getCreatedBy() {
 		return createdBy;
 	}
 
 	/**
-	 * @param createdBy
-	 *            the createdBy to set
+	 * @param createdBy the createdBy to set
 	 */
-	public void setCreatedBy(String createdBy)
-	{
+	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
 	}
 
 	/**
 	 * @return the createdDate
 	 */
-	public Timestamp getCreatedDate()
-	{
+	public Timestamp getCreatedDate() {
 		return createdDate;
 	}
 
 	/**
-	 * @param createdDate
-	 *            the createdDate to set
+	 * @param createdDate the createdDate to set
 	 */
-	public void setCreatedDate(Timestamp createdDate)
-	{
+	public void setCreatedDate(Timestamp createdDate) {
 		this.createdDate = createdDate;
 	}
 
 	/**
 	 * @return the modifiedBy
 	 */
-	public String getModifiedBy()
-	{
+	public String getModifiedBy() {
 		return modifiedBy;
 	}
 
 	/**
-	 * @param modifiedBy
-	 *            the modifiedBy to set
+	 * @param modifiedBy the modifiedBy to set
 	 */
-	public void setModifiedBy(String modifiedBy)
-	{
+	public void setModifiedBy(String modifiedBy) {
 		this.modifiedBy = modifiedBy;
 	}
 
 	/**
 	 * @return the lastModDate
 	 */
-	public Timestamp getLastModDate()
-	{
+	public Timestamp getLastModDate() {
 		return lastModDate;
 	}
 
 	/**
-	 * @param lastModDate
-	 *            the lastModDate to set
+	 * @param lastModDate the lastModDate to set
 	 */
-	public void setLastModDate(Timestamp lastModDate)
-	{
+	public void setLastModDate(Timestamp lastModDate) {
 		this.lastModDate = lastModDate;
 	}
 
-	public String getSubCatFilePath()
-	{
+	public String getSubCatFilePath() {
 		return subCatFilePath;
 	}
 
-	public void setSubCatFilePath(String subCatFilePath)
-	{
+	public void setSubCatFilePath(String subCatFilePath) {
 		this.subCatFilePath = subCatFilePath;
 	}
 
@@ -302,8 +266,7 @@ public class SubCategoryDetails
 	private OutputMapper outputMapper = new OutputMapper();
 
 	@Override
-	public String toString()
-	{
+	public String toString() {
 		return outputMapper.gson().toJson(this);
 	}
 }

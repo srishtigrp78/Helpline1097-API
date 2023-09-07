@@ -30,18 +30,8 @@ import com.iemr.helpline1097.repository.co.calltype.IEMRCalltypeRepositoryImplCu
 @Service
 public class IEMRCalltypeServiceImpl implements IEMRCalltypeService {
 
-	/*
-	 * @Autowired M_Calltype m_calltype;
-	 */
 	@Autowired
 	private IEMRCalltypeRepositoryImplCustom iEMRCalltypeRepositoryImplCustom;
-
-	/*
-	 * @Autowired public void
-	 * setIemrCalltypeRepositoryImpl(BeneficiaryCallRepository
-	 * iEMRCalltypeRepositoryImplCustom) { this.iemrCalltypeRepositoryImplCustom
-	 * = iEMRCalltypeRepositoryImplCustom; }
-	 */
 
 	@Override
 	public M_Calltype addCalltype(String callType, String remarks, String invalidType) {
@@ -72,7 +62,6 @@ public class IEMRCalltypeServiceImpl implements IEMRCalltypeService {
 
 		iEMRCalltypeRepositoryImplCustom.updateCallType(new Long(m_Calltype.getId()), m_Calltype.getCallType(),
 				m_Calltype.getRemarks());
-		// iEMRCalltypeRepositoryImplCustom.updateCallType(m_Calltype);
 		return "success";
 	}
 

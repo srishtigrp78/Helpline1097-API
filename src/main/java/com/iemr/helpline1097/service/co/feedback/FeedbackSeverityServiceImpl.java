@@ -30,7 +30,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.iemr.helpline1097.data.co.feedback.FeedbackSeverity;
-import com.iemr.helpline1097.data.co.feedback.FeedbackType;
 import com.iemr.helpline1097.repository.co.feedback.FeedbackSeverityRepository;
 
 @Service
