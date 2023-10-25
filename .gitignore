@@ -2,6 +2,7 @@
 .project
 .settings/
 target/
+.idea
 
 #Config files
 config.service.ts
