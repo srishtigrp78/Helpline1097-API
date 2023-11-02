@@ -40,48 +40,32 @@ import com.iemr.helpline1097.utils.response.OutputResponse;
 
 @RestController
 @RequestMapping(value = "/api/helpline1097/co/get")
-public class CommonController
-{
+public class CommonController {
 	InputMapper inputMapper = new InputMapper();
 	Logger logger = LoggerFactory.getLogger(CommonController.class);
 
 	@CrossOrigin()
-	@RequestMapping(
-			value = "/category",
-			method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON,
-			headers = "Authorization")
-	// public Iterable<CategoryDetails> getCategories(){
-	@Deprecated
-	public String getCategories()
-	{
+	@RequestMapping(value = "/category", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+
+	public String getCategories() {
 		OutputResponse response = new OutputResponse();
-		try
-		{
+		try {
 			response.setResponse(commonService.getCategories().toString());
-		} catch (Exception e)
-		{
+		} catch (Exception e) {
 			response.setError(e);
 		}
 		return response.toString();
 	}
 
 	@CrossOrigin()
-	@RequestMapping(
-			value = "/subcategory",
-			method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON,
-			headers = "Authorization")
-	@Deprecated
-	public String getSubcategories(@RequestBody String request)
-	{
+	@RequestMapping(value = "/subcategory", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+
+	public String getSubcategories(@RequestBody String request) {
 		OutputResponse response = new OutputResponse();
-		try
-		{
+		try {
 			CategoryDetails category = inputMapper.gson().fromJson(request, CategoryDetails.class);
 			response.setResponse(commonService.getSubCategories(category.getCategoryID()).toString());
-		} catch (Exception e)
-		{
+		} catch (Exception e) {
 			logger.error("", e);
 			response.setError(e);
 		}
@@ -89,23 +73,16 @@ public class CommonController
 	}
 
 	@CrossOrigin()
-	@RequestMapping(
-			value = "/categoryByID",
-			method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON,
-			headers = "Authorization")
-	@Deprecated
-	public String getcategoriesById(@RequestBody String request)
-	{
+	@RequestMapping(value = "/categoryByID", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+
+	public String getcategoriesById(@RequestBody String request) {
 		OutputResponse response = new OutputResponse();
-		try
-		{
+		try {
 			SubServices serviceMaster = inputMapper.gson().fromJson(request, SubServices.class);
 			response.setResponse(commonService.getCategories(serviceMaster.getSubServiceID()).toString());
 		} catch (
 
-		Exception e)
-		{
+		Exception e) {
 			logger.error("", e);
 			response.setError(e);
 		}
@@ -113,20 +90,13 @@ public class CommonController
 	}
 
 	@CrossOrigin()
-	@RequestMapping(
-			value = "/servicetypes",
-			method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON,
-			headers = "Authorization")
-	@Deprecated
-	public String getservicetypes()
-	{
+	@RequestMapping(value = "/servicetypes", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+
+	public String getservicetypes() {
 		OutputResponse response = new OutputResponse();
-		try
-		{
+		try {
 			response.setResponse(commonService.getActiveServiceTypes().toString());
-		} catch (Exception e)
-		{
+		} catch (Exception e) {
 			logger.error("", e);
 			response.setError(e);
 		}
@@ -139,8 +109,7 @@ public class CommonController
 	private CommonService commonService;
 
 	@Autowired
-	public void setCommonService(CommonService commonService)
-	{
+	public void setCommonService(CommonService commonService) {
 		this.commonService = commonService;
 	}
 }
