@@ -1,3 +1,24 @@
+/*
+* AMRIT – Accessible Medical Records via Integrated Technology
+* Integrated EHR (Electronic Health Records) Solution
+*
+* Copyright (C) "Piramal Swasthya Management and Research Institute"
+*
+* This file is part of AMRIT.
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see https://www.gnu.org/licenses/.
+*/
 package com.iemr.helpline1097.config;
 
 import org.springframework.context.annotation.Bean;
@@ -27,8 +48,9 @@ public class SwaggerConfig {
 	}
 
 	private ApiInfo metaData() {
-		ApiInfo apiInfo = new ApiInfo("Spring Boot REST API", "Spring Boot REST API for Online Store", "1.0",
-				"Terms of service", new Contact("Wipro HCIT", "https://www.wipro.com", "mywipro@wipro.com"), "", "");
+		ApiInfo apiInfo = new ApiInfo("Helpline 1097 API", "The AMRIT Helpline1097 provides comprehensive support to individuals and families affected by AIDS, offering a variety of services to meet their needs.", "1.0",
+				"Terms of service", new Contact("AMRIT", "https://psmri.github.io/PSMRI/", "amrit@piramalswasthya.org"), "",
+                "");
 		return apiInfo;
 	}
 }

@@ -1,10 +1,29 @@
+/*
+* AMRIT – Accessible Medical Records via Integrated Technology
+* Integrated EHR (Electronic Health Records) Solution
+*
+* Copyright (C) "Piramal Swasthya Management and Research Institute"
+*
+* This file is part of AMRIT.
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see https://www.gnu.org/licenses/.
+*/
 package com.iemr.helpline1097.repository.co.beneficiarycall;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Objects;
-
-//import javax.transaction.Transactional;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
@@ -19,8 +38,7 @@ import com.iemr.helpline1097.data.co.beneficiarycall.BeneficiaryCall;
 
 @Repository
 @RestResource(exported = false)
-public interface BeneficiaryCallRepository extends CrudRepository<BeneficiaryCall, Long>
-{
+public interface BeneficiaryCallRepository extends CrudRepository<BeneficiaryCall, Long> {
 	@Query("select " + "b.benCallID, b.benCallServicesMappingHistories, b.calledServiceID, b.is1097, "
 			+ "b.callTime, b.remarks, b.callClosureType, b.dispositionStatusID from BeneficiaryCall b "
 			+ "where b.benCallID = :id order by b.benCallID desc")

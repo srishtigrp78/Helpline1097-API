@@ -1,3 +1,24 @@
+/*
+* AMRIT – Accessible Medical Records via Integrated Technology
+* Integrated EHR (Electronic Health Records) Solution
+*
+* Copyright (C) "Piramal Swasthya Management and Research Institute"
+*
+* This file is part of AMRIT.
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see https://www.gnu.org/licenses/.
+*/
 package com.iemr.helpline1097.controller.version;
 
 import java.io.BufferedReader;
@@ -14,40 +35,44 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.helpline1097.utils.response.OutputResponse;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 public class VersionController {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
-	
+
 	@CrossOrigin()
+	@ApiOperation(value = "Version information", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/version", method = { RequestMethod.GET })
 	public String versionInformation() {
 		OutputResponse output = new OutputResponse();
 		try {
 			logger.info("version Controller Start");
 			output.setResponse(readGitProperties());
-	    } catch (Exception e) {
-	    	output.setError(e);
-	    }
-		
+		} catch (Exception e) {
+			output.setError(e);
+		}
+
 		logger.info("version Controller End");
 		return output.toString();
 	}
+
 	private String readGitProperties() throws Exception {
-	    ClassLoader classLoader = getClass().getClassLoader();
-	    InputStream inputStream = classLoader.getResourceAsStream("git.properties");
-	    
-	        return readFromInputStream(inputStream);
+		ClassLoader classLoader = getClass().getClassLoader();
+		InputStream inputStream = classLoader.getResourceAsStream("git.properties");
+
+		return readFromInputStream(inputStream);
 	}
-	private String readFromInputStream(InputStream inputStream)
-	throws IOException {
-	    StringBuilder resultStringBuilder = new StringBuilder();
-	    try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
-	        String line;
-	        while ((line = br.readLine()) != null) {
-	            resultStringBuilder.append(line).append("\n");
-	        }
-	    }
-	    return resultStringBuilder.toString();
+
+	private String readFromInputStream(InputStream inputStream) throws IOException {
+		StringBuilder resultStringBuilder = new StringBuilder();
+		try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
+			String line;
+			while ((line = br.readLine()) != null) {
+				resultStringBuilder.append(line).append("\n");
+			}
+		}
+		return resultStringBuilder.toString();
 	}
 }

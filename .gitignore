@@ -2,6 +2,7 @@
 .project
 .settings/
 target/
+.idea
 
 #Config files
 config.service.ts
@@ -11,3 +12,6 @@ config.json
 mvnw
 mvnw.cmd
 /logs
+
+# Properties
+src/main/environment/common_local.properties

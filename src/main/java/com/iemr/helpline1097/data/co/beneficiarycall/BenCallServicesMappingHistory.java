@@ -1,3 +1,24 @@
+/*
+* AMRIT – Accessible Medical Records via Integrated Technology
+* Integrated EHR (Electronic Health Records) Solution
+*
+* Copyright (C) "Piramal Swasthya Management and Research Institute"
+*
+* This file is part of AMRIT.
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see https://www.gnu.org/licenses/.
+*/
 package com.iemr.helpline1097.data.co.beneficiarycall;
 
 import java.sql.Timestamp;
@@ -34,8 +55,7 @@ import lombok.Data;
 @Entity
 @Table(name = "m_bencall1097servicesmapping")
 @Data
-public class BenCallServicesMappingHistory
-{
+public class BenCallServicesMappingHistory {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "BenCall97ServiceMapID")
@@ -143,17 +163,16 @@ public class BenCallServicesMappingHistory
 	@Transient
 	@Expose
 	private List<SubCategoryDetails> informations = new ArrayList<SubCategoryDetails>();
-    @Transient
-    @Expose
-    String requestID;
-	public BenCallServicesMappingHistory()
-	{
+	@Transient
+	@Expose
+	String requestID;
+
+	public BenCallServicesMappingHistory() {
 
 	}
 
 	public BenCallServicesMappingHistory(long beneficiaryRegID, Long benCallID, Integer subServiceID,
-			Integer categoryID, Integer subCategoryID, Boolean deleted, String createdBy)
-	{
+			Integer categoryID, Integer subCategoryID, Boolean deleted, String createdBy) {
 		this.beneficiaryRegID = beneficiaryRegID;
 		this.benCallID = benCallID;
 		this.subServiceID = subServiceID;
@@ -164,9 +183,7 @@ public class BenCallServicesMappingHistory
 	}
 
 	public BenCallServicesMappingHistory(long beneficiaryRegID, Long benCallID, Integer subServiceID, Boolean deleted,
-			Integer coCategoryID, Integer coSubCategoryID, String createdBy)
-	{
-		// this.benCall97ServiceMapID = benCall97ServiceMapID;
+			Integer coCategoryID, Integer coSubCategoryID, String createdBy) {
 		this.beneficiaryRegID = beneficiaryRegID;
 		this.benCallID = benCallID;
 		this.subServiceID = subServiceID;
@@ -177,8 +194,7 @@ public class BenCallServicesMappingHistory
 	}
 
 	public BenCallServicesMappingHistory(Long beneficiaryRegID, Long benCallID, Integer subServiceID, Long feedbackID,
-			Boolean deleted, String createdBy)
-	{
+			Boolean deleted, String createdBy) {
 		this.beneficiaryRegID = beneficiaryRegID;
 		this.benCallID = benCallID;
 		this.subServiceID = subServiceID;
@@ -188,8 +204,7 @@ public class BenCallServicesMappingHistory
 	}
 
 	public BenCallServicesMappingHistory(long beneficiaryRegID, Long benCallID, Integer subServiceID,
-			Long instituteDirMapID, String createdBy, Boolean deleted)
-	{
+			Long instituteDirMapID, String createdBy, Boolean deleted) {
 		this.beneficiaryRegID = beneficiaryRegID;
 		this.benCallID = benCallID;
 		this.subServiceID = subServiceID;
@@ -203,8 +218,7 @@ public class BenCallServicesMappingHistory
 			Integer subCategoryID, SubCategoryDetails subCategoryDetails, Long feedbackID,
 			FeedbackDetails feedbackDetails, Long instituteDirMapID, DirectoryMapping instituteDirectoryMapping,
 			String createdBy, Timestamp createdDate, Integer coCategoryID, CategoryDetails coCategoryDetails,
-			Integer coSubCategoryID, SubCategoryDetails coSubCategoryDetails)
-	{
+			Integer coSubCategoryID, SubCategoryDetails coSubCategoryDetails) {
 		this.benCall97ServiceMapID = benCall97ServiceMapID;
 		this.beneficiaryRegID = beneficiaryRegID;
 		this.benCallID = benCallID;
@@ -228,8 +242,7 @@ public class BenCallServicesMappingHistory
 
 	public BenCallServicesMappingHistory(Long benCall97ServiceMapID, Long beneficiaryRegID, Long benCallID,
 			Integer subServiceID, Integer categoryID, Integer subCategoryID, Long feedbackID, Long instituteDirMapID,
-			String createdBy, Timestamp createdDate)
-	{
+			String createdBy, Timestamp createdDate) {
 		this.benCall97ServiceMapID = benCall97ServiceMapID;
 		this.beneficiaryRegID = beneficiaryRegID;
 		this.benCallID = benCallID;
@@ -244,8 +257,7 @@ public class BenCallServicesMappingHistory
 
 	public BenCallServicesMappingHistory(Long benCall97ServiceMapID, Long beneficiaryRegID, Long benCallID,
 			Integer subServiceID, SubServices subServices, Integer categoryID, CategoryDetails categoryDetails,
-			Integer subCategoryID, SubCategoryDetails subCategoryDetails, String createdBy, Timestamp createdDate)
-	{
+			Integer subCategoryID, SubCategoryDetails subCategoryDetails, String createdBy, Timestamp createdDate) {
 		this.benCall97ServiceMapID = benCall97ServiceMapID;
 		this.beneficiaryRegID = beneficiaryRegID;
 		this.benCallID = benCallID;
@@ -261,8 +273,7 @@ public class BenCallServicesMappingHistory
 
 	public BenCallServicesMappingHistory(Long benCall97ServiceMapID, Long beneficiaryRegID, Long benCallID,
 			Integer subServiceID, SubServices subServices, CategoryDetails categoryDetails, Integer categoryID,
-			SubCategoryDetails subCategoryDetails, Integer subCategoryID, String createdBy, Timestamp createdDate)
-	{
+			SubCategoryDetails subCategoryDetails, Integer subCategoryID, String createdBy, Timestamp createdDate) {
 		this.benCall97ServiceMapID = benCall97ServiceMapID;
 		this.beneficiaryRegID = beneficiaryRegID;
 		this.benCallID = benCallID;
@@ -278,8 +289,7 @@ public class BenCallServicesMappingHistory
 
 	public BenCallServicesMappingHistory(Long benCall97ServiceMapID, Long beneficiaryRegID, Long benCallID,
 			Integer subServiceID, SubServices subServices, Long feedbackID, FeedbackDetails feedbackDetails,
-			String createdBy, Timestamp createdDate)
-	{
+			String createdBy, Timestamp createdDate) {
 		this.benCall97ServiceMapID = benCall97ServiceMapID;
 		this.beneficiaryRegID = beneficiaryRegID;
 		this.benCallID = benCallID;
@@ -293,8 +303,7 @@ public class BenCallServicesMappingHistory
 
 	public BenCallServicesMappingHistory(Long benCall97ServiceMapID, Long beneficiaryRegID, Long benCallID,
 			Integer subServiceID, SubServices subServices, Long instituteDirMapID,
-			DirectoryMapping instituteDirectoryMapping, String createdBy, Timestamp createdDate)
-	{
+			DirectoryMapping instituteDirectoryMapping, String createdBy, Timestamp createdDate) {
 		this.benCall97ServiceMapID = benCall97ServiceMapID;
 		this.beneficiaryRegID = beneficiaryRegID;
 		this.benCallID = benCallID;
@@ -307,8 +316,7 @@ public class BenCallServicesMappingHistory
 	}
 
 	@Override
-	public String toString()
-	{
+	public String toString() {
 		return OutputMapper.gson().toJson(this);
 	}
 }

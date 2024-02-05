@@ -1,3 +1,24 @@
+/*
+* AMRIT – Accessible Medical Records via Integrated Technology
+* Integrated EHR (Electronic Health Records) Solution
+*
+* Copyright (C) "Piramal Swasthya Management and Research Institute"
+*
+* This file is part of AMRIT.
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see https://www.gnu.org/licenses/.
+*/
 package com.iemr.helpline1097.data.co.feedback;
 
 import java.sql.Timestamp;
@@ -20,8 +41,7 @@ import lombok.Data;
 @Entity
 @Table(name = "t_FeedbackRequest")
 @Data
-public class FeedbackRequestDetails
-{
+public class FeedbackRequestDetails {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -39,7 +59,6 @@ public class FeedbackRequestDetails
 	private Boolean deleted;
 	@Expose
 	private String createdBy;
-	// private Timestamp CreatedDate;
 	private String modifiedBy;
 	private Timestamp lastModDate;
 
@@ -51,170 +70,140 @@ public class FeedbackRequestDetails
 	/**
 	 * @return the feedbackRequestID
 	 */
-	public Long getFeedbackRequestID()
-	{
+	public Long getFeedbackRequestID() {
 		return feedbackRequestID;
 	}
 
 	/**
-	 * @param feedbackRequestID
-	 *            the feedbackRequestID to set
+	 * @param feedbackRequestID the feedbackRequestID to set
 	 */
-	public void setFeedbackRequestID(Long feedbackRequestID)
-	{
+	public void setFeedbackRequestID(Long feedbackRequestID) {
 		this.feedbackRequestID = feedbackRequestID;
 	}
 
 	/**
 	 * @return the feedbackID
 	 */
-	public Long getFeedbackID()
-	{
+	public Long getFeedbackID() {
 		return feedbackID;
 	}
 
 	/**
-	 * @param feedbackID
-	 *            the feedbackID to set
+	 * @param feedbackID the feedbackID to set
 	 */
-	public void setFeedbackID(Long feedbackID)
-	{
+	public void setFeedbackID(Long feedbackID) {
 		this.feedbackID = feedbackID;
 	}
 
 	/**
 	 * @return the feedbackSupSummary
 	 */
-	public String getFeedbackSupSummary()
-	{
+	public String getFeedbackSupSummary() {
 		return feedbackSupSummary;
 	}
 
 	/**
-	 * @param feedbackSupSummary
-	 *            the feedbackSupSummary to set
+	 * @param feedbackSupSummary the feedbackSupSummary to set
 	 */
-	public void setFeedbackSupSummary(String feedbackSupSummary)
-	{
+	public void setFeedbackSupSummary(String feedbackSupSummary) {
 		this.feedbackSupSummary = feedbackSupSummary;
 	}
 
 	/**
 	 * @return the supUserID
 	 */
-	public Integer getSupUserID()
-	{
+	public Integer getSupUserID() {
 		return supUserID;
 	}
 
 	/**
-	 * @param supUserID
-	 *            the supUserID to set
+	 * @param supUserID the supUserID to set
 	 */
-	public void setSupUserID(Integer supUserID)
-	{
+	public void setSupUserID(Integer supUserID) {
 		this.supUserID = supUserID;
 	}
 
 	/**
 	 * @return the comments
 	 */
-	public String getComments()
-	{
+	public String getComments() {
 		return comments;
 	}
 
 	/**
-	 * @param comments
-	 *            the comments to set
+	 * @param comments the comments to set
 	 */
-	public void setComments(String comments)
-	{
+	public void setComments(String comments) {
 		this.comments = comments;
 	}
 
 	/**
 	 * @return the deleted
 	 */
-	public Boolean getDeleted()
-	{
+	public Boolean getDeleted() {
 		return deleted;
 	}
 
 	/**
-	 * @param deleted
-	 *            the deleted to set
+	 * @param deleted the deleted to set
 	 */
-	public void setDeleted(Boolean deleted)
-	{
+	public void setDeleted(Boolean deleted) {
 		this.deleted = deleted;
 	}
 
 	/**
 	 * @return the createdBy
 	 */
-	public String getCreatedBy()
-	{
+	public String getCreatedBy() {
 		return createdBy;
 	}
 
 	/**
-	 * @param createdBy
-	 *            the createdBy to set
+	 * @param createdBy the createdBy to set
 	 */
-	public void setCreatedBy(String createdBy)
-	{
+	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
 	}
 
 	/**
 	 * @return the modifiedBy
 	 */
-	public String getModifiedBy()
-	{
+	public String getModifiedBy() {
 		return modifiedBy;
 	}
 
 	/**
-	 * @param modifiedBy
-	 *            the modifiedBy to set
+	 * @param modifiedBy the modifiedBy to set
 	 */
-	public void setModifiedBy(String modifiedBy)
-	{
+	public void setModifiedBy(String modifiedBy) {
 		this.modifiedBy = modifiedBy;
 	}
 
 	/**
 	 * @return the lastModDate
 	 */
-	public Timestamp getLastModDate()
-	{
+	public Timestamp getLastModDate() {
 		return lastModDate;
 	}
 
 	/**
-	 * @param lastModDate
-	 *            the lastModDate to set
+	 * @param lastModDate the lastModDate to set
 	 */
-	public void setLastModDate(Timestamp lastModDate)
-	{
+	public void setLastModDate(Timestamp lastModDate) {
 		this.lastModDate = lastModDate;
 	}
 
 	/**
 	 * @return the feedback
 	 */
-	public FeedbackDetails getFeedback()
-	{
+	public FeedbackDetails getFeedback() {
 		return feedback;
 	}
 
 	/**
-	 * @param feedback
-	 *            the feedback to set
+	 * @param feedback the feedback to set
 	 */
-	public void setFeedback(FeedbackDetails feedback)
-	{
+	public void setFeedback(FeedbackDetails feedback) {
 		this.feedback = feedback;
 	}
 
@@ -222,8 +211,7 @@ public class FeedbackRequestDetails
 	private OutputMapper outputMapper = new OutputMapper();
 
 	@Override
-	public String toString()
-	{
+	public String toString() {
 		return outputMapper.gson().toJson(this);
 	}
 }

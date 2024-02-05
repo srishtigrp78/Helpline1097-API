@@ -1,6 +1,25 @@
+/*
+* AMRIT – Accessible Medical Records via Integrated Technology
+* Integrated EHR (Electronic Health Records) Solution
+*
+* Copyright (C) "Piramal Swasthya Management and Research Institute"
+*
+* This file is part of AMRIT.
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see https://www.gnu.org/licenses/.
+*/
 package com.iemr.helpline1097.controller.everwell;
-
-import java.util.List;
 
 import javax.ws.rs.core.MediaType;
 
@@ -13,74 +32,65 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.iemr.helpline1097.controller.co.services.CommonController;
 import com.iemr.helpline1097.service.everwell.EverwellService;
 import com.iemr.helpline1097.utils.mapper.InputMapper;
 import com.iemr.helpline1097.utils.response.OutputResponse;
 
+import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
 @RestController
 public class EverwellGuidelinesController {
 	InputMapper inputMapper = new InputMapper();
-	Logger logger = LoggerFactory.getLogger(CommonController.class);
-    @Autowired
-    private EverwellService everwellService;
+	Logger logger = LoggerFactory.getLogger(this.getClass().getName());
+	@Autowired
+	private EverwellService everwellService;
+
 	@CrossOrigin()
-	@RequestMapping(
-			value = "/saveEverwellGuidelines",
-			method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON, headers = "Authorization")
-	public String saveEverwellGuidelines( @ApiParam(value = "{\"providerServiceMapID\":\"Integer\",\"Category\":\\\"String\\\","
-			+ "\"fileContent\":\"String\"\"\\\"GuidelineName\\\":\\\"String\\\"\"\\\"GuidelineDescription\\\":\\\"String\\\"}") @RequestBody String request)
-	{
+	@ApiOperation(value = "Save everwell guidelines", consumes = "application/json", produces = "application/json")
+	@RequestMapping(value = "/saveEverwellGuidelines", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	public String saveEverwellGuidelines(
+			@ApiParam(value = "{\"providerServiceMapID\":\"Integer\",\"Category\":\\\"String\\\","
+					+ "\"fileContent\":\"String\"\"\\\"GuidelineName\\\":\\\"String\\\"\"\\\"GuidelineDescription\\\":\\\"String\\\"}") @RequestBody String request) {
 
 		OutputResponse response = new OutputResponse();
-		try
-		{
+		try {
 			String result = everwellService.saveGuidelines(request);
 			response.setResponse(result);
-		} catch (Exception e)
-		{
+		} catch (Exception e) {
 			logger.error("Error while saving everwell guidelines ", e);
 			response.setError(e);
 		}
 		return response.toString();
 	}
+
 	@CrossOrigin()
-	@RequestMapping(
-			value = "/fetchEverwellGuidelines",
-			method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON, headers = "Authorization")
-	public String fetchEverwellGuidelines(@ApiParam(value = "{\"providerServiceMapID\":\"Integer\",\"adherencePercentage\":\\\"Integer\\\"}") @RequestBody String request)
-	{
+	@ApiOperation(value = "Fetch everwell guidelines", consumes = "application/json", produces = "application/json")
+	@RequestMapping(value = "/fetchEverwellGuidelines", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	public String fetchEverwellGuidelines(
+			@ApiParam(value = "{\"providerServiceMapID\":\"Integer\",\"adherencePercentage\":\\\"Integer\\\"}") @RequestBody String request) {
 
 		OutputResponse response = new OutputResponse();
-		try
-		{
+		try {
 			String result = everwellService.fetchGuidelines(request);
 			response.setResponse(result);
-		} catch (Exception e)
-		{
+		} catch (Exception e) {
 			logger.error("Error while fetching everwell guidelines ", e);
 			response.setError(e);
 		}
 		return response.toString();
 	}
+
 	@CrossOrigin()
-	@RequestMapping(
-			value = "/deleteEverwellGuidelines",
-			method = RequestMethod.POST,
-			produces = MediaType.APPLICATION_JSON, headers = "Authorization")
-	public String deleteEverwellGuidelines(@ApiParam(value = "{\"Id\":\"Integer\",\"modifiedBy\":\\\"String\\\"}") @RequestBody String request)
-	{
+	@ApiOperation(value = "Delete everwell guidelines", consumes = "application/json", produces = "application/json")
+	@RequestMapping(value = "/deleteEverwellGuidelines", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	public String deleteEverwellGuidelines(
+			@ApiParam(value = "{\"Id\":\"Integer\",\"modifiedBy\":\\\"String\\\"}") @RequestBody String request) {
 		OutputResponse response = new OutputResponse();
-		try
-		{
+		try {
 			String result = everwellService.deleteGuideline(request);
 			response.setResponse(result);
-		} catch (Exception e)
-		{
+		} catch (Exception e) {
 			logger.error("Error while fetching everwell guidelines ", e);
 			response.setError(e);
 		}
