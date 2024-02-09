@@ -23,15 +23,13 @@ package com.iemr.helpline1097.controller.co.beneficiary;
 
 import java.util.Arrays;
 
-import javax.ws.rs.core.MediaType;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.helpline1097.data.co.beneficiary.M_Promoservice;
@@ -41,9 +39,10 @@ import com.iemr.helpline1097.service.co.beneficiary.IEMRPromoserviceDetailsServi
 import com.iemr.helpline1097.utils.mapper.InputMapper;
 import com.iemr.helpline1097.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import jakarta.ws.rs.core.MediaType;
 
-@RequestMapping(value = "/iEMR")
+@RequestMapping(value = "/iEMR", consumes = "application/json", produces = "application/json")
 @RestController
 public class BeneficiaryController {
 	InputMapper inputMapper = new InputMapper();
@@ -65,8 +64,8 @@ public class BeneficiaryController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Add promo service detail", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "add/promoServiceDetails", method = RequestMethod.POST, headers = "Authorization")
+	@Operation(summary = "Add promo service detail")
+	@PostMapping(value = "add/promoServiceDetails", headers = "Authorization")
 	public String addPromoServiceDetails(@RequestBody String request) {
 
 		OutputResponse response = new OutputResponse();
@@ -88,8 +87,8 @@ public class BeneficiaryController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Save information requested by the beneficiary during call")
-	@RequestMapping(value = "/saveBenCalServiceCatSubcatMapping", method = RequestMethod.POST, headers = "Authorization")
+	@Operation(summary = "Save information requested by the beneficiary during call")
+	@PostMapping(value = "/saveBenCalServiceCatSubcatMapping", headers = "Authorization")
 	public String saveBenCalServiceCatSubcatMapping(@RequestBody String request) {
 		OutputResponse response = new OutputResponse();
 		try {
@@ -109,8 +108,8 @@ public class BeneficiaryController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Save counselling requested by beneficiary")
-	@RequestMapping(value = "/saveBenCalServiceCOCatSubcatMapping", method = RequestMethod.POST, headers = "Authorization")
+	@Operation(summary = "Save counselling requested by beneficiary")
+	@PostMapping(value = "/saveBenCalServiceCOCatSubcatMapping", headers = "Authorization")
 	public String saveBenCalServiceCOCatSubcatMapping(@RequestBody String request) {
 		OutputResponse response = new OutputResponse();
 		try {
@@ -134,8 +133,8 @@ public class BeneficiaryController {
 	 * @return
 	 */
 	@CrossOrigin()
-	@ApiOperation(value = "Save beneficiary call referral mapping", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/saveBenCalReferralMapping", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	@Operation(summary = "Save beneficiary call referral mapping")
+	@PostMapping(value = "/saveBenCalReferralMapping", consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String saveBenCalReferralMapping(@RequestBody String referralRequest) {
 		OutputResponse response = new OutputResponse();
 		logger.debug("saveBenCalReferralMapping request is " + referralRequest);

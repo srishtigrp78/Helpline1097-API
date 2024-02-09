@@ -21,24 +21,31 @@
 */
 package com.iemr.helpline1097.utils.http;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.MediaType;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.WebRequestInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.springframework.web.servlet.handler.WebRequestHandlerInterceptorAdapter;
 
 import com.iemr.helpline1097.utils.response.OutputResponse;
 import com.iemr.helpline1097.utils.sessionobject.SessionObject;
 import com.iemr.helpline1097.utils.validator.Validator;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
 @Component
-public class HTTPRequestInterceptor extends HandlerInterceptorAdapter
+public class HTTPRequestInterceptor extends WebRequestHandlerInterceptorAdapter
 {
+	public HTTPRequestInterceptor(WebRequestInterceptor requestInterceptor) {
+		super(requestInterceptor);
+		// TODO Auto-generated constructor stub
+	}
+
 	private Validator validator;
 
 	Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());

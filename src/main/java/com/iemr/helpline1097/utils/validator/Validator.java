@@ -26,7 +26,6 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Service;
 
 import com.iemr.helpline1097.utils.config.ConfigProperties;
@@ -40,7 +39,6 @@ public class Validator {
 	private SessionObject session;
 
 	@Autowired(required = true)
-	@Required
 	public void setSessionObject(SessionObject sessionObject) {
 		this.session = sessionObject;
 	}

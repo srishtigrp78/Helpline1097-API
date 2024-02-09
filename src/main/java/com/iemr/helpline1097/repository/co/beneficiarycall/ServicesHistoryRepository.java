@@ -36,7 +36,7 @@ import com.iemr.helpline1097.data.co.beneficiarycall.BenCallServicesMappingHisto
 
 @Repository
 @RestResource(exported = false)
-public interface ServicesHistoryRepository extends CrudRepository<BenCallServicesMappingHistory, Integer>
+public interface ServicesHistoryRepository extends CrudRepository<BenCallServicesMappingHistory, Long>
 {
 
 	@Query("select " + "benCall97ServiceMapID, beneficiaryRegID, benCallID, subServiceID, categoryID, "

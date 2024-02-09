@@ -26,7 +26,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.MediaType;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,6 +34,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -47,7 +48,7 @@ public class HttpUtils {
 	private String server;
 	private RestTemplate rest;
 	private HttpHeaders headers;
-	private HttpStatus status;
+	private HttpStatusCode status;
 
 	public HttpUtils() {
 		if (rest == null) {
@@ -129,8 +130,7 @@ public class HttpUtils {
 			try {
 				multiPart = new FormDataMultiPart();
 				is = new FileInputStream(data);
-				FormDataBodyPart filePart = new FormDataBodyPart("content", is,
-						MediaType.APPLICATION_OCTET_STREAM_TYPE);
+				FormDataBodyPart filePart = new FormDataBodyPart();
 				multiPart.bodyPart(filePart);
 				multiPart.field("docPath", data);
 				headers.add("Content-Type", MediaType.APPLICATION_JSON);
@@ -155,11 +155,11 @@ public class HttpUtils {
 		return body;
 	}
 
-	public HttpStatus getStatus() {
+	public HttpStatusCode getStatus() {
 		return status;
 	}
 
-	public void setStatus(HttpStatus status) {
-		this.status = status;
+	public void setStatus(HttpStatusCode StatusCode) {
+		this.status = StatusCode;
 	}
 }

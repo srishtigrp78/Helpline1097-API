@@ -21,16 +21,14 @@
 */
 package com.iemr.helpline1097.controller.co.callhandling;
 
-import javax.ws.rs.core.MediaType;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.helpline1097.data.co.calltype.M_Calltype;
@@ -38,9 +36,10 @@ import com.iemr.helpline1097.service.co.callhandling.IEMRCalltypeServiceImpl;
 import com.iemr.helpline1097.utils.mapper.InputMapper;
 import com.iemr.helpline1097.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import jakarta.ws.rs.core.MediaType;
 
-@RequestMapping(value = "/call")
+@RequestMapping(value = "/call", consumes = "application/json", produces = "application/json")
 @RestController
 public class CalltypeController {
 	InputMapper inputMapper = new InputMapper();
@@ -49,8 +48,8 @@ public class CalltypeController {
 	private IEMRCalltypeServiceImpl iEMRCalltypeServiceImpl;
 
 	@CrossOrigin()
-	@ApiOperation(value = "Add type", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/addType", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	@Operation(summary = "Add type")
+	@PostMapping(value = "/addType", produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String addCallType(@RequestBody String request) {
 
 		OutputResponse response = new OutputResponse();
@@ -71,8 +70,8 @@ public class CalltypeController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get type", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getTypes/{id}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	@Operation(summary = "Get type")
+	@PostMapping(value = "/getTypes/{id}", produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String getAllCallTypes(@PathVariable("id") int id) {
 
 		OutputResponse response = new OutputResponse();

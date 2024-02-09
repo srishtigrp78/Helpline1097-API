@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import lombok.Data;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -141,17 +142,17 @@ public class BenInformationCounsellingFeedbackReferralImpl implements BenInforma
 
 				if (institutes[idx].getDistrictBranchMappingID() != null) {
 					dirMaps = directoryMappingRepository.findAciveInstituteDirectories(
-							directories[idx].getInstituteDirectoryID(), directories[idx].getInstituteSubDirectoryID(),
+							directories[idx].getInstituteDirectoryID(), directories[idx].getInstituteDirectoryID(),
 							institutes[idx].getStateID(), institutes[idx].getDistrictID(), institutes[idx].getBlockID(),
 							institutes[idx].getDistrictBranchMappingID());
 				} else if (institutes[idx].getBlockID() != null) {
 					dirMaps = directoryMappingRepository.findAciveInstituteDirectories(
-							directories[idx].getInstituteDirectoryID(), directories[idx].getInstituteSubDirectoryID(),
+							directories[idx].getInstituteDirectoryID(), directories[idx].getInstituteDirectoryID(),
 							institutes[idx].getStateID(), institutes[idx].getDistrictID(),
 							institutes[idx].getBlockID());
 				} else {
 					dirMaps = directoryMappingRepository.findAciveInstituteDirectories(
-							directories[idx].getInstituteDirectoryID(), directories[idx].getInstituteSubDirectoryID(),
+							directories[idx].getInstituteDirectoryID(), directories[idx].getInstituteDirectoryID(),
 							institutes[idx].getStateID(), institutes[idx].getDistrictID());
 				}
 				DirectoryMapping maps = new DirectoryMapping();

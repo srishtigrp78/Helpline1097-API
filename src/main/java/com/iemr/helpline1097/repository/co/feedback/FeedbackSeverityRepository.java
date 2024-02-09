@@ -33,7 +33,7 @@ import com.iemr.helpline1097.data.co.feedback.FeedbackSeverity;
 
 @Repository
 @RestResource(exported = false)
-public interface FeedbackSeverityRepository extends CrudRepository<FeedbackSeverity, Long> {
+public interface FeedbackSeverityRepository extends CrudRepository<FeedbackSeverity, Integer> {
 	@Query("select severityID, severityTypeName from FeedbackSeverity where deleted = false")
 	Set<Objects[]> getActiveFeedbackSeverity();
 }

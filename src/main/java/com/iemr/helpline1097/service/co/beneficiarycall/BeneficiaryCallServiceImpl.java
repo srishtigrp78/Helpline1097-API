@@ -53,7 +53,7 @@ public class BeneficiaryCallServiceImpl implements BeneficiaryCallService
 	{
 		List<BeneficiaryCall> benCalls = new ArrayList<BeneficiaryCall>();
 		ArrayList<Objects[]> queryResult =
-				beneficiaryCallRepository.findCallsByBenefeciaryID(benificiaryCallId, new PageRequest(0, 1000));
+				beneficiaryCallRepository.findCallsByBenefeciaryID(benificiaryCallId, PageRequest.of(0, 1000));
 		for (Object[] objects : queryResult)
 		{
 			if (queryResult != null && queryResult.size() >= 8)
@@ -92,7 +92,7 @@ public class BeneficiaryCallServiceImpl implements BeneficiaryCallService
 	{
 		List<BeneficiaryCall> benCalls = new ArrayList<BeneficiaryCall>();
 		ArrayList<Objects[]> queryResult = beneficiaryCallRepository.findCallsHistoryByBenefeciaryID(benificiaryCallId,
-				new PageRequest(pageNo, rows));
+				PageRequest.of(pageNo, rows));
 		for (Object[] objects : queryResult)
 		{
 			if (objects != null && objects.length >= 9)
@@ -112,7 +112,7 @@ public class BeneficiaryCallServiceImpl implements BeneficiaryCallService
 	{
 		List<BeneficiaryCall> benCalls = new ArrayList<BeneficiaryCall>();
 		ArrayList<Objects[]> queryResult = beneficiaryCallRepository.findCallsHistoryByBenefeciaryID(benificiaryCallId,
-				calledServiceID, new PageRequest(pageNo, rows));
+				calledServiceID, PageRequest.of(pageNo, rows));
 		for (Object[] objects : queryResult)
 		{
 			if (objects != null && objects.length >= 9)

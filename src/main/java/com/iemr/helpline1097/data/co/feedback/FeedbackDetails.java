@@ -24,18 +24,6 @@ package com.iemr.helpline1097.data.co.feedback;
 import java.sql.Timestamp;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.persistence.Transient;
-
 import com.google.gson.annotations.Expose;
 import com.iemr.helpline1097.data.co.services.DistrictBlock;
 import com.iemr.helpline1097.data.co.services.DistrictBranchMapping;
@@ -44,6 +32,17 @@ import com.iemr.helpline1097.data.co.services.Institute;
 import com.iemr.helpline1097.data.co.services.States;
 import com.iemr.helpline1097.utils.mapper.OutputMapper;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import lombok.Data;
 
 @Entity

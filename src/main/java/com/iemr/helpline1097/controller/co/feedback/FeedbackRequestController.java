@@ -21,16 +21,14 @@
 */
 package com.iemr.helpline1097.controller.co.feedback;
 
-import javax.ws.rs.core.MediaType;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.helpline1097.data.co.feedbackRequest.FeedbackRequest;
@@ -38,9 +36,10 @@ import com.iemr.helpline1097.service.co.feedback.FeedbackRequestServiceImpl;
 import com.iemr.helpline1097.utils.mapper.InputMapper;
 import com.iemr.helpline1097.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import jakarta.ws.rs.core.MediaType;
 
-@RequestMapping(value = "/iEMR")
+@RequestMapping(value = "/iEMR", consumes = "application/json", produces = "application/json")
 @RestController
 public class FeedbackRequestController {
 	InputMapper inputMapper = new InputMapper();
@@ -50,8 +49,8 @@ public class FeedbackRequestController {
 	private FeedbackRequestServiceImpl feedbackRequestServiceImpl;
 
 	@CrossOrigin()
-	@ApiOperation(value = "Create feedback request", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/put/feedbackRequest", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	@Operation(summary = "Create feedback request")
+	@PostMapping(value = "/put/feedbackRequest", produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String feedbackCreate(@RequestBody String request) {
 		OutputResponse response = new OutputResponse();
 		try {
@@ -66,8 +65,8 @@ public class FeedbackRequestController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get feedback request", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/get/feedbackRequest/{feedbackRequestID}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	@Operation(summary = "Get feedback request")
+	@PostMapping(value = "/get/feedbackRequest/{feedbackRequestID}", produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String getFeedbackRequests(@PathVariable("feedbackRequestID") int feedbackRequestID) {
 		OutputResponse response = new OutputResponse();
 		try {
