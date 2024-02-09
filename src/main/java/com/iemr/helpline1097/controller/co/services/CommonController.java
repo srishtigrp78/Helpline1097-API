@@ -21,15 +21,15 @@
 */
 package com.iemr.helpline1097.controller.co.services;
 
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.MediaType;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.helpline1097.data.co.beneficiarycall.SubServices;
@@ -39,14 +39,13 @@ import com.iemr.helpline1097.utils.mapper.InputMapper;
 import com.iemr.helpline1097.utils.response.OutputResponse;
 
 @RestController
-@RequestMapping(value = "/api/helpline1097/co/get")
+@RequestMapping(value = "/api/helpline1097/co/get", consumes = "application/json", produces = "application/json")
 public class CommonController {
 	InputMapper inputMapper = new InputMapper();
 	Logger logger = LoggerFactory.getLogger(CommonController.class);
 
 	@CrossOrigin()
-	@RequestMapping(value = "/category", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
-
+	@PostMapping(value = "/category", produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String getCategories() {
 		OutputResponse response = new OutputResponse();
 		try {
@@ -58,8 +57,7 @@ public class CommonController {
 	}
 
 	@CrossOrigin()
-	@RequestMapping(value = "/subcategory", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
-
+	@PostMapping(value = "/subcategory", produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String getSubcategories(@RequestBody String request) {
 		OutputResponse response = new OutputResponse();
 		try {
@@ -73,8 +71,7 @@ public class CommonController {
 	}
 
 	@CrossOrigin()
-	@RequestMapping(value = "/categoryByID", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
-
+	@PostMapping(value = "/categoryByID", produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String getcategoriesById(@RequestBody String request) {
 		OutputResponse response = new OutputResponse();
 		try {
@@ -90,8 +87,7 @@ public class CommonController {
 	}
 
 	@CrossOrigin()
-	@RequestMapping(value = "/servicetypes", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
-
+	@PostMapping(value = "/servicetypes", produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String getservicetypes() {
 		OutputResponse response = new OutputResponse();
 		try {

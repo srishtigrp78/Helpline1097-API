@@ -23,14 +23,13 @@ package com.iemr.helpline1097.controller.co.services;
 
 import java.util.List;
 
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.MediaType;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.helpline1097.data.co.services.CategoryDetails;
@@ -38,7 +37,7 @@ import com.iemr.helpline1097.service.co.services.CategoryService;
 import com.iemr.helpline1097.utils.mapper.InputMapper;
 import com.iemr.helpline1097.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 
 @RestController
 public class CategoryController {
@@ -46,8 +45,8 @@ public class CategoryController {
 	Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get all categries", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/api/helpline1097/v1/get/category", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	@Operation(summary = "Get all categries")
+	@PostMapping(value = "/api/helpline1097/v1/get/category", produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String getAllCategries() {
 
 		OutputResponse response = new OutputResponse();

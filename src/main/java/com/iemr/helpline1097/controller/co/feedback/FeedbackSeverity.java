@@ -21,14 +21,14 @@
 */
 package com.iemr.helpline1097.controller.co.feedback;
 
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.MediaType;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.helpline1097.service.co.feedback.FeedbackSeverityService;
@@ -36,9 +36,9 @@ import com.iemr.helpline1097.service.co.feedback.FeedbackTypeService;
 import com.iemr.helpline1097.utils.mapper.InputMapper;
 import com.iemr.helpline1097.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 
-@RequestMapping(value = "/feedback")
+@RequestMapping(value = "/feedback", consumes = "application/json", produces = "application/json")
 @RestController
 public class FeedbackSeverity {
 	InputMapper inputMapper = new InputMapper();
@@ -52,8 +52,8 @@ public class FeedbackSeverity {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get feedback type", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getseverity", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	@Operation(summary = "Get feedback type")
+	@PostMapping(value = "/getseverity", produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String getSeverity() {
 
 		OutputResponse response = new OutputResponse();
@@ -68,8 +68,8 @@ public class FeedbackSeverity {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get feedback type", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/gettype", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	@Operation(summary = "Get feedback type")
+	@PostMapping(value = "/gettype", produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String getFeedbackType() {
 
 		OutputResponse response = new OutputResponse();

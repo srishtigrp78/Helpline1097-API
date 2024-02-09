@@ -51,10 +51,9 @@ public class IEMRCalltypeServiceImpl implements IEMRCalltypeService {
 		return iEMRCalltypeRepositoryImplCustom.save(m_calltype);
 	}
 
-	@Override
 	public M_Calltype getAllCalltypes(int id) {
 
-		return iEMRCalltypeRepositoryImplCustom.findOne(new Long(id));
+		return iEMRCalltypeRepositoryImplCustom.findById(new Long(id)).get();
 	}
 
 	@Override

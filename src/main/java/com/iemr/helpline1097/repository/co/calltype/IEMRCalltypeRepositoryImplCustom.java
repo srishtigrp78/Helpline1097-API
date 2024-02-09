@@ -48,4 +48,5 @@ public interface IEMRCalltypeRepositoryImplCustom extends CrudRepository<M_Callt
 
 	@Query("select callType,remarks from M_Calltype")
 	Set<Objects[]> getCallTypes();
+
 }

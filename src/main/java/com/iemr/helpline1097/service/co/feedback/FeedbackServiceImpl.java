@@ -29,8 +29,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +45,8 @@ import com.iemr.helpline1097.utils.http.HttpUtils;
 import com.iemr.helpline1097.utils.mapper.InputMapper;
 import com.iemr.helpline1097.utils.mapper.OutputMapper;
 import com.iemr.helpline1097.utils.response.OutputResponse;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @Service
 public class FeedbackServiceImpl implements FeedbackService {
@@ -157,7 +157,7 @@ public class FeedbackServiceImpl implements FeedbackService {
 							f.getCreatedBy());
 					obj.add(benCallServicesMappingHistory);
 				}
-				Iterable<BenCallServicesMappingHistory> dataInserted = benCalServiceCatSubcatMappingRepo.save(obj);
+				Iterable<BenCallServicesMappingHistory> dataInserted = benCalServiceCatSubcatMappingRepo.saveAll(obj);
 				String requestID = "";
 
 				for (FeedbackDetails feedback : feedbackSavedData) {

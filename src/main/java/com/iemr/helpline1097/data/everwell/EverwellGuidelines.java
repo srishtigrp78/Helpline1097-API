@@ -23,16 +23,15 @@ package com.iemr.helpline1097.data.everwell;
 
 import java.sql.Timestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
-
 import com.google.gson.annotations.Expose;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import lombok.Data;
 
 @Entity
@@ -88,4 +87,24 @@ public class EverwellGuidelines {
 	private String modifiedBy;
 	@Column(name = "LastModDate", insertable = false, updatable = false)
 	private Timestamp lastModDate;
+	public Integer getAdherencePercentage() {
+		// TODO Auto-generated method stub
+		return adherencePercentage;
+	}
+	public Integer getProviderServiceMapID() {
+		// TODO Auto-generated method stub
+		return providerServiceMapID;
+	}
+	public Long getId() {
+		// TODO Auto-generated method stub
+		return id;
+	}
+	public String getCategory() {
+		// TODO Auto-generated method stub
+		return category;
+	}
+	public String getModifiedBy() {
+		// TODO Auto-generated method stub
+		return modifiedBy;
+	}
 }

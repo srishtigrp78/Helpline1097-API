@@ -21,21 +21,19 @@
 */
 package com.iemr.helpline1097.controller.co.services;
 
-import javax.ws.rs.core.MediaType;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.helpline1097.service.co.services.InstitutionService;
 import com.iemr.helpline1097.utils.mapper.InputMapper;
 import com.iemr.helpline1097.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import jakarta.ws.rs.core.MediaType;
 
 @RestController
 public class InstitutionController {
@@ -43,8 +41,8 @@ public class InstitutionController {
 	Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get institutions", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/api/helpline1097/co/get/institutions", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	@Operation(summary = "Get institutions")
+	@GetMapping(value = "/api/helpline1097/co/get/institutions", produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String getInstitutions() {
 		OutputResponse response = new OutputResponse();
 		try {
