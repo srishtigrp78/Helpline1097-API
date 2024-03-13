@@ -38,7 +38,7 @@ public class DesignationServiceImpl implements DesignationService {
 	@Override
 	public List<DesignationDetails> getDesignations() {
 		List<DesignationDetails> designationsList = new ArrayList<DesignationDetails>();
-		Set<Objects[]> designations = designationRepository.findAciveDesignations();
+		Set<Object[]> designations = designationRepository.findAciveDesignations();
 		for (Object[] designation : designations) {
 			if (designation!=null && designation.length >= 2) {
 				designationsList.add(new DesignationDetails((Integer) designation[0], (String) designation[1]));

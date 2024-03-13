@@ -31,7 +31,7 @@ import org.slf4j.LoggerFactory;
 public class ContextUtil {
 	private Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
-	public Object getDTOBean(List<Objects[]> lists, String className) {
+	public Object getDTOBean(List<Object[]> lists, String className) {
 
 		Object bean;
 		try {

@@ -55,7 +55,7 @@ public class CategoryServiceImpl implements CategoryService {
 	public List<CategoryDetails> getAllCategories(String request) throws IEMRException {
 		CategoryDetails categoryDetails = inputMapper.gson().fromJson(request, CategoryDetails.class);
 		List<CategoryDetails> categoryList = new ArrayList<CategoryDetails>();
-		ArrayList<Objects[]> lists = categoryRepository.getAllCategories(categoryDetails.getSubServiceID());
+		ArrayList<Object[]> lists = categoryRepository.getAllCategories(categoryDetails.getSubServiceID());
 		for (Object[] objects : lists) {
 			if (objects != null && objects.length >= 2) {
 				categoryList.add(new CategoryDetails((Integer) objects[0], (String) objects[1]));
@@ -68,7 +68,7 @@ public class CategoryServiceImpl implements CategoryService {
 	@Override
 	public List<CategoryDetails> getAllCategories() {
 		List<CategoryDetails> categoryList = new ArrayList<CategoryDetails>();
-		ArrayList<Objects[]> lists = categoryRepository.findBy();
+		ArrayList<Object[]> lists = categoryRepository.findBy();
 
 		for (Object[] objects : lists) {
 

@@ -37,5 +37,5 @@ public interface ServiceTypeRepository extends CrudRepository<SubServices, Integ
 {
 
 	@Query("select subServiceID, subServiceName, subServiceDesc, deleted from SubServices")
-	public ArrayList<Objects[]> findActiveServiceTypes();
+	public ArrayList<Object[]> findActiveServiceTypes();
 }

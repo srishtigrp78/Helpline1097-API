@@ -74,7 +74,7 @@ public class ServicesHistoryServiceImpl implements ServicesHistoryService {
 	@Override
 	public List<BenCallServicesMappingHistory> getServiceHistory(Long id) {
 		ArrayList<BenCallServicesMappingHistory> serviceHistoryList = new ArrayList<BenCallServicesMappingHistory>();
-		List<Objects[]> lists = serviceHistoryRepository.findCallDetailsForBeneficiary(id);
+		List<Object[]> lists = serviceHistoryRepository.findCallDetailsForBeneficiary(id);
 
 		for (Object[] objects : lists) {
 			if (objects != null && objects.length >= 19) {
@@ -96,7 +96,7 @@ public class ServicesHistoryServiceImpl implements ServicesHistoryService {
 		BeneficiaryCall service1097HistoryDetails = inputMapper.gson().fromJson(beneficiaryRequest,
 				BeneficiaryCall.class);
 		ArrayList<BenCallServicesMappingHistory> serviceHistoryList = new ArrayList<BenCallServicesMappingHistory>();
-		List<Objects[]> lists;
+		List<Object[]> lists;
 		if (service1097HistoryDetails.getCalledServiceID() != null) {
 			lists = serviceHistoryRepository.findCallDetailsForBeneficiary(
 					service1097HistoryDetails.getBeneficiaryRegID(), service1097HistoryDetails.getCalledServiceID());
@@ -122,7 +122,7 @@ public class ServicesHistoryServiceImpl implements ServicesHistoryService {
 	@Override
 	public List<BenCallServicesMappingHistory> getCallSummary(Long id) {
 		ArrayList<BenCallServicesMappingHistory> serviceHistoryList = new ArrayList<BenCallServicesMappingHistory>();
-		List<Objects[]> lists = serviceHistoryRepository.getCallSummary(id);
+		List<Object[]> lists = serviceHistoryRepository.getCallSummary(id);
 		for (Object[] objects : lists) {
 			if (objects != null && objects.length >= 19) {
 				BenCallServicesMappingHistory srh = new BenCallServicesMappingHistory((Long) objects[0],
@@ -171,7 +171,7 @@ public class ServicesHistoryServiceImpl implements ServicesHistoryService {
 		BeneficiaryCall service1097HistoryDetails = inputMapper.gson().fromJson(beneficiaryRequest,
 				BeneficiaryCall.class);
 		ArrayList<BenCallServicesMappingHistory> serviceHistoryList = new ArrayList<BenCallServicesMappingHistory>();
-		List<Objects[]> lists;
+		List<Object[]> lists;
 		if (service1097HistoryDetails.getCalledServiceID() != null) {
 			lists = serviceHistoryRepository.getCallSummary(service1097HistoryDetails.getBeneficiaryRegID(),
 					service1097HistoryDetails.getCalledServiceID());
@@ -196,7 +196,7 @@ public class ServicesHistoryServiceImpl implements ServicesHistoryService {
 	@Override
 	public List<BenCallServicesMappingHistory> getReferralsHistory(Long id, int pageNo, int rows) {
 		ArrayList<BenCallServicesMappingHistory> serviceHistoryList = new ArrayList<BenCallServicesMappingHistory>();
-		List<Objects[]> lists = serviceHistoryRepository.findReferralsForBeneficiary(id, PageRequest.of(pageNo, rows));
+		List<Object[]> lists = serviceHistoryRepository.findReferralsForBeneficiary(id, PageRequest.of(pageNo, rows));
 
 		for (Object[] objects : lists) {
 			if (objects != null && objects.length >= 9) {
@@ -215,7 +215,7 @@ public class ServicesHistoryServiceImpl implements ServicesHistoryService {
 		int rows = 1000;
 		BeneficiaryCall mapHistory = inputMapper.gson().fromJson(beneficiaryRequest, BeneficiaryCall.class);
 		ArrayList<BenCallServicesMappingHistory> serviceHistoryList = new ArrayList<BenCallServicesMappingHistory>();
-		List<Objects[]> lists;
+		List<Object[]> lists;
 		if (mapHistory.getCalledServiceID() != null) {
 			lists = serviceHistoryRepository.findReferralsForBeneficiary(mapHistory.getBeneficiaryRegID(),
 					mapHistory.getCalledServiceID(), PageRequest.of(pageNo, rows));
@@ -237,7 +237,7 @@ public class ServicesHistoryServiceImpl implements ServicesHistoryService {
 	@Override
 	public List<BenCallServicesMappingHistory> getFeedbacksHistory(Long id, int pageNo, int rows) {
 		ArrayList<BenCallServicesMappingHistory> serviceHistoryList = new ArrayList<BenCallServicesMappingHistory>();
-		List<Objects[]> lists = serviceHistoryRepository.findFeedbacksForBeneficiary(id, PageRequest.of(pageNo, rows));
+		List<Object[]> lists = serviceHistoryRepository.findFeedbacksForBeneficiary(id, PageRequest.of(pageNo, rows));
 
 		for (Object[] objects : lists) {
 			if (objects != null && objects.length >= 9) {
@@ -256,7 +256,7 @@ public class ServicesHistoryServiceImpl implements ServicesHistoryService {
 		int rows = 1000;
 		ArrayList<BenCallServicesMappingHistory> serviceHistoryList = new ArrayList<BenCallServicesMappingHistory>();
 		BeneficiaryCall mapHistory = inputMapper.gson().fromJson(beneficiaryRequest, BeneficiaryCall.class);
-		List<Objects[]> lists;
+		List<Object[]> lists;
 		if (mapHistory.getCalledServiceID() != null) {
 			lists = serviceHistoryRepository.findFeedbacksForBeneficiary(mapHistory.getBeneficiaryRegID(),
 					mapHistory.getCalledServiceID(), PageRequest.of(pageNo, rows));
@@ -279,7 +279,7 @@ public class ServicesHistoryServiceImpl implements ServicesHistoryService {
 	@Override
 	public List<BenCallServicesMappingHistory> getInformationsHistory(Long id, int pageNo, int rows) {
 		ArrayList<BenCallServicesMappingHistory> serviceHistoryList = new ArrayList<BenCallServicesMappingHistory>();
-		List<Objects[]> lists = serviceHistoryRepository.findInformationsForBeneficiary(id,
+		List<Object[]> lists = serviceHistoryRepository.findInformationsForBeneficiary(id,
 				PageRequest.of(pageNo, rows));
 
 		for (Object[] objects : lists) {
@@ -300,7 +300,7 @@ public class ServicesHistoryServiceImpl implements ServicesHistoryService {
 		int rows = 1000;
 		ArrayList<BenCallServicesMappingHistory> serviceHistoryList = new ArrayList<BenCallServicesMappingHistory>();
 		BeneficiaryCall mapHistory = inputMapper.gson().fromJson(beneficiaryRequest, BeneficiaryCall.class);
-		List<Objects[]> lists;
+		List<Object[]> lists;
 
 		if (mapHistory.getCalledServiceID() != null) {
 			lists = serviceHistoryRepository.findInformationsForBeneficiary(mapHistory.getBeneficiaryRegID(),
@@ -324,7 +324,7 @@ public class ServicesHistoryServiceImpl implements ServicesHistoryService {
 	@Override
 	public List<BenCallServicesMappingHistory> getCounsellingsHistory(Long id, int pageNo, int rows) {
 		ArrayList<BenCallServicesMappingHistory> serviceHistoryList = new ArrayList<BenCallServicesMappingHistory>();
-		List<Objects[]> lists = serviceHistoryRepository.findCounsellingsForBeneficiary(id,
+		List<Object[]> lists = serviceHistoryRepository.findCounsellingsForBeneficiary(id,
 				PageRequest.of(pageNo, rows));
 
 		for (Object[] objects : lists) {
@@ -345,7 +345,7 @@ public class ServicesHistoryServiceImpl implements ServicesHistoryService {
 		int rows = 1000;
 		ArrayList<BenCallServicesMappingHistory> serviceHistoryList = new ArrayList<BenCallServicesMappingHistory>();
 		BeneficiaryCall mapHistory = inputMapper.gson().fromJson(beneficiaryRequest, BeneficiaryCall.class);
-		List<Objects[]> lists;
+		List<Object[]> lists;
 		if (mapHistory.getCalledServiceID() != null) {
 			lists = serviceHistoryRepository.findCounsellingsForBeneficiary(mapHistory.getBeneficiaryRegID(),
 					mapHistory.getCalledServiceID(), PageRequest.of(pageNo, rows));

@@ -35,5 +35,5 @@ import com.iemr.helpline1097.data.co.feedback.FeedbackType;
 @RestResource(exported = false)
 public interface FeedbackTypeRepository extends CrudRepository<FeedbackType, Integer> {
 	@Query("select feedbackTypeID, feedbackTypeName from FeedbackType where deleted = false")
-	Set<Objects[]> findActiveFeedbackTypes();
+	Set<Object[]> findActiveFeedbackTypes();
 }

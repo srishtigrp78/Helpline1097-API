@@ -37,9 +37,9 @@ import com.iemr.helpline1097.data.co.services.CategoryDetails;
 public interface CategoryRepository extends CrudRepository<CategoryDetails, Integer> {
 
 	@Query("select categoryID, categoryName from CategoryDetails where deleted=false")
-	public ArrayList<Objects[]> findBy();
+	public ArrayList<Object[]> findBy();
 
 	@Query("select categoryID, categoryName from CategoryDetails  "
 			+ "where deleted=false and subServiceID=:subServiceID ")
-	public ArrayList<Objects[]> getAllCategories(@Param("subServiceID") Integer subServiceID);
+	public ArrayList<Object[]> getAllCategories(@Param("subServiceID") Integer subServiceID);
 }

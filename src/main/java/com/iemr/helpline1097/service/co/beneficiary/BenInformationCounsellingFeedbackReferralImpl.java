@@ -93,7 +93,7 @@ public class BenInformationCounsellingFeedbackReferralImpl implements BenInforma
 	}
 
 	private SubCategoryDetails getFilePath(Integer subCategoryID) {
-		Set<Objects[]> resultSet = subCategoryRepository.findFilePathBySubCategoryId(subCategoryID);
+		Set<Object[]> resultSet = subCategoryRepository.findFilePathBySubCategoryId(subCategoryID);
 		SubCategoryDetails details = null;
 		for (Object[] objects : resultSet) {
 			if (objects != null && objects.length >= 3) {
@@ -138,7 +138,7 @@ public class BenInformationCounsellingFeedbackReferralImpl implements BenInforma
 			InstitutionDetails[] institutes = inputMapper.gson().fromJson(referralRequest, InstitutionDetails[].class);
 			DirectoryMapping[] directories = inputMapper.gson().fromJson(referralRequest, DirectoryMapping[].class);
 			for (int idx = 0; idx < institutes.length; idx++) {
-				Set<Objects[]> dirMaps = null;
+				Set<Object[]> dirMaps = null;
 
 				if (institutes[idx].getDistrictBranchMappingID() != null) {
 					dirMaps = directoryMappingRepository.findAciveInstituteDirectories(

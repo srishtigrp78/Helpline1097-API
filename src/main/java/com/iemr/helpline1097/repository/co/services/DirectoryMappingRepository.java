@@ -42,7 +42,7 @@ public interface DirectoryMappingRepository extends CrudRepository<DirectoryMapp
 			+ "i.stateID = :stateID and i.districtID = :districtID and i.blockID = :blockID and "
 			+ "i.districtBranchMappingID = :districtBranchMappingID and i.deleted = false")
 
-	public Set<Objects[]> findAciveInstituteDirectories(@Param("instituteDirectoryID") Integer instituteDirectoryID,
+	public Set<Object[]> findAciveInstituteDirectories(@Param("instituteDirectoryID") Integer instituteDirectoryID,
 			@Param("instituteSubDirectoryID") Integer instituteSubDirectoryID, @Param("stateID") Integer stateID,
 			@Param("districtID") Integer districtID, @Param("blockID") Integer blockID,
 			@Param("districtBranchMappingID") Integer districtBranchMappingID);
@@ -52,7 +52,7 @@ public interface DirectoryMappingRepository extends CrudRepository<DirectoryMapp
 			+ "m.instituteSubDirectoryID = :instituteSubDirectoryID and "
 			+ "i.stateID = :stateID and i.districtID = :districtID and i.blockID = :blockID and i.deleted = false")
 
-	public Set<Objects[]> findAciveInstituteDirectories(@Param("instituteDirectoryID") Integer instituteDirectoryID,
+	public Set<Object[]> findAciveInstituteDirectories(@Param("instituteDirectoryID") Integer instituteDirectoryID,
 			@Param("instituteSubDirectoryID") Integer instituteSubDirectoryID, @Param("stateID") Integer stateID,
 			@Param("districtID") Integer districtID, @Param("blockID") Integer blockID);
 
@@ -61,7 +61,7 @@ public interface DirectoryMappingRepository extends CrudRepository<DirectoryMapp
 			+ "m.instituteSubDirectoryID = :instituteSubDirectoryID and "
 			+ "i.stateID = :stateID and i.districtID = :districtID and i.deleted = false")
 
-	public Set<Objects[]> findAciveInstituteDirectories(@Param("instituteDirectoryID") Integer instituteDirectoryID,
+	public Set<Object[]> findAciveInstituteDirectories(@Param("instituteDirectoryID") Integer instituteDirectoryID,
 			@Param("instituteSubDirectoryID") Integer instituteSubDirectoryID, @Param("stateID") Integer stateID,
 			@Param("districtID") Integer districtID);
 }

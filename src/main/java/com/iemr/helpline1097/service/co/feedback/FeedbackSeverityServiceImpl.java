@@ -43,7 +43,7 @@ public class FeedbackSeverityServiceImpl implements FeedbackSeverityService {
 	@Override
 	public List<FeedbackSeverity> getActiveFeedbackSeverity() {
 		List<FeedbackSeverity> feedbackSeverityList = new ArrayList<FeedbackSeverity>();
-		Set<Objects[]> feedbackTypeResult = feedbackSeverityRepositorty.getActiveFeedbackSeverity();
+		Set<Object[]> feedbackTypeResult = feedbackSeverityRepositorty.getActiveFeedbackSeverity();
 		for (Object[] feedbackSevity : feedbackTypeResult) {
 			if (feedbackSevity!=null && feedbackSevity.length >=2) {
 			feedbackSeverityList.add(new FeedbackSeverity((Integer) feedbackSevity[0], (String) feedbackSevity[1]));

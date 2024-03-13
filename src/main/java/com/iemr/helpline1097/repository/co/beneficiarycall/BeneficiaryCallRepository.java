@@ -42,14 +42,14 @@ public interface BeneficiaryCallRepository extends CrudRepository<BeneficiaryCal
 	@Query("select " + "b.benCallID, b.benCallServicesMappingHistories, b.calledServiceID, b.is1097, "
 			+ "b.callTime, b.remarks, b.callClosureType, b.dispositionStatusID from BeneficiaryCall b "
 			+ "where b.benCallID = :id order by b.benCallID desc")
-	public ArrayList<Objects[]> findCallsByBenefeciaryID(@Param("id") long id, Pageable page);
+	public ArrayList<Object[]> findCallsByBenefeciaryID(@Param("id") long id, Pageable page);
 
 	@Query("select b.benCallID, b.callTime, b.remarks, count(m.subCategoryID), "
 			+ "count(m.feedbackID), count(m.instituteDirMapID) , b.createdDate, "
 			+ "count(m.coSubCategoryID), c from BeneficiaryCall b left join b.benCallServicesMappingHistories m "
 			+ "left join b.callTypeObj c "
 			+ "where b.beneficiaryRegID = :id group by b.benCallID order by b.benCallID desc")
-	public ArrayList<Objects[]> findCallsHistoryByBenefeciaryID(@Param("id") Long id, Pageable page);
+	public ArrayList<Object[]> findCallsHistoryByBenefeciaryID(@Param("id") Long id, Pageable page);
 
 	@Query("select b.benCallID, b.callTime, b.remarks, count(m.subCategoryID), "
 			+ "count(m.feedbackID), count(m.instituteDirMapID) , b.createdDate, "
@@ -57,14 +57,14 @@ public interface BeneficiaryCallRepository extends CrudRepository<BeneficiaryCal
 			+ "left join b.callTypeObj c "
 			+ "where b.beneficiaryRegID = :beneficiaryRegID and b.calledServiceID = :calledServiceID "
 			+ "group by b.benCallID order by b.benCallID desc")
-	public ArrayList<Objects[]> findCallsHistoryByBenefeciaryID(@Param("beneficiaryRegID") Long beneficiaryRegID,
+	public ArrayList<Object[]> findCallsHistoryByBenefeciaryID(@Param("beneficiaryRegID") Long beneficiaryRegID,
 			@Param("calledServiceID") Integer calledServiceID, Pageable page);
 
 	@Query("select b.benCallID, b.callTime, b.remarks, count(m.subCategoryID), "
 			+ "count(m.feedbackID), count(m.instituteDirMapID) , b.createdDate, "
 			+ "count(m.coSubCategoryID), c from BeneficiaryCall b left join b.benCallServicesMappingHistories m "
 			+ "left join b.callTypeObj c " + "where b.benCallID = :id group by b.benCallID order by b.benCallID desc")
-	public ArrayList<Objects[]> findCallSummaryByCallID(@Param("id") Long id);
+	public ArrayList<Object[]> findCallSummaryByCallID(@Param("id") Long id);
 
 	@Transactional
 	@Modifying

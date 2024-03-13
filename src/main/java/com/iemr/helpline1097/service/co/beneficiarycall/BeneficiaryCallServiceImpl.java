@@ -52,7 +52,7 @@ public class BeneficiaryCallServiceImpl implements BeneficiaryCallService
 	public List<BeneficiaryCall> addCalltype(Long benificiaryCallId)
 	{
 		List<BeneficiaryCall> benCalls = new ArrayList<BeneficiaryCall>();
-		ArrayList<Objects[]> queryResult =
+		ArrayList<Object[]> queryResult =
 				beneficiaryCallRepository.findCallsByBenefeciaryID(benificiaryCallId, PageRequest.of(0, 1000));
 		for (Object[] objects : queryResult)
 		{
@@ -91,7 +91,7 @@ public class BeneficiaryCallServiceImpl implements BeneficiaryCallService
 	public List<BeneficiaryCall> getBeneficiaryCallsHistory(Long benificiaryCallId, Integer pageNo, Integer rows)
 	{
 		List<BeneficiaryCall> benCalls = new ArrayList<BeneficiaryCall>();
-		ArrayList<Objects[]> queryResult = beneficiaryCallRepository.findCallsHistoryByBenefeciaryID(benificiaryCallId,
+		ArrayList<Object[]> queryResult = beneficiaryCallRepository.findCallsHistoryByBenefeciaryID(benificiaryCallId,
 				PageRequest.of(pageNo, rows));
 		for (Object[] objects : queryResult)
 		{
@@ -111,7 +111,7 @@ public class BeneficiaryCallServiceImpl implements BeneficiaryCallService
 			Integer pageNo, Integer rows)
 	{
 		List<BeneficiaryCall> benCalls = new ArrayList<BeneficiaryCall>();
-		ArrayList<Objects[]> queryResult = beneficiaryCallRepository.findCallsHistoryByBenefeciaryID(benificiaryCallId,
+		ArrayList<Object[]> queryResult = beneficiaryCallRepository.findCallsHistoryByBenefeciaryID(benificiaryCallId,
 				calledServiceID, PageRequest.of(pageNo, rows));
 		for (Object[] objects : queryResult)
 		{
@@ -130,7 +130,7 @@ public class BeneficiaryCallServiceImpl implements BeneficiaryCallService
 	public List<BeneficiaryCall> getCallSummaryByCallID(Long benCallID)
 	{
 		List<BeneficiaryCall> benCalls = new ArrayList<BeneficiaryCall>();
-		ArrayList<Objects[]> queryResult = beneficiaryCallRepository.findCallSummaryByCallID(benCallID);
+		ArrayList<Object[]> queryResult = beneficiaryCallRepository.findCallSummaryByCallID(benCallID);
 		for (Object[] objects : queryResult)
 		{
 			if (objects != null && objects.length >= 8)

@@ -66,7 +66,7 @@ public class CommonServiceImpl implements CommonService {
 	@Override
 	public Iterable<CategoryDetails> getCategories() {
 		List<CategoryDetails> categoriesList = new ArrayList<CategoryDetails>();
-		ArrayList<Objects[]> lists = categoryRepository.findBy();
+		ArrayList<Object[]> lists = categoryRepository.findBy();
 		for (Object[] objects : lists) {
 			if (objects != null && objects.length > 1) {
 				System.out.println(objects);
@@ -79,7 +79,7 @@ public class CommonServiceImpl implements CommonService {
 	@Override
 	public Iterable<SubCategoryDetails> getSubCategories(Integer categoryID) {
 		List<SubCategoryDetails> subCategoriesList = new ArrayList<SubCategoryDetails>();
-		ArrayList<Objects[]> lists = subCategoryRepository.findByCategoryID(categoryID);
+		ArrayList<Object[]> lists = subCategoryRepository.findByCategoryID(categoryID);
 		for (Object[] objects : lists) {
 			if (objects != null && objects.length > 1) {
 				subCategoriesList.add(new SubCategoryDetails((Integer) objects[0], (String) objects[1]));
@@ -91,7 +91,7 @@ public class CommonServiceImpl implements CommonService {
 	@Override
 	public Iterable<CategoryDetails> getCategories(Integer subServiceID) {
 		List<CategoryDetails> categoriesList = new ArrayList<CategoryDetails>();
-		ArrayList<Objects[]> lists = categoryRepository.getAllCategories(subServiceID);
+		ArrayList<Object[]> lists = categoryRepository.getAllCategories(subServiceID);
 		for (Object[] objects : lists) {
 			if (objects != null && objects.length > 1) {
 				System.out.println(objects);
@@ -104,7 +104,7 @@ public class CommonServiceImpl implements CommonService {
 	@Override
 	public Iterable<SubServices> getActiveServiceTypes() {
 		List<SubServices> serviceTypes1097List = new ArrayList<SubServices>();
-		ArrayList<Objects[]> lists = serviceTypeRepository.findActiveServiceTypes();
+		ArrayList<Object[]> lists = serviceTypeRepository.findActiveServiceTypes();
 		for (Object[] objects : lists) {
 			if (objects != null && objects.length >= 4) {
 				serviceTypes1097List.add(new SubServices((Integer) objects[0], (String) objects[1],

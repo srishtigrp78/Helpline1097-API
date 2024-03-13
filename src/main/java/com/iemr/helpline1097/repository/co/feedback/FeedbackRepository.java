@@ -37,8 +37,8 @@ import com.iemr.helpline1097.data.co.feedback.FeedbackDetails;
 public interface FeedbackRepository extends CrudRepository<FeedbackDetails, Long> {
 
 	@Query("select feedbackID, severityID, feedbackTypeID, feedbackStatusID, feedback, createdBy from FeedbackDetails where beneficiaryRegID = :id")
-	public ArrayList<Objects[]> findByBeneficiaryID(@Param("id") long id);
+	public ArrayList<Object[]> findByBeneficiaryID(@Param("id") long id);
 	
 	@Query("select feedbackID, severityID, feedbackTypeID, feedbackStatusID, feedback, createdBy from FeedbackDetails where feedbackID = :id")
-	public ArrayList<Objects[]> findByFeedbackID(@Param("id") long id);
+	public ArrayList<Object[]> findByFeedbackID(@Param("id") long id);
 }
