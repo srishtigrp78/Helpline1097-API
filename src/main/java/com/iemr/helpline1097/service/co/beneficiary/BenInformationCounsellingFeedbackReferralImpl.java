@@ -33,6 +33,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.iemr.helpline1097.data.co.beneficiarycall.BenCallServicesMappingHistory;
 import com.iemr.helpline1097.data.co.services.DirectoryMapping;
@@ -158,7 +159,8 @@ public class BenInformationCounsellingFeedbackReferralImpl implements BenInforma
 				DirectoryMapping maps = new DirectoryMapping();
 				BenCallServicesMappingHistory hist = null;
 				for (Object[] objects : dirMaps) {
-					hist = inputMapper.gson().fromJson(reqArray[idx].toString(), BenCallServicesMappingHistory.class);
+					ObjectMapper objectMapper = new ObjectMapper();
+					hist = objectMapper.readValue(reqArray[idx].toString(), BenCallServicesMappingHistory.class);
 					if (objects != null && objects.length >= 2) {
 						maps = new DirectoryMapping((Long) objects[0], (InstitutionDetails) objects[1]);
 						resultSet.add(maps);

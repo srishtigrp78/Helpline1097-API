@@ -38,7 +38,7 @@ import lombok.Data;
 public class ServiceProvided
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Expose
 	private Long ServiceID;
 

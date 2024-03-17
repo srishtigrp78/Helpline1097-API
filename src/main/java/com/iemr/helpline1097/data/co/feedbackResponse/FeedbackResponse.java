@@ -39,7 +39,7 @@ public class FeedbackResponse
 {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Expose
 	private Long FeedbackResponseID;
 	@Expose

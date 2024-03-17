@@ -51,7 +51,7 @@ public class CategoryDetails
 {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Expose
 	@Column(name = "CategoryID")
 	private Integer categoryID;

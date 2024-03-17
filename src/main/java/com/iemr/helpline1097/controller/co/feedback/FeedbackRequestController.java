@@ -31,6 +31,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.iemr.helpline1097.data.co.feedbackRequest.FeedbackRequest;
 import com.iemr.helpline1097.service.co.feedback.FeedbackRequestServiceImpl;
 import com.iemr.helpline1097.utils.mapper.InputMapper;
@@ -54,7 +55,8 @@ public class FeedbackRequestController {
 	public String feedbackCreate(@RequestBody String request) {
 		OutputResponse response = new OutputResponse();
 		try {
-			FeedbackRequest t_feedbackRequest = inputMapper.gson().fromJson(request, FeedbackRequest.class);
+			ObjectMapper objectMapper = new ObjectMapper();
+			FeedbackRequest t_feedbackRequest = objectMapper.readValue(request, FeedbackRequest.class);
 			FeedbackRequest savedDetails = feedbackRequestServiceImpl.createFeedbackRequest(t_feedbackRequest);
 			response.setResponse(savedDetails.toString());
 		} catch (Exception e) {

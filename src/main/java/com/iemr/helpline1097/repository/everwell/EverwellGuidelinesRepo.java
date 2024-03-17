@@ -51,5 +51,5 @@ public interface EverwellGuidelinesRepo extends CrudRepository<EverwellGuideline
 	@Transactional
 	@Modifying
 	@Query("update EverwellGuidelines set deleted = true,modifiedBy =:modifiedBy where id = :id")
-	public int deleteGuideline(@Param("id") Long id,@Param("modifiedBy") String modifiedBy);
+	public int deleteGuideline(@Param("id") Integer id,@Param("modifiedBy") String modifiedBy);
 }

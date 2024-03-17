@@ -43,7 +43,7 @@ import lombok.Data;
 public class DirectoryMapping {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "InstituteDirMapID")
 	@Expose
 	private Long instituteDirMapID;

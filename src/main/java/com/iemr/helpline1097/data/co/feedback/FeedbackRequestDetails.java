@@ -43,7 +43,7 @@ import lombok.Data;
 public class FeedbackRequestDetails {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Expose
 	private Long feedbackRequestID;
 	@Expose

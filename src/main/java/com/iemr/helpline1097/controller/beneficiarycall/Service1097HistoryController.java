@@ -34,6 +34,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.iemr.helpline1097.data.co.beneficiarycall.BenCallServicesMappingHistory;
 import com.iemr.helpline1097.data.co.beneficiarycall.BeneficiaryCall;
 import com.iemr.helpline1097.service.co.beneficiarycall.BeneficiaryCallService;
@@ -109,8 +110,9 @@ public class Service1097HistoryController {
 	public String setServiceHistory(@RequestBody String request) {
 		OutputResponse response = new OutputResponse();
 		try {
-			BenCallServicesMappingHistory serviceHistoryDetails = inputMapper.gson().fromJson(request,
-					BenCallServicesMappingHistory.class);
+			ObjectMapper objectMapper = new ObjectMapper();
+			BenCallServicesMappingHistory serviceHistoryDetails = objectMapper.readValue(request, BenCallServicesMappingHistory.class);
+			
 			BenCallServicesMappingHistory savedObj = servicesHistoryService.createServiceHistory(serviceHistoryDetails);
 			response.setResponse(savedObj.toString());
 		} catch (Exception e) {
@@ -127,7 +129,8 @@ public class Service1097HistoryController {
 			@Param(value = "{\"benCallID\":\"Integer - current call ID\"}") @RequestBody String request) {
 		OutputResponse response = new OutputResponse();
 		try {
-			BeneficiaryCall call = inputMapper.gson().fromJson(request, BeneficiaryCall.class);
+			ObjectMapper objectMapper = new ObjectMapper();
+			BeneficiaryCall call = objectMapper.readValue(request, BeneficiaryCall.class);
 			List<BeneficiaryCall> callHistoryList = beneficiaryCallService.getCallSummaryByCallID(call.getBenCallID());
 			response.setResponse(callHistoryList.toString());
 		} catch (Exception e) {
@@ -148,7 +151,8 @@ public class Service1097HistoryController {
 			JSONObject requestObject = new JSONObject(request);
 			int pageNo = requestObject.has("pageNo") ? (requestObject.getInt("pageNo") - 1) : 0;
 			int rows = requestObject.has("rowsPerPage") ? requestObject.getInt("rowsPerPage") : 1000;
-			BeneficiaryCall call = inputMapper.gson().fromJson(request, BeneficiaryCall.class);
+			ObjectMapper objectMapper = new ObjectMapper();
+			BeneficiaryCall call = objectMapper.readValue(request, BeneficiaryCall.class);
 			List<BeneficiaryCall> callHistoryList;
 			if (call.getCalledServiceID() != null) {
 				callHistoryList = beneficiaryCallService.getBeneficiaryCallsHistory(call.getBeneficiaryRegID(),
@@ -266,7 +270,8 @@ public class Service1097HistoryController {
 			@Param(value = "{\"benCallID\":\"Integer - current call ID\"}") @RequestBody String request) {
 		OutputResponse response = new OutputResponse();
 		try {
-			BeneficiaryCall call = inputMapper.gson().fromJson(request, BeneficiaryCall.class);
+			ObjectMapper objectMapper = new ObjectMapper();
+			BeneficiaryCall call = objectMapper.readValue(request, BeneficiaryCall.class);
 			List<BenCallServicesMappingHistory> callHistoryList = servicesHistoryService
 					.getCallSummaryV1(call.getBenCallID());
 			response.setResponse(callHistoryList.toString());

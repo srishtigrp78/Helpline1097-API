@@ -50,7 +50,7 @@ import lombok.Data;
 public class BeneficiaryCall
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "BenCallID")
 	@Expose
 	private Long benCallID;

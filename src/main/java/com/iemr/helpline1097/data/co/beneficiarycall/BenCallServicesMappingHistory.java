@@ -21,6 +21,7 @@
 */
 package com.iemr.helpline1097.data.co.beneficiarycall;
 
+import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,10 +51,10 @@ import lombok.Data;
 @Data
 public class BenCallServicesMappingHistory {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "BenCall97ServiceMapID")
 	@Expose
-	private Long benCall97ServiceMapID;
+	private BigInteger benCall97ServiceMapID;
 
 	@Column(name = "BeneficiaryRegID")
 	@Expose
@@ -206,7 +207,7 @@ public class BenCallServicesMappingHistory {
 		this.createdBy = createdBy;
 	}
 
-	public BenCallServicesMappingHistory(Long benCall97ServiceMapID, Long beneficiaryRegID, Long benCallID,
+	public BenCallServicesMappingHistory(BigInteger benCall97ServiceMapID, Long beneficiaryRegID, Long benCallID,
 			Integer subServiceID, SubServices subServices, Integer categoryID, CategoryDetails categoryDetails,
 			Integer subCategoryID, SubCategoryDetails subCategoryDetails, Long feedbackID,
 			FeedbackDetails feedbackDetails, Long instituteDirMapID, DirectoryMapping instituteDirectoryMapping,
@@ -233,7 +234,7 @@ public class BenCallServicesMappingHistory {
 		this.coCategoryID = coSubCategoryID;
 	}
 
-	public BenCallServicesMappingHistory(Long benCall97ServiceMapID, Long beneficiaryRegID, Long benCallID,
+	public BenCallServicesMappingHistory(BigInteger benCall97ServiceMapID, Long beneficiaryRegID, Long benCallID,
 			Integer subServiceID, Integer categoryID, Integer subCategoryID, Long feedbackID, Long instituteDirMapID,
 			String createdBy, Timestamp createdDate) {
 		this.benCall97ServiceMapID = benCall97ServiceMapID;
@@ -248,7 +249,7 @@ public class BenCallServicesMappingHistory {
 		this.createdDate = createdDate;
 	}
 
-	public BenCallServicesMappingHistory(Long benCall97ServiceMapID, Long beneficiaryRegID, Long benCallID,
+	public BenCallServicesMappingHistory(BigInteger benCall97ServiceMapID, Long beneficiaryRegID, Long benCallID,
 			Integer subServiceID, SubServices subServices, Integer categoryID, CategoryDetails categoryDetails,
 			Integer subCategoryID, SubCategoryDetails subCategoryDetails, String createdBy, Timestamp createdDate) {
 		this.benCall97ServiceMapID = benCall97ServiceMapID;
@@ -264,7 +265,7 @@ public class BenCallServicesMappingHistory {
 		this.createdDate = createdDate;
 	}
 
-	public BenCallServicesMappingHistory(Long benCall97ServiceMapID, Long beneficiaryRegID, Long benCallID,
+	public BenCallServicesMappingHistory(BigInteger benCall97ServiceMapID, Long beneficiaryRegID, Long benCallID,
 			Integer subServiceID, SubServices subServices, CategoryDetails categoryDetails, Integer categoryID,
 			SubCategoryDetails subCategoryDetails, Integer subCategoryID, String createdBy, Timestamp createdDate) {
 		this.benCall97ServiceMapID = benCall97ServiceMapID;
@@ -280,7 +281,7 @@ public class BenCallServicesMappingHistory {
 		this.createdDate = createdDate;
 	}
 
-	public BenCallServicesMappingHistory(Long benCall97ServiceMapID, Long beneficiaryRegID, Long benCallID,
+	public BenCallServicesMappingHistory(BigInteger benCall97ServiceMapID, Long beneficiaryRegID, Long benCallID,
 			Integer subServiceID, SubServices subServices, Long feedbackID, FeedbackDetails feedbackDetails,
 			String createdBy, Timestamp createdDate) {
 		this.benCall97ServiceMapID = benCall97ServiceMapID;
@@ -294,7 +295,7 @@ public class BenCallServicesMappingHistory {
 		this.createdDate = createdDate;
 	}
 
-	public BenCallServicesMappingHistory(Long benCall97ServiceMapID, Long beneficiaryRegID, Long benCallID,
+	public BenCallServicesMappingHistory(BigInteger benCall97ServiceMapID, Long beneficiaryRegID, Long benCallID,
 			Integer subServiceID, SubServices subServices, Long instituteDirMapID,
 			DirectoryMapping instituteDirectoryMapping, String createdBy, Timestamp createdDate) {
 		this.benCall97ServiceMapID = benCall97ServiceMapID;

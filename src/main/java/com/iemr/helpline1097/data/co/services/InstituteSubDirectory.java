@@ -41,7 +41,7 @@ import lombok.Data;
 public class InstituteSubDirectory
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "InstituteSubDirectoryID")
 	@Expose
 	private Integer instituteSubDirectoryID;

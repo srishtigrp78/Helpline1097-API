@@ -32,8 +32,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.iemr.helpline1097.data.co.beneficiary.M_Promoservice;
 import com.iemr.helpline1097.data.co.beneficiarycall.BenCallServicesMappingHistory;
+import com.iemr.helpline1097.data.co.beneficiarycall.BeneficiaryCall;
 import com.iemr.helpline1097.service.co.beneficiary.BenInformationCounsellingFeedbackReferralImpl;
 import com.iemr.helpline1097.service.co.beneficiary.IEMRPromoserviceDetailsServiceImpl;
 import com.iemr.helpline1097.utils.mapper.InputMapper;
@@ -70,7 +72,8 @@ public class BeneficiaryController {
 
 		OutputResponse response = new OutputResponse();
 		try {
-			M_Promoservice m_promoservice = inputMapper.gson().fromJson(request, M_Promoservice.class);
+			ObjectMapper objectMapper = new ObjectMapper();
+			M_Promoservice m_promoservice = objectMapper.readValue(request, M_Promoservice.class);
 			M_Promoservice m_Promoservice = iEMRPromoserviceDetailsServiceImpl.addPromoServiceDetail(m_promoservice);
 
 			if (m_Promoservice != null) {
@@ -92,8 +95,9 @@ public class BeneficiaryController {
 	public String saveBenCalServiceCatSubcatMapping(@RequestBody String request) {
 		OutputResponse response = new OutputResponse();
 		try {
-			BenCallServicesMappingHistory[] benCallServicesMappingHistories = inputMapper.gson().fromJson(request,
-					BenCallServicesMappingHistory[].class);
+			ObjectMapper objectMapper = new ObjectMapper();
+			BenCallServicesMappingHistory[] benCallServicesMappingHistories =objectMapper.readValue(request, BenCallServicesMappingHistory[].class);
+			
 			Iterable<BenCallServicesMappingHistory> benCallServicesMappingHistory = Arrays
 					.asList(benCallServicesMappingHistories);
 
@@ -113,8 +117,9 @@ public class BeneficiaryController {
 	public String saveBenCalServiceCOCatSubcatMapping(@RequestBody String request) {
 		OutputResponse response = new OutputResponse();
 		try {
-			BenCallServicesMappingHistory[] benCallServicesMappingHistories = inputMapper.gson().fromJson(request,
-					BenCallServicesMappingHistory[].class);
+			ObjectMapper objectMapper = new ObjectMapper();
+			BenCallServicesMappingHistory[] benCallServicesMappingHistories =objectMapper.readValue(request, BenCallServicesMappingHistory[].class);
+			
 			Iterable<BenCallServicesMappingHistory> benCallServicesMappingHistory = Arrays
 					.asList(benCallServicesMappingHistories);
 

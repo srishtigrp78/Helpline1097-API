@@ -42,7 +42,7 @@ public class Directory
 {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "InstituteDirectoryID")
 	@Expose
 	private Integer instituteDirectoryID;

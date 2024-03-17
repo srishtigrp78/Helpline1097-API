@@ -36,7 +36,7 @@ import lombok.Data;
 @Data
 public class M_Promoservice {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Expose
 	@Column(name="GenderID")
 	private Long id;

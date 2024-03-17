@@ -45,7 +45,7 @@ public class Institute
 {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "InstitutionID")
 	@Expose
 	private Integer institutionID;

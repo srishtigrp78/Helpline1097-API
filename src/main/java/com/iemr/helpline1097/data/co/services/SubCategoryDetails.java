@@ -48,7 +48,7 @@ import lombok.Data;
 public class SubCategoryDetails {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Expose
 	@Column(name = "SubCategoryID")
 	private Integer subCategoryID;

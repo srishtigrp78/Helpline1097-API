@@ -45,7 +45,7 @@ import lombok.Data;
 public class CallType
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Expose
 	@Column(name = "CallTypeID")
 	private Integer callTypeID;

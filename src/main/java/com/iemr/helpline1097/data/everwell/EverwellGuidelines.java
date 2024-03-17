@@ -21,6 +21,7 @@
 */
 package com.iemr.helpline1097.data.everwell;
 
+import java.math.BigInteger;
 import java.sql.Timestamp;
 
 import com.google.gson.annotations.Expose;
@@ -40,10 +41,10 @@ import lombok.Data;
 public class EverwellGuidelines {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "egid")
 	@Expose
-	private Long id;
+	private Integer id;
 	@Expose
 	@Column(name = "GuidelineName")
 	private String guidelineName;
@@ -95,7 +96,7 @@ public class EverwellGuidelines {
 		// TODO Auto-generated method stub
 		return providerServiceMapID;
 	}
-	public Long getId() {
+	public Integer getId() {
 		// TODO Auto-generated method stub
 		return id;
 	}

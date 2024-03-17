@@ -23,11 +23,13 @@ package com.iemr.helpline1097.service.co.services;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.iemr.helpline1097.data.co.services.CategoryDetails;
 import com.iemr.helpline1097.repository.co.services.CategoryRepository;
 import com.iemr.helpline1097.utils.exception.IEMRException;
@@ -52,8 +54,9 @@ public class CategoryServiceImpl implements CategoryService {
 	private InputMapper inputMapper = new InputMapper();
 
 	@Override
-	public List<CategoryDetails> getAllCategories(String request) throws IEMRException {
-		CategoryDetails categoryDetails = inputMapper.gson().fromJson(request, CategoryDetails.class);
+	public List<CategoryDetails> getAllCategories(String request) throws IEMRException, JsonMappingException, JsonProcessingException {
+		ObjectMapper objectMapper = new ObjectMapper();
+		CategoryDetails categoryDetails = objectMapper.readValue(request, CategoryDetails.class);
 		List<CategoryDetails> categoryList = new ArrayList<CategoryDetails>();
 		ArrayList<Object[]> lists = categoryRepository.getAllCategories(categoryDetails.getSubServiceID());
 		for (Object[] objects : lists) {

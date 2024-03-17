@@ -47,7 +47,7 @@ import lombok.Data;
 public class SubServices
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "SubServiceID")
 	@Expose
 	private Integer subServiceID;

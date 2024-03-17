@@ -39,7 +39,7 @@ import lombok.Data;
 @Data
 public class FeedbackStatus {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "FeedbackStatusID")
 	@Expose
 	private Integer feedbackStatusID;

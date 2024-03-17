@@ -33,6 +33,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.iemr.helpline1097.data.co.calltype.M_Calltype;
 import com.iemr.helpline1097.data.co.feedback.FeedbackDetails;
 import com.iemr.helpline1097.service.co.feedback.FeedbackService;
 import com.iemr.helpline1097.service.co.feedback.FeedbackServiceImpl;
@@ -77,7 +79,8 @@ public class FeedbackController {
 	public String feedbackReuest(@RequestBody String request) {
 		OutputResponse response = new OutputResponse();
 		try {
-			FeedbackDetails feedbackDetails = inputMapper.gson().fromJson(request, FeedbackDetails.class);
+			ObjectMapper objectMapper = new ObjectMapper();
+			FeedbackDetails feedbackDetails = objectMapper.readValue(request, FeedbackDetails.class);
 			List<FeedbackDetails> feedbackList = feedbackService
 					.getFeedbackRequests(feedbackDetails.getBeneficiaryRegID());
 			response.setResponse(feedbackList.toString());

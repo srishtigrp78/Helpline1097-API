@@ -32,6 +32,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.iemr.helpline1097.data.co.beneficiarycall.SubServices;
 import com.iemr.helpline1097.data.co.services.CategoryDetails;
 import com.iemr.helpline1097.service.co.services.CommonService;
@@ -61,7 +62,8 @@ public class CommonController {
 	public String getSubcategories(@RequestBody String request) {
 		OutputResponse response = new OutputResponse();
 		try {
-			CategoryDetails category = inputMapper.gson().fromJson(request, CategoryDetails.class);
+			ObjectMapper objectMapper = new ObjectMapper();
+			CategoryDetails category = objectMapper.readValue(request, CategoryDetails.class);
 			response.setResponse(commonService.getSubCategories(category.getCategoryID()).toString());
 		} catch (Exception e) {
 			logger.error("", e);
@@ -75,7 +77,8 @@ public class CommonController {
 	public String getcategoriesById(@RequestBody String request) {
 		OutputResponse response = new OutputResponse();
 		try {
-			SubServices serviceMaster = inputMapper.gson().fromJson(request, SubServices.class);
+			ObjectMapper objectMapper = new ObjectMapper();
+			SubServices serviceMaster = objectMapper.readValue(request, SubServices.class);
 			response.setResponse(commonService.getCategories(serviceMaster.getSubServiceID()).toString());
 		} catch (
 

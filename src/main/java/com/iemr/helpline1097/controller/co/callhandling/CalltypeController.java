@@ -31,6 +31,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.iemr.helpline1097.data.co.calltype.M_Calltype;
 import com.iemr.helpline1097.service.co.callhandling.IEMRCalltypeServiceImpl;
 import com.iemr.helpline1097.utils.mapper.InputMapper;
@@ -54,7 +55,8 @@ public class CalltypeController {
 
 		OutputResponse response = new OutputResponse();
 		try {
-			M_Calltype payload = inputMapper.gson().fromJson(request, M_Calltype.class);
+			ObjectMapper objectMapper = new ObjectMapper();
+			M_Calltype payload = objectMapper.readValue(request, M_Calltype.class);
 			M_Calltype m_calltype = iEMRCalltypeServiceImpl.addCalltype(payload);
 
 			if (m_calltype != null) {

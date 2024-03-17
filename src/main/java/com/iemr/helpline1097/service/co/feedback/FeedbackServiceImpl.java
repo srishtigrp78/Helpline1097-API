@@ -27,13 +27,15 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.iemr.helpline1097.data.co.beneficiarycall.BenCallServicesMappingHistory;
 import com.iemr.helpline1097.data.co.feedback.FeedbackDetails;
 import com.iemr.helpline1097.data.co.feedback.FeedbackRequestDetails;
@@ -134,7 +136,7 @@ public class FeedbackServiceImpl implements FeedbackService {
 	@Override
 	public String saveFeedbackFromCustomer(String feedbackDetails, HttpServletRequest request) throws Exception {
 		OutputResponse output = new OutputResponse();
-
+		ObjectMapper objectMapper = new ObjectMapper();
 		FeedbackDetails[] feedbacks = inputMapper.gson().fromJson(feedbackDetails, FeedbackDetails[].class);
 		for (FeedbackDetails feedback : feedbacks) {
 			if (feedback.getSubServiceID() == null) {
@@ -184,14 +186,15 @@ public class FeedbackServiceImpl implements FeedbackService {
 
 	}
 
-	private OutputResponse createFeedback(String feedbackDetails, HttpServletRequest request) throws IEMRException {
+	private OutputResponse createFeedback(String feedbackDetails, HttpServletRequest request) throws IEMRException, JsonMappingException, JsonProcessingException {
 		HttpUtils utils = new HttpUtils();
+		ObjectMapper objectMapper = new ObjectMapper();
 		HashMap<String, Object> header = new HashMap<String, Object>();
 		header.put("Authorization", request.getHeader("Authorization"));
 		String responseStr = utils.post(
 				properties.getPropertyByName("common-url") + "/" + properties.getPropertyByName("create-feedback"),
 				feedbackDetails, header);
-		OutputResponse response = inputMapper.gson().fromJson(responseStr, OutputResponse.class);
+		OutputResponse response = objectMapper.readValue(responseStr, OutputResponse.class);
 		return response;
 	}
 }

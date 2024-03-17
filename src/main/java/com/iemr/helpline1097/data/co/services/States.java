@@ -41,7 +41,7 @@ import lombok.Data;
 public class States
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "StateID")
 	@Expose
 	private Integer stateID;

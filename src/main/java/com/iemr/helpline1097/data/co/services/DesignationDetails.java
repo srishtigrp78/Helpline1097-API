@@ -42,7 +42,7 @@ public class DesignationDetails
 {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "DesignationID")
 	@Expose
 	private Integer designationID;
