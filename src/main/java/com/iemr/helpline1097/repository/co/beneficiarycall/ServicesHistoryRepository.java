@@ -24,7 +24,7 @@ package com.iemr.helpline1097.repository.co.beneficiarycall;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
-
+import java.math.BigInteger;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -36,7 +36,7 @@ import com.iemr.helpline1097.data.co.beneficiarycall.BenCallServicesMappingHisto
 
 @Repository
 @RestResource(exported = false)
-public interface ServicesHistoryRepository extends CrudRepository<BenCallServicesMappingHistory, Long>
+public interface ServicesHistoryRepository extends CrudRepository<BenCallServicesMappingHistory, BigInteger>
 {
 
 	@Query("select " + "benCall97ServiceMapID, beneficiaryRegID, benCallID, subServiceID, categoryID, "
