@@ -2,6 +2,7 @@ package com.iemr.helpline1097.controller.beneficiarycall;
 
 import static org.mockito.Mockito.when;
 
+import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +46,7 @@ class Service1097HistoryControllerTest {
 
 		BenCallServicesMappingHistory benCallServicesMappingHistory = new BenCallServicesMappingHistory();
 
-		benCallServicesMappingHistory.setBenCall97ServiceMapID(12L);
+		benCallServicesMappingHistory.setBenCall97ServiceMapID(BigInteger.valueOf(12L));
 		benCallServicesMappingHistory.setBenCallID(23L);
 		benCallServicesMappingHistory.setBeneficiaryRegID(123L);
 		benCallServicesMappingHistory.setCategoryID(23);
@@ -93,7 +94,7 @@ class Service1097HistoryControllerTest {
 
 		BenCallServicesMappingHistory benCallServicesMappingHistory = new BenCallServicesMappingHistory();
 
-		benCallServicesMappingHistory.setBenCall97ServiceMapID(12L);
+		benCallServicesMappingHistory.setBenCall97ServiceMapID(BigInteger.valueOf(12L));
 		benCallServicesMappingHistory.setBenCallID(23L);
 		benCallServicesMappingHistory.setBeneficiaryRegID(123L);
 		benCallServicesMappingHistory.setCategoryID(23);
@@ -136,7 +137,7 @@ class Service1097HistoryControllerTest {
 
 		BenCallServicesMappingHistory serviceHistoryDetails = new BenCallServicesMappingHistory();
 
-		serviceHistoryDetails.setBenCall97ServiceMapID(12L);
+		serviceHistoryDetails.setBenCall97ServiceMapID(BigInteger.valueOf(12L));
 		serviceHistoryDetails.setBenCallID(23L);
 		serviceHistoryDetails.setBeneficiaryRegID(123L);
 		serviceHistoryDetails.setCategoryID(23);
@@ -305,7 +306,7 @@ class Service1097HistoryControllerTest {
 
 		BenCallServicesMappingHistory benCallServicesMappingHistory = new BenCallServicesMappingHistory();
 
-		benCallServicesMappingHistory.setBenCall97ServiceMapID(12L);
+		benCallServicesMappingHistory.setBenCall97ServiceMapID(BigInteger.valueOf(12L));
 		benCallServicesMappingHistory.setBenCallID(23L);
 		benCallServicesMappingHistory.setBeneficiaryRegID(123L);
 		benCallServicesMappingHistory.setCategoryID(23);
@@ -364,7 +365,7 @@ class Service1097HistoryControllerTest {
 
 		BenCallServicesMappingHistory benCallServicesMappingHistory = new BenCallServicesMappingHistory();
 
-		benCallServicesMappingHistory.setBenCall97ServiceMapID(12L);
+		benCallServicesMappingHistory.setBenCall97ServiceMapID(BigInteger.valueOf(12L));
 		benCallServicesMappingHistory.setBenCallID(23L);
 		benCallServicesMappingHistory.setBeneficiaryRegID(123L);
 		benCallServicesMappingHistory.setCategoryID(23);
@@ -423,7 +424,7 @@ class Service1097HistoryControllerTest {
 
 		BenCallServicesMappingHistory benCallServicesMappingHistory = new BenCallServicesMappingHistory();
 
-		benCallServicesMappingHistory.setBenCall97ServiceMapID(12L);
+		benCallServicesMappingHistory.setBenCall97ServiceMapID(BigInteger.valueOf(12L));
 		benCallServicesMappingHistory.setBenCallID(23L);
 		benCallServicesMappingHistory.setBeneficiaryRegID(123L);
 		benCallServicesMappingHistory.setCategoryID(23);
@@ -484,7 +485,7 @@ class Service1097HistoryControllerTest {
 
 		BenCallServicesMappingHistory benCallServicesMappingHistory = new BenCallServicesMappingHistory();
 
-		benCallServicesMappingHistory.setBenCall97ServiceMapID(12L);
+		benCallServicesMappingHistory.setBenCall97ServiceMapID(BigInteger.valueOf(12L));
 		benCallServicesMappingHistory.setBenCallID(23L);
 		benCallServicesMappingHistory.setBeneficiaryRegID(123L);
 		benCallServicesMappingHistory.setCategoryID(23);
@@ -558,7 +559,7 @@ class Service1097HistoryControllerTest {
 
 		BenCallServicesMappingHistory benCallServicesMappingHistory = new BenCallServicesMappingHistory();
 
-		benCallServicesMappingHistory.setBenCall97ServiceMapID(12L);
+		benCallServicesMappingHistory.setBenCall97ServiceMapID(BigInteger.valueOf(12L));
 		benCallServicesMappingHistory.setBenCallID(23L);
 		benCallServicesMappingHistory.setBeneficiaryRegID(123L);
 		benCallServicesMappingHistory.setCategoryID(23);

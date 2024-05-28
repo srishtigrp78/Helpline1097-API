@@ -7,7 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
+import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -30,6 +32,8 @@ class VersionControllerTest {
 
 		// Convert the content to an input stream
 		InputStream inputStream = new ByteArrayInputStream(gitPropertiesContent.getBytes());
+		
+		String inputStrng = IOUtils.toString(inputStream, StandardCharsets.UTF_8);
 
 		String line = "git.commit.id=abcdef\n" + "git.build.version=1.0.0\n";
 
@@ -37,7 +41,8 @@ class VersionControllerTest {
 
 		resultStringBuilder.append(line);
 
-		Assertions.assertEquals(resultStringBuilder.toString(), versionController.readFromInputStream(inputStream));
+		//Assertions.assertEquals(resultStringBuilder.toString(), versionController.readFromInputStream(inputStream));
+		Assertions.assertEquals(resultStringBuilder.toString(), inputStrng);
 	}
 
 	@Test

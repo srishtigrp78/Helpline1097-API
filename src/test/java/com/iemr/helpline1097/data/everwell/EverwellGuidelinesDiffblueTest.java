@@ -24,7 +24,7 @@ class EverwellGuidelinesDiffblueTest {
         // Act
         Integer actualAdherencePercentage = everwellGuidelines.getAdherencePercentage();
         String actualCategory = everwellGuidelines.getCategory();
-        Long actualId = everwellGuidelines.getId();
+        Integer actualId = everwellGuidelines.getId();
         String actualModifiedBy = everwellGuidelines.getModifiedBy();
 
         // Assert

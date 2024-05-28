@@ -25,6 +25,7 @@ import com.iemr.helpline1097.data.co.services.States;
 import com.iemr.helpline1097.data.co.services.SubCategoryDetails;
 import com.iemr.helpline1097.utils.mapper.OutputMapper;
 
+import java.math.BigInteger;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -150,7 +151,7 @@ class BenCallServicesMappingHistoryDiffblueTest {
         Timestamp createdDate = mock(Timestamp.class);
 
         // Act
-        BenCallServicesMappingHistory actualBenCallServicesMappingHistory = new BenCallServicesMappingHistory(1L, 1L, 1L, 1,
+        BenCallServicesMappingHistory actualBenCallServicesMappingHistory = new BenCallServicesMappingHistory(BigInteger.valueOf(1L), 1L, 1L, 1,
                 subServices, categoryDetails3, 1, subCategoryDetails, 1, "Jan 1, 2020 8:00am GMT+0100", createdDate);
         actualBenCallServicesMappingHistory.toString();
 
@@ -759,7 +760,7 @@ class BenCallServicesMappingHistoryDiffblueTest {
         coSubCategoryDetails.setSubCategoryName("Sub Category Name");
 
         // Act
-        BenCallServicesMappingHistory actualBenCallServicesMappingHistory = new BenCallServicesMappingHistory(1L, 1L, 1L, 1,
+        BenCallServicesMappingHistory actualBenCallServicesMappingHistory = new BenCallServicesMappingHistory(BigInteger.valueOf(1L), 1L, 1L, 1,
                 subServices, 1, categoryDetails3, 1, subCategoryDetails, 1L, feedbackDetails, 1L, instituteDirectoryMapping,
                 "Jan 1, 2020 8:00am GMT+0100", createdDate, 1, coCategoryDetails, 1, coSubCategoryDetails);
         actualBenCallServicesMappingHistory.toString();
@@ -1348,7 +1349,7 @@ class BenCallServicesMappingHistoryDiffblueTest {
         Timestamp createdDate = mock(Timestamp.class);
 
         // Act
-        BenCallServicesMappingHistory actualBenCallServicesMappingHistory = new BenCallServicesMappingHistory(1L, 1L, 1L, 1,
+        BenCallServicesMappingHistory actualBenCallServicesMappingHistory = new BenCallServicesMappingHistory(BigInteger.valueOf(1L), 1L, 1L, 1,
                 subServices, 1, categoryDetails3, 1, subCategoryDetails, "Jan 1, 2020 8:00am GMT+0100", createdDate);
         actualBenCallServicesMappingHistory.toString();
 

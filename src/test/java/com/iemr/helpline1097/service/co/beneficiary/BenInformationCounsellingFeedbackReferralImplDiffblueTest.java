@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +46,7 @@ class BenInformationCounsellingFeedbackReferralImplDiffblueTest {
 	void testSaveBenCallServiceCatSubCat() {
 		BenCallServicesMappingHistory benCallServicesMappingHistory1 = new BenCallServicesMappingHistory();
 
-		benCallServicesMappingHistory1.setBenCall97ServiceMapID(12L);
+		benCallServicesMappingHistory1.setBenCall97ServiceMapID(BigInteger.valueOf(12L));
 		benCallServicesMappingHistory1.setBenCallID(23L);
 		benCallServicesMappingHistory1.setBeneficiaryRegID(123L);
 		benCallServicesMappingHistory1.setCategoryID(23);
@@ -98,7 +99,7 @@ class BenInformationCounsellingFeedbackReferralImplDiffblueTest {
 	void testSaveBenCallServiceCatSubCat_AsNull() {
 		BenCallServicesMappingHistory benCallServicesMappingHistory1 = new BenCallServicesMappingHistory();
 
-		benCallServicesMappingHistory1.setBenCall97ServiceMapID(12L);
+		benCallServicesMappingHistory1.setBenCall97ServiceMapID(BigInteger.valueOf(12L));
 		benCallServicesMappingHistory1.setBenCallID(23L);
 		benCallServicesMappingHistory1.setBeneficiaryRegID(123L);
 		benCallServicesMappingHistory1.setCategoryID(23);
@@ -151,7 +152,7 @@ class BenInformationCounsellingFeedbackReferralImplDiffblueTest {
 	void testSaveBenCallServiceCOCatSubCat() {
 		BenCallServicesMappingHistory benCallServicesMappingHistory1 = new BenCallServicesMappingHistory();
 
-		benCallServicesMappingHistory1.setBenCall97ServiceMapID(12L);
+		benCallServicesMappingHistory1.setBenCall97ServiceMapID(BigInteger.valueOf(12L));
 		benCallServicesMappingHistory1.setBenCallID(23L);
 		benCallServicesMappingHistory1.setBeneficiaryRegID(123L);
 		benCallServicesMappingHistory1.setCategoryID(23);
@@ -204,7 +205,7 @@ class BenInformationCounsellingFeedbackReferralImplDiffblueTest {
 	void testSaveBenCallServiceCOCatSubCat_AsNull() {
 		BenCallServicesMappingHistory benCallServicesMappingHistory1 = new BenCallServicesMappingHistory();
 
-		benCallServicesMappingHistory1.setBenCall97ServiceMapID(12L);
+		benCallServicesMappingHistory1.setBenCall97ServiceMapID(BigInteger.valueOf(12L));
 		benCallServicesMappingHistory1.setBenCallID(23L);
 		benCallServicesMappingHistory1.setBeneficiaryRegID(123L);
 		benCallServicesMappingHistory1.setCategoryID(23);

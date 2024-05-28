@@ -2,6 +2,7 @@ package com.iemr.helpline1097.controller.co.beneficiary;
 
 import static org.mockito.Mockito.when;
 
+import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -92,7 +93,7 @@ class BeneficiaryControllerTest {
 
 		BenCallServicesMappingHistory benCallServicesMappingHistory1 = new BenCallServicesMappingHistory();
 
-		benCallServicesMappingHistory1.setBenCall97ServiceMapID(12L);
+		benCallServicesMappingHistory1.setBenCall97ServiceMapID(BigInteger.valueOf(12L));
 		benCallServicesMappingHistory1.setBenCallID(23L);
 		benCallServicesMappingHistory1.setBeneficiaryRegID(123L);
 		benCallServicesMappingHistory1.setCategoryID(23);
@@ -143,7 +144,7 @@ class BeneficiaryControllerTest {
 
 		BenCallServicesMappingHistory benCallServicesMappingHistory1 = new BenCallServicesMappingHistory();
 
-		benCallServicesMappingHistory1.setBenCall97ServiceMapID(12L);
+		benCallServicesMappingHistory1.setBenCall97ServiceMapID(BigInteger.valueOf(12L));
 		benCallServicesMappingHistory1.setBenCallID(23L);
 		benCallServicesMappingHistory1.setBeneficiaryRegID(123L);
 		benCallServicesMappingHistory1.setCategoryID(23);
