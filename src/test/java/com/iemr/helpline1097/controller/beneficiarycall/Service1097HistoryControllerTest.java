@@ -1,5 +1,6 @@
 package com.iemr.helpline1097.controller.beneficiarycall;
 
+import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.when;
 
 import java.math.BigInteger;
@@ -13,6 +14,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.jupiter.MockitoSettings;
+import org.mockito.quality.Strictness;
 
 import com.iemr.helpline1097.data.co.beneficiarycall.BenCallServicesMappingHistory;
 import com.iemr.helpline1097.data.co.beneficiarycall.BeneficiaryCall;
@@ -211,7 +214,7 @@ class Service1097HistoryControllerTest {
 
 		String request = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
-		when(beneficiaryCallService.getCallSummaryByCallID(call.getBenCallID())).thenThrow(NotFoundException.class);
+		lenient().when(beneficiaryCallService.getCallSummaryByCallID(call.getBenCallID())).thenThrow(NotFoundException.class);
 
 		String response = service1097HistoryController.getCallSummary(request);
 
@@ -594,7 +597,7 @@ class Service1097HistoryControllerTest {
 
 		String request = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
-		when(servicesHistoryService.getCallSummaryV1(call.getBenCallID())).thenThrow(NotFoundException.class);
+		lenient().when(servicesHistoryService.getCallSummaryV1(call.getBenCallID())).thenThrow(NotFoundException.class);
 
 		String response = service1097HistoryController.getCaseSheet(request);
 

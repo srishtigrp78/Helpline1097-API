@@ -28,7 +28,7 @@ import com.iemr.helpline1097.utils.config.ConfigProperties;
 
 @ContextConfiguration(classes = { BenInformationCounsellingFeedbackReferralImpl.class, ConfigProperties.class })
 @ExtendWith(SpringExtension.class)
-@DisabledInAotMode
+//@DisabledInAotMode
 class BenInformationCounsellingFeedbackReferralImplDiffblueTest {
 	@MockBean
 	private BenCalServiceCatSubcatMappingRepo benCalServiceCatSubcatMappingRepo;

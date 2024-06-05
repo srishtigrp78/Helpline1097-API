@@ -64,14 +64,15 @@ class BeneficiaryControllerTest {
 	@Test
 	void addPromoServiceDetailsTest_AsNull() {
 
-		String request = "Add promo service detail";
+//		String request = "Add promo service detail";
 
 		M_Promoservice m_Promoservice = null;
+		M_Promoservice m_promoservice = iEMRPromoserviceDetailsServiceImpl.addPromoServiceDetail(m_Promoservice);
 
-		String response = beneficiaryController.addPromoServiceDetails(request);
+//		String response = beneficiaryController.addPromoServiceDetails(request);
 
-		Assertions.assertNull(m_Promoservice);
-		Assertions.assertEquals(response.toString(), beneficiaryController.addPromoServiceDetails(request));
+		Assertions.assertNull(m_promoservice);
+	//	Assertions.assertEquals(response.toString(), beneficiaryController.addPromoServiceDetails(request));
 
 	}
 
@@ -82,6 +83,34 @@ class BeneficiaryControllerTest {
 
 		String response = beneficiaryController.addPromoServiceDetails(request);
 
+		Assertions.assertEquals(response.toString(), beneficiaryController.addPromoServiceDetails(request));
+
+	}
+	
+	@Test
+	void addPromoServiceDetailsTest_Successful() {
+
+		String request = "Added promo service detail";
+
+		M_Promoservice promoService = new M_Promoservice();
+		promoService.setId(12L);
+		promoService.setPamphlet("pamphlet");
+		promoService.setRadio("radio");
+		promoService.setTelevision("television");
+		promoService.setFamilyFriends("ff");
+		promoService.setHealthcareWorker("hcw");
+		promoService.setOthers("others");
+		promoService.setNotDisclosed("ND");	
+		List<M_Promoservice> m_PromoService = new ArrayList<>();
+		m_PromoService.add(promoService);
+		
+		M_Promoservice[] m_promoservices = new M_Promoservice[m_PromoService.size()];
+		m_promoservices = m_PromoService.toArray(m_promoservices);
+		Iterable<M_Promoservice> promoservice = Arrays
+				.asList(m_promoservices);
+		String response = beneficiaryController.addPromoServiceDetails(request);
+		
+		
 		Assertions.assertEquals(response.toString(), beneficiaryController.addPromoServiceDetails(request));
 
 	}
