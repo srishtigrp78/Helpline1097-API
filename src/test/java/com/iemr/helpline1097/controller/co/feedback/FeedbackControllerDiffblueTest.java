@@ -69,7 +69,7 @@ class FeedbackControllerDiffblueTest {
      */
     @Test
     void testGetFeedbackByPost() {
-        //   Diffblue Cover was unable to create a Spring-specific test for this Spring method.
+        
 
         // Arrange
         FeedbackServiceImpl feedbackService = mock(FeedbackServiceImpl.class);
@@ -92,7 +92,7 @@ class FeedbackControllerDiffblueTest {
      */
     @Test
     void testGetFeedbackByPost2() {
-        //   Diffblue Cover was unable to create a Spring-specific test for this Spring method.
+        
 
         // Arrange
         Designation designation = new Designation();
@@ -264,7 +264,7 @@ class FeedbackControllerDiffblueTest {
      */
     @Test
     void testGetFeedbackByPost3() {
-        //   Diffblue Cover was unable to create a Spring-specific test for this Spring method.
+        
 
         // Arrange
         Designation designation = new Designation();
@@ -509,7 +509,7 @@ class FeedbackControllerDiffblueTest {
      */
     @Test
     void testSaveBenFeedback() throws Exception {
-        //   Diffblue Cover was unable to create a Spring-specific test for this Spring method.
+        
 
         // Arrange
         FeedbackServiceImpl feedbackServiceImpl = mock(FeedbackServiceImpl.class);
@@ -537,7 +537,7 @@ class FeedbackControllerDiffblueTest {
      */
     @Test
     void testSaveBenFeedback2() throws Exception {
-        //   Diffblue Cover was unable to create a Spring-specific test for this Spring method.
+        
 
         // Arrange
         FeedbackServiceImpl feedbackServiceImpl = mock(FeedbackServiceImpl.class);
@@ -565,7 +565,7 @@ class FeedbackControllerDiffblueTest {
      */
     @Test
     void testSaveBenFeedback3() throws Exception {
-        //   Diffblue Cover was unable to create a Spring-specific test for this Spring method.
+       
 
         // Arrange
         FeedbackServiceImpl feedbackServiceImpl = mock(FeedbackServiceImpl.class);
@@ -592,7 +592,7 @@ class FeedbackControllerDiffblueTest {
      */
     @Test
     void testSaveBenFeedback4() throws Exception {
-        //   Diffblue Cover was unable to create a Spring-specific test for this Spring method.
+       
 
         // Arrange
         FeedbackServiceImpl feedbackServiceImpl = mock(FeedbackServiceImpl.class);
@@ -662,14 +662,7 @@ class FeedbackControllerDiffblueTest {
     @Test
     @Disabled("TODO: Complete this test")
     void testGetFeedbackByPost4() throws Exception {
-        // TODO: Diffblue Cover was only able to create a partial test for this method:
-        //   Reason: Failed to create Spring context.
-        //   Attempt to initialize test context failed with
-        //   java.lang.IllegalStateException: ApplicationContext failure threshold (1) exceeded: skipping repeated attempt to load context for [MergedContextConfiguration@be2a4cf testClass = com.iemr.helpline1097.controller.co.feedback.DiffblueFakeClass209, locations = [], classes = [com.iemr.helpline1097.controller.co.feedback.FeedbackController], contextInitializerClasses = [], activeProfiles = [], propertySourceDescriptors = [], propertySourceProperties = [], contextCustomizers = [org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@30cb3a62, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@76dfe1b0, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@a5698810, org.springframework.boot.test.autoconfigure.actuate.observability.ObservabilityContextCustomizerFactory$DisableObservabilityContextCustomizer@1f, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizer@217ca6b9], contextLoader = org.springframework.test.context.support.DelegatingSmartContextLoader, parent = null]
-        //       at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:145)
-        //       at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:130)
-        //       at java.base/java.util.Optional.map(Optional.java:260)
-        //   See https://diff.blue/R026 to resolve this issue.
+    
 
         // Arrange
         MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.post("/co/getfeedback/{feedbackID}", 1);
@@ -688,14 +681,7 @@ class FeedbackControllerDiffblueTest {
      */
     @Test
     void testGettersAndSetters() {
-        // TODO: Diffblue Cover was only able to create a partial test for this method:
-        //   Reason: Missing observers.
-        //   Diffblue Cover was unable to create an assertion.
-        //   Add getters for the following fields or make them package-private:
-        //     FeedbackController.feedbackService
-        //     FeedbackController.feedbackServiceImpl
-        //     FeedbackController.inputMapper
-        //     FeedbackController.logger
+
 
         // Arrange
         FeedbackController feedbackController = new FeedbackController();
@@ -712,14 +698,7 @@ class FeedbackControllerDiffblueTest {
     @Test
     @Disabled("TODO: Complete this test")
     void testSaveBenFeedback5() throws Exception {
-        // TODO: Diffblue Cover was only able to create a partial test for this method:
-        //   Reason: Failed to create Spring context.
-        //   Attempt to initialize test context failed with
-        //   java.lang.IllegalStateException: ApplicationContext failure threshold (1) exceeded: skipping repeated attempt to load context for [MergedContextConfiguration@2371bfcd testClass = com.iemr.helpline1097.controller.co.feedback.DiffblueFakeClass232, locations = [], classes = [com.iemr.helpline1097.controller.co.feedback.FeedbackController], contextInitializerClasses = [], activeProfiles = [], propertySourceDescriptors = [], propertySourceProperties = [], contextCustomizers = [org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@30cb3a62, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@76dfe1b0, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@a5698810, org.springframework.boot.test.autoconfigure.actuate.observability.ObservabilityContextCustomizerFactory$DisableObservabilityContextCustomizer@1f, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizer@217ca6b9], contextLoader = org.springframework.test.context.support.DelegatingSmartContextLoader, parent = null]
-        //       at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:145)
-        //       at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:130)
-        //       at java.base/java.util.Optional.map(Optional.java:260)
-        //   See https://diff.blue/R026 to resolve this issue.
+   
 
         // Arrange
         MockHttpServletRequestBuilder contentTypeResult = MockMvcRequestBuilders.post("/co/saveBenFeedback")
