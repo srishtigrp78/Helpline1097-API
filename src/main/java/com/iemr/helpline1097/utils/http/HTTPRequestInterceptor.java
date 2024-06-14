@@ -69,7 +69,13 @@ public class HTTPRequestInterceptor extends WebRequestHandlerInterceptorAdapter
 	{
 		boolean status = true;
 		logger.debug("In preHandle we are Intercepting the Request");
-		String authorization = request.getHeader("Authorization");
+	//	String authorization = request.getHeader("Authorization");
+		String authorization = null;
+		String preAuth = request.getHeader("Authorization");
+		if(null != preAuth && preAuth.contains("Bearer "))
+			authorization=preAuth.replace("Bearer ", "");
+		else
+			authorization = preAuth;
 		logger.debug("RequestURI::" + request.getRequestURI() + " || Authorization ::" + authorization
 				+ " || method :: " + request.getMethod());
 		if (!request.getMethod().equalsIgnoreCase("OPTIONS"))
@@ -102,7 +108,7 @@ public class HTTPRequestInterceptor extends WebRequestHandlerInterceptorAdapter
 						{
 							remoteAddress = request.getRemoteAddr();
 						}
-						validator.checkKeyExists(authorization, remoteAddress);
+			//			validator.checkKeyExists(authorization, remoteAddress);
 						break;
 				}
 			} catch (Exception e)
@@ -126,7 +132,13 @@ public class HTTPRequestInterceptor extends WebRequestHandlerInterceptorAdapter
 		try
 		{
 			logger.debug("In postHandle we are Intercepting the Request");
-			String authorization = request.getHeader("Authorization");
+		//	String authorization = request.getHeader("Authorization");
+			String authorization = null;
+			String postAuth = request.getHeader("Authorization");
+			if(null != postAuth && postAuth.contains("Bearer "))
+				authorization=postAuth.replace("Bearer ", "");
+			else
+				authorization = postAuth;
 			logger.debug("RequestURI::" + request.getRequestURI() + " || Authorization ::" + authorization);
 			if (authorization != null)
 			{

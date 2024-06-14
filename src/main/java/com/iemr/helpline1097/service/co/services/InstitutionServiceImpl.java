@@ -29,6 +29,9 @@ import com.iemr.helpline1097.repository.co.services.InstitutionRepository;
 
 @Service
 public class InstitutionServiceImpl implements InstitutionService {
+	
+	@Autowired
+	private InstitutionRepository institutionRepository;
 
 	@Override
 	public Iterable<InstitutionDetails> getInstitutions() {
@@ -39,11 +42,11 @@ public class InstitutionServiceImpl implements InstitutionService {
 	/**
 	 * Institution repository
 	 */
-	private InstitutionRepository institutionRepository;
-	
-	@Autowired
-	public void setInstitutionRepository(InstitutionRepository institutionRepository){
-		
-		this.institutionRepository = institutionRepository;
-	}
+//	private InstitutionRepository institutionRepository;
+//	
+//	@Autowired
+//	public void setInstitutionRepository(InstitutionRepository institutionRepository){
+//		
+//		this.institutionRepository = institutionRepository;
+//	}
 }
