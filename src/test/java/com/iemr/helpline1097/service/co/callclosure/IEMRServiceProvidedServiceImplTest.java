@@ -8,6 +8,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.context.annotation.Description;
 
 import com.iemr.helpline1097.data.co.beneficiarycall.ServiceProvided;
 import com.iemr.helpline1097.repository.co.beneficiary.IEMRServiceProvidedRepositoryImplCustom;
@@ -22,6 +23,7 @@ class IEMRServiceProvidedServiceImplTest {
 	private IEMRServiceProvidedRepositoryImplCustom iEMRServiceProvidedRepositoryImplCustom;
 
 	@Test
+	@Description("Test Case for adding a service provided (TC_ADD_SERVICE_PROVIDED_001)")
 	void addServiceProvidedTest() {
 
 		ServiceProvided m_serviceprovided = new ServiceProvided();
