@@ -14,47 +14,18 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-@ContextConfiguration(classes = {BeneficiaryCall.class})
-@ExtendWith(SpringExtension.class)
-class BeneficiaryCallDiffblueTest {
-    @Autowired
+@ExtendWith(MockitoExtension.class)
+class BeneficiaryCallTest {
+    @InjectMocks
     private BeneficiaryCall beneficiaryCall;
 
-    /**
-     * Methods under test:
-     *
-     * <ul>
-     *   <li>{@link BeneficiaryCall#toString()}
-     *   <li>{@link BeneficiaryCall#getBenCallID()}
-     *   <li>{@link BeneficiaryCall#getBenCallServicesMappingHistories()}
-     *   <li>{@link BeneficiaryCall#getBeneficiaryRegID()}
-     *   <li>{@link BeneficiaryCall#getCallClosureType()}
-     *   <li>{@link BeneficiaryCall#getCallEndUserID()}
-     *   <li>{@link BeneficiaryCall#getCallReceivedUserID()}
-     *   <li>{@link BeneficiaryCall#getCallTime()}
-     *   <li>{@link BeneficiaryCall#getCalledServiceID()}
-     *   <li>{@link BeneficiaryCall#getCategory()}
-     *   <li>{@link BeneficiaryCall#getCreatedBy()}
-     *   <li>{@link BeneficiaryCall#getCreatedDate()}
-     *   <li>{@link BeneficiaryCall#getDeleted()}
-     *   <li>{@link BeneficiaryCall#getDispositionStatusID()}
-     *   <li>{@link BeneficiaryCall#getFeedbackServices()}
-     *   <li>{@link BeneficiaryCall#getInformationServices()}
-     *   <li>{@link BeneficiaryCall#getIs1097()}
-     *   <li>{@link BeneficiaryCall#getLastModDate()}
-     *   <li>{@link BeneficiaryCall#getModifiedBy()}
-     *   <li>{@link BeneficiaryCall#getReferralServices()}
-     *   <li>{@link BeneficiaryCall#getRemarks()}
-     *   <li>{@link BeneficiaryCall#getServicesProvided()}
-     *   <li>{@link BeneficiaryCall#getSubCategory()}
-     * </ul>
-     */
     @Test
     void testGettersAndSetters() {
         // Arrange
@@ -116,9 +87,6 @@ class BeneficiaryCallDiffblueTest {
         assertNull(actualBenCallServicesMappingHistories);
     }
 
-    /**
-     * Method under test: {@link BeneficiaryCall#BeneficiaryCall()}
-     */
     @Test
     void testNewBeneficiaryCall() {
         // Arrange and Act
@@ -152,10 +120,6 @@ class BeneficiaryCallDiffblueTest {
         assertNull(actualBeneficiaryCall.getBenCallServicesMappingHistories());
     }
 
-    /**
-     * Method under test:
-     * {@link BeneficiaryCall#BeneficiaryCall(Long, Boolean, String)}
-     */
     @Test
     void testNewBeneficiaryCall2() {
         // Arrange and Act
@@ -167,10 +131,6 @@ class BeneficiaryCallDiffblueTest {
         assertTrue(actualBeneficiaryCall.getIs1097());
     }
 
-    /**
-     * Method under test:
-     * {@link BeneficiaryCall#BeneficiaryCall(Long, String, Integer, Boolean, Timestamp, String, String, Integer)}
-     */
     @Test
     void testNewBeneficiaryCall3() {
         // Arrange
@@ -191,10 +151,7 @@ class BeneficiaryCallDiffblueTest {
         assertSame(callTime, actualBeneficiaryCall.getCallTime());
     }
 
-    /**
-     * Method under test:
-     * {@link BeneficiaryCall#BeneficiaryCall(Long, Timestamp, String, Long, Long, Long, Timestamp, Long, CallType)}
-     */
+   
     @Test
     void testNewBeneficiaryCall4() {
         // Arrange
@@ -233,10 +190,6 @@ class BeneficiaryCallDiffblueTest {
         assertSame(createdDate, actualBeneficiaryCall.getCreatedDate());
     }
 
-    /**
-     * Method under test:
-     * {@link BeneficiaryCall#BeneficiaryCall(Long, Timestamp, String, Long, Long, Long, Timestamp, Long, CallType)}
-     */
     @Test
     void testNewBeneficiaryCall5() {
         // Arrange
@@ -275,10 +228,6 @@ class BeneficiaryCallDiffblueTest {
         assertSame(createdDate, actualBeneficiaryCall.getCreatedDate());
     }
 
-    /**
-     * Method under test:
-     * {@link BeneficiaryCall#BeneficiaryCall(Long, Timestamp, String, Long, Long, Long, Timestamp, Long, CallType)}
-     */
     @Test
     void testNewBeneficiaryCall6() {
         // Arrange
@@ -317,10 +266,6 @@ class BeneficiaryCallDiffblueTest {
         assertSame(createdDate, actualBeneficiaryCall.getCreatedDate());
     }
 
-    /**
-     * Method under test:
-     * {@link BeneficiaryCall#BeneficiaryCall(Long, Timestamp, String, Long, Long, Long, Timestamp, Long, CallType)}
-     */
     @Test
     void testNewBeneficiaryCall7() {
         // Arrange
@@ -359,10 +304,6 @@ class BeneficiaryCallDiffblueTest {
         assertSame(createdDate, actualBeneficiaryCall.getCreatedDate());
     }
 
-    /**
-     * Method under test:
-     * {@link BeneficiaryCall#BeneficiaryCall(Long, Timestamp, String, Long, Long, Long, Timestamp, Long, CallType)}
-     */
     @Test
     void testNewBeneficiaryCall8() {
         // Arrange

@@ -35,16 +35,8 @@ import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
-class BenCallServicesMappingHistoryDiffblueTest {
-    /**
-     * Methods under test:
-     *
-     * <ul>
-     *   <li>
-     * {@link BenCallServicesMappingHistory#BenCallServicesMappingHistory(Long, Long, Long, Integer, SubServices, CategoryDetails, Integer, SubCategoryDetails, Integer, String, Timestamp)}
-     *   <li>{@link BenCallServicesMappingHistory#toString()}
-     * </ul>
-     */
+class BenCallServicesMappingHistoryTest {
+   
     @Test
     void testGettersAndSetters() {
         // Arrange
@@ -1489,15 +1481,6 @@ class BenCallServicesMappingHistoryDiffblueTest {
         assertSame(createdDate, actualBenCallServicesMappingHistory.getCreatedDate());
     }
 
-    /**
-     * Methods under test:
-     *
-     * <ul>
-     *   <li>
-     * {@link BenCallServicesMappingHistory#BenCallServicesMappingHistory(Long, Long, Long, Integer, SubServices, Long, FeedbackDetails, String, Timestamp)}
-     *   <li>{@link BenCallServicesMappingHistory#toString()}
-     * </ul>
-     */
     @Test
     void testGettersAndSetters4() {
         // Arrange

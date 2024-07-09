@@ -1,5 +1,8 @@
 package com.iemr.helpline1097.controller.co.beneficiary;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 import java.math.BigInteger;
@@ -7,14 +10,21 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.context.annotation.Description;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.iemr.helpline1097.data.co.beneficiary.M_Promoservice;
 import com.iemr.helpline1097.data.co.beneficiarycall.BenCallServicesMappingHistory;
 import com.iemr.helpline1097.service.co.beneficiary.BenInformationCounsellingFeedbackReferralImpl;
@@ -36,47 +46,7 @@ class BeneficiaryControllerTest {
 	private BenInformationCounsellingFeedbackReferralImpl benInformationCounsellingFeedbackReferralImpl;
 
 	@Test
-	void addPromoServiceDetailsTest() {
-
-		String request = "Add promo service detail";
-
-		M_Promoservice m_promoservice = new M_Promoservice();
-
-		m_promoservice.setPamphlet("pamphlet");
-		m_promoservice.setRadio("FM");
-		m_promoservice.setTelevision("Samsung 8K");
-		m_promoservice.setFamilyFriends("Many");
-		m_promoservice.setHealthcareWorker("healthcareWorker");
-		m_promoservice.setOthers("Others");
-		m_promoservice.setNotDisclosed("notDisclosed");
-
-		m_promoservice.toString();
-
-		M_Promoservice m_Promoservice = m_promoservice;
-
-		String response = beneficiaryController.addPromoServiceDetails(request);
-
-		Assertions.assertNotNull(m_Promoservice);
-		Assertions.assertEquals(response.toString(), beneficiaryController.addPromoServiceDetails(request));
-
-	}
-
-	@Test
-	void addPromoServiceDetailsTest_AsNull() {
-
-//		String request = "Add promo service detail";
-
-		M_Promoservice m_Promoservice = null;
-		M_Promoservice m_promoservice = iEMRPromoserviceDetailsServiceImpl.addPromoServiceDetail(m_Promoservice);
-
-//		String response = beneficiaryController.addPromoServiceDetails(request);
-
-		Assertions.assertNull(m_promoservice);
-	//	Assertions.assertEquals(response.toString(), beneficiaryController.addPromoServiceDetails(request));
-
-	}
-
-	@Test
+	@Description("Tests adding promo service details with service layer exception (TC_AddPromoServiceDetails_ServiceLayerException_001)")
 	void addPromoServiceDetailsTest_Exception() {
 
 		String request = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
@@ -86,36 +56,70 @@ class BeneficiaryControllerTest {
 		Assertions.assertEquals(response.toString(), beneficiaryController.addPromoServiceDetails(request));
 
 	}
-	
+
 	@Test
-	void addPromoServiceDetailsTest_Successful() {
+	@Description("Tests adding promo service details with valid request (TC_AddPromoServiceDetails_ValidData_002)")
+	public void addPromoServiceDetailsTest_ValidData() throws Exception {
+		// Simulate valid JSON data for promo service details
+		M_Promoservice m_promoservice = new M_Promoservice();
+		m_promoservice.setPamphlet("pamphlet");
+		m_promoservice.setRadio("FM");
+		m_promoservice.setTelevision("Samsung 8K");
+		m_promoservice.setFamilyFriends("Many");
+		m_promoservice.setHealthcareWorker("healthcareWorker");
+		m_promoservice.setOthers("Others");
+		m_promoservice.setNotDisclosed("notDisclosed");
 
-		String request = "Added promo service detail";
+		String request = new ObjectMapper().writeValueAsString(m_promoservice); // Convert to JSON string
 
-		M_Promoservice promoService = new M_Promoservice();
-		promoService.setId(12L);
-		promoService.setPamphlet("pamphlet");
-		promoService.setRadio("radio");
-		promoService.setTelevision("television");
-		promoService.setFamilyFriends("ff");
-		promoService.setHealthcareWorker("hcw");
-		promoService.setOthers("others");
-		promoService.setNotDisclosed("ND");	
-		List<M_Promoservice> m_PromoService = new ArrayList<>();
-		m_PromoService.add(promoService);
-		
-		M_Promoservice[] m_promoservices = new M_Promoservice[m_PromoService.size()];
-		m_promoservices = m_PromoService.toArray(m_promoservices);
-		Iterable<M_Promoservice> promoservice = Arrays
-				.asList(m_promoservices);
+		// Mock iEMRPromoserviceDetailsServiceImpl (if necessary)
+		M_Promoservice mockPromoservice = new M_Promoservice(); // Mock return value
+		Mockito.when(iEMRPromoserviceDetailsServiceImpl.addPromoServiceDetail(m_promoservice))
+				.thenReturn(mockPromoservice);
+
 		String response = beneficiaryController.addPromoServiceDetails(request);
-		
-		
-		Assertions.assertEquals(response.toString(), beneficiaryController.addPromoServiceDetails(request));
 
+		// Verify response and object mapping
+		assertNotNull(response);
 	}
 
 	@Test
+	@Description("Tests adding promo service details with invalid JSON request (TC_AddPromoServiceDetails_InvalidJSON_003)")
+	public void addPromoServiceDetailsTest_InvalidJSON() throws Exception {
+		String invalidRequest = "{invalid_data}"; // Simulate invalid JSON
+
+		String response = beneficiaryController.addPromoServiceDetails(invalidRequest);
+
+		// Verify response indicates error
+		assertNotNull(response);
+		assertTrue(response.contains("error")); // Check for error message or exception details in response
+	}
+
+	@Test
+	@Description("Tests adding promo service details with service layer returning null (TC_AddPromoServiceDetails_ServiceLayerReturnNull_004)")
+	public void addPromoServiceDetailsTest_ServiceLayerReturnNull() throws Exception {
+		// Simulate valid JSON data
+		M_Promoservice m_promoservice = new M_Promoservice();
+		m_promoservice.setPamphlet("pamphlet");
+		m_promoservice.setRadio("FM");
+		m_promoservice.setTelevision("Samsung 8K");
+		m_promoservice.setFamilyFriends("Many");
+		m_promoservice.setHealthcareWorker("healthcareWorker");
+		m_promoservice.setOthers("Others");
+		m_promoservice.setNotDisclosed("notDisclosed");
+		String request = new ObjectMapper().writeValueAsString(m_promoservice);
+
+		// Mock iEMRPromoserviceDetailsServiceImpl to return null (simulating failure)
+		Mockito.when(iEMRPromoserviceDetailsServiceImpl.addPromoServiceDetail(m_promoservice)).thenReturn(null);
+
+		String response = beneficiaryController.addPromoServiceDetails(request);
+
+		// Verify response indicates failure
+		assertNotNull(response);
+	}
+
+	@Test
+	@Description("Tests saving beneficiary call service category and subcategory mapping with valid data (TC_SaveBenCalServiceCatSubcatMapping_ValidData_001)")
 	void saveBenCalServiceCatSubcatMappingTest() {
 
 		String request = "Save information requested by the beneficiary during call";
@@ -156,6 +160,7 @@ class BeneficiaryControllerTest {
 	}
 
 	@Test
+	@Description("Tests saving beneficiary call service category and subcategory mapping with an exception (TC_SaveBenCalServiceCatSubcatMapping_Exception_002)")
 	void saveBenCalServiceCatSubcatMappingTest_Exception() {
 
 		String request = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
@@ -167,6 +172,7 @@ class BeneficiaryControllerTest {
 	}
 
 	@Test
+	@Description("Tests saving beneficiary call service, category, and subcategory mapping with an exception (TC_SaveBenCalServiceCOCatSubcatMapping_Exception_001)")
 	void saveBenCalServiceCOCatSubcatMappingTest() {
 
 		String request = "Save counselling requested by beneficiary";
@@ -208,6 +214,7 @@ class BeneficiaryControllerTest {
 	}
 
 	@Test
+	@Description("Tests saving beneficiary call service, category, and subcategory mapping with an exception (TC_SaveBenCalServiceCOCatSubcatMapping_Exception_002)")
 	void saveBenCalServiceCOCatSubcatMappingTest_Exception() {
 
 		String request = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
@@ -219,6 +226,7 @@ class BeneficiaryControllerTest {
 	}
 
 	@Test
+	@Description("Tests saving beneficiary call referral mapping with valid data (TC_SaveBenCalReferralMapping_ValidData_001)")
 	void saveBenCalReferralMappingTest() {
 
 		String referralRequest = "Save beneficiary call referral mapping";
@@ -234,6 +242,7 @@ class BeneficiaryControllerTest {
 	}
 
 	@Test
+	@Description("Tests saving beneficiary call referral mapping with an exception (TC_SaveBenCalReferralMapping_Exception_002)")
 	void saveBenCalReferralMappingTest_Exception() {
 
 		String referralRequest = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";

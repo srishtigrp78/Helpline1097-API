@@ -8,6 +8,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.context.annotation.Description;
 
 import com.iemr.helpline1097.service.everwell.EverwellService;
 import com.iemr.helpline1097.utils.exception.IEMRException;
@@ -24,6 +25,7 @@ class EverwellGuidelinesControllerTest {
 	private EverwellService everwellService;
 
 	@Test
+	@Description("Tests successful saving of Everwell guidelines (TC_SaveEverwellGuidelines_ValidData_001)")
 	void saveEverwellGuidelinesTest() throws IEMRException {
 
 		String request = "{\"providerServiceMapID\":123,\"Category\":\\\"String\\\",\"fileContent\":\"String\"\"\\\"GuidelineName\\\":\\\"String\\\"\"\\\"GuidelineDescription\\\":\\\"String\\\"}";
@@ -39,6 +41,7 @@ class EverwellGuidelinesControllerTest {
 	}
 
 	@Test
+	@Description("Tests handling exception during saving Everwell guidelines (TC_SaveEverwellGuidelines_Exception_002)")
 	void saveEverwellGuidelinesTest_Exception() throws IEMRException {
 
 		String request = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
@@ -51,6 +54,7 @@ class EverwellGuidelinesControllerTest {
 	}
 
 	@Test
+	@Description("Tests successful retrieval of Everwell guidelines (TC_FetchEverwellGuidelines_ValidData_001)")
 	void fetchEverwellGuidelinesTest() throws IEMRException {
 
 		String request = "{\"providerServiceMapID\":123,\"adherencePercentage\":234}";
@@ -66,6 +70,7 @@ class EverwellGuidelinesControllerTest {
 	}
 
 	@Test
+	@Description("Tests handling exception during fetching Everwell guidelines (TC_FetchEverwellGuidelines_Exception_002)")
 	void fetchEverwellGuidelinesTest_Exception() throws IEMRException {
 
 		String request = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
@@ -78,6 +83,7 @@ class EverwellGuidelinesControllerTest {
 	}
 
 	@Test
+	@Description("Tests successful deletion of Everwell guidelines (TC_DeleteEverwellGuidelines_ValidData_001)")
 	void deleteEverwellGuidelinesTest() throws IEMRException {
 
 		String request = "{\"Id\":1,\"modifiedBy\":\\\"String\\\"}";
@@ -93,6 +99,7 @@ class EverwellGuidelinesControllerTest {
 	}
 
 	@Test
+	@Description("Tests handling exception during deleting Everwell guidelines (TC_DeleteEverwellGuidelines_Exception_002)")
 	void deleteEverwellGuidelinesTest_Exception() throws IEMRException {
 
 		String request = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";

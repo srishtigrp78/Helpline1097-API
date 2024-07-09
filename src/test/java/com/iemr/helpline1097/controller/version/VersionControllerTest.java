@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.context.annotation.Description;
 
 import com.iemr.helpline1097.utils.response.OutputResponse;
 
@@ -25,6 +26,7 @@ class VersionControllerTest {
 	VersionController versionController;
 
 	@Test
+	@Description("Tests successful reading from an InputStream (TC_ReadFromInputStream_ValidData_001)")
 	public void readFromInputStreamTest() throws IOException {
 
 		// Create a sample git.properties content
@@ -46,6 +48,7 @@ class VersionControllerTest {
 	}
 
 	@Test
+	@Description("Tests successful reading of Git properties (TC_ReadGitProperties_ValidData_001)")
 	public void readGitPropertiesTest() throws Exception {
 
 		String gitPropertiesContent = "git.commit.id=abcdef\n" + "git.build.version=1.0.0\n";
@@ -63,6 +66,7 @@ class VersionControllerTest {
 	}
 
 	@Test
+	@Description("Tests successful retrieval of version information (TC_VersionInformation_ValidData_001)")
 	public void versionInformationTest() {
 
 		// Call the versionInformation method
@@ -78,6 +82,7 @@ class VersionControllerTest {
 	}
 
 	@Test
+	@Description("Tests handling exceptions during retrieving version information (TC_VersionInformation_Exception_002)")
 	public void versionInformationTest_Exception() {
 
 		String request = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
