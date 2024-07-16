@@ -266,7 +266,7 @@
 
 
 	<build>
-		<finalName>1097api-v1.0</finalName>
+		<finalName>1097api-v3.0.0</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.owasp</groupId>
