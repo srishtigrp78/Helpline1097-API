@@ -28,6 +28,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.WebRequestInterceptor;
+import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.WebRequestHandlerInterceptorAdapter;
 
@@ -39,80 +40,47 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @Component
-public class HTTPRequestInterceptor extends WebRequestHandlerInterceptorAdapter
-{
-	public HTTPRequestInterceptor(WebRequestInterceptor requestInterceptor) {
-		super(requestInterceptor);
-		// TODO Auto-generated constructor stub
-	}
-
-	private Validator validator;
+public class HTTPRequestInterceptor implements HandlerInterceptor {
 
 	Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
-
-	@Autowired
-	public void setValidator(Validator validator)
-	{
-		this.validator = validator;
-	}
 
 	private SessionObject sessionObject;
 
 	@Autowired
-	public void setSessionObject(SessionObject sessionObject)
-	{
+	public void setSessionObject(SessionObject sessionObject) {
 		this.sessionObject = sessionObject;
 	}
 
 	@Override
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object object) throws Exception
-	{
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object object) throws Exception {
 		boolean status = true;
 		logger.debug("In preHandle we are Intercepting the Request");
-	//	String authorization = request.getHeader("Authorization");
 		String authorization = null;
 		String preAuth = request.getHeader("Authorization");
 		if(null != preAuth && preAuth.contains("Bearer "))
 			authorization=preAuth.replace("Bearer ", "");
 		else
 			authorization = preAuth;
+			
 		logger.debug("RequestURI::" + request.getRequestURI() + " || Authorization ::" + authorization
 				+ " || method :: " + request.getMethod());
-		if (!request.getMethod().equalsIgnoreCase("OPTIONS"))
-		{
-			try
-			{
+		if (!request.getMethod().equalsIgnoreCase("OPTIONS")) {
+			try {
 				String[] requestURIParts = request.getRequestURI().split("/");
 				String requestAPI = requestURIParts[requestURIParts.length - 1];
-				switch (requestAPI)
-				{
-					case "userAuthenticate":
-					case "userAuthenticateNew":
-					case "userAuthenticateV1":
-					case "forgetPassword":
-					case "setForgetPassword":
-					case "changePassword":
-					case "saveUserSecurityQuesAns":
-					case "swagger-ui.html":
-					case "ui":
-					case "swagger-resources":
-					case "api-docs":
+				switch (requestAPI) {
+				case "userAuthenticate", "userAuthenticateNew", "userAuthenticateV1", "forgetPassword",
+						"setForgetPassword", "changePassword", "saveUserSecurityQuesAns", "swagger-ui.html", "ui",
+						"swagger-resources", "version", "api-docs":
 
-						break;
-					case "error":
-						status = false;
-						break;
-					default:
-						String remoteAddress = request.getHeader("X-FORWARDED-FOR");
-						if (remoteAddress == null || remoteAddress.trim().length() == 0)
-						{
-							remoteAddress = request.getRemoteAddr();
-						}
-			//			validator.checkKeyExists(authorization, remoteAddress);
-						break;
+					break;
+				case "error":
+					status = false;
+					break;
+				default:
+					break;
 				}
-			} catch (Exception e)
-			{
+			} catch (Exception e) {
 				OutputResponse output = new OutputResponse();
 				output.setError(e);
 				response.getOutputStream().print(output.toString());
@@ -124,15 +92,11 @@ public class HTTPRequestInterceptor extends WebRequestHandlerInterceptorAdapter
 		}
 		return status;
 	}
-
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object object, ModelAndView model)
-			throws Exception
-	{
-		try
-		{
+			throws Exception {
+		try {
 			logger.debug("In postHandle we are Intercepting the Request");
-		//	String authorization = request.getHeader("Authorization");
 			String authorization = null;
 			String postAuth = request.getHeader("Authorization");
 			if(null != postAuth && postAuth.contains("Bearer "))
@@ -140,20 +104,17 @@ public class HTTPRequestInterceptor extends WebRequestHandlerInterceptorAdapter
 			else
 				authorization = postAuth;
 			logger.debug("RequestURI::" + request.getRequestURI() + " || Authorization ::" + authorization);
-			if (authorization != null)
-			{
+			if (authorization != null) {
 				sessionObject.updateSessionObject(authorization, sessionObject.getSessionObject(authorization));
 			}
-		} catch (Exception e)
-		{
+		} catch (Exception e) {
 			logger.debug("postHandle failed with error " + e.getMessage());
 		}
 	}
 
 	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object object, Exception arg3)
-			throws Exception
-	{
+			throws Exception {
 		logger.debug("In afterCompletion Request Completed");
 	}
 }
