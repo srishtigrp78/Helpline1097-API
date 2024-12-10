@@ -126,6 +126,12 @@ public class FeedbackDetails {
 	@Column(name = "Deleted", insertable = false, updatable = true)
 	@Expose
 	private Boolean deleted;
+	
+	@Column(name = "BeneficiaryConsent")
+	@Expose
+	private Boolean beneficiaryConsent;
+
+	
 	@Column(name = "CreatedBy")
 	@Expose
 	private String createdBy;
@@ -191,7 +197,7 @@ public class FeedbackDetails {
 	public FeedbackDetails(Long feedbackID, Long institutionID, Integer designationID, Short severityID,
 			Short feedbackTypeID, Short feedbackStatusID, String feedback, Long beneficiaryRegID, Integer serviceID,
 			Integer userID, String sMSPhoneNo, Timestamp serviceAvailDate, Boolean deleted, String createdBy,
-			Timestamp createdDate, String modifiedBy, Timestamp lastModDate) {
+			Timestamp createdDate, String modifiedBy, Timestamp lastModDate, Boolean beneficiaryConsent) {
 		super();
 		this.feedbackID = feedbackID;
 		this.institutionID = institutionID;
@@ -210,6 +216,7 @@ public class FeedbackDetails {
 		CreatedDate = createdDate;
 		this.modifiedBy = modifiedBy;
 		this.lastModDate = lastModDate;
+		this.beneficiaryConsent = beneficiaryConsent;
 	}
 
 	public FeedbackDetails(Long feedbackID, Short severityID, Short feedbackTypeID, Short feedbackStatusID,
@@ -325,6 +332,15 @@ public class FeedbackDetails {
 	public void setDeleted(Boolean deleted) {
 		this.deleted = deleted;
 	}
+	
+	public Boolean getBeneficiaryConsent() {
+		return beneficiaryConsent;
+	}
+
+	public void setBeneficiaryConsent(Boolean beneficiaryConsent) {
+		this.beneficiaryConsent = beneficiaryConsent;
+	}
+	
 
 	public String getCreatedBy() {
 		return createdBy;
