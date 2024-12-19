@@ -1,5 +1,8 @@
 package com.iemr.helpline1097.data.co.beneficiary;
 
+import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.gson.annotations.Expose;
 
 import jakarta.persistence.Column;
@@ -13,7 +16,8 @@ import lombok.Data;
 @Entity
 @Table(name = "m_user")
 @Data
-public class User {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class User implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
