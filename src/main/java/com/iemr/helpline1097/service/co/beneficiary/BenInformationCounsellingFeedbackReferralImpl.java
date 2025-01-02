@@ -33,6 +33,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ObjectUtils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
@@ -193,8 +194,10 @@ public class BenInformationCounsellingFeedbackReferralImpl implements BenInforma
 								(Integer) objects[1], institutes[idx].getStateID(), institutes[idx].getDistrictID());
 						ObjectMapper objectMapper = new ObjectMapper();
 						hist = objectMapper.readValue(reqArray[idx].toString(), BenCallServicesMappingHistory.class);
-						maps = new DirectoryMapping(directoryMapId, insitutionDetails.get(i));
-						resultSet.add(maps);
+						if(!ObjectUtils.isEmpty(insitutionDetails)) {
+							maps = new DirectoryMapping(directoryMapId, insitutionDetails.get(i));
+							resultSet.add(maps);
+						}
 						hist.setInstituteDirMapID((Long) objects[0]);
 						benCalServiceCatSubcatMappingRepo.save(hist);
 					}
